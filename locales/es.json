@@ -26,8 +26,8 @@
     "files": "archivos"
   },
   "meta": {
-    "title": "MiroFish - Predice Todo",
-    "description": "MiroFish - Sistema de Simulación de Opinión en Redes Sociales"
+    "title": "Homepty Swarm - Predice Todo",
+    "description": "Homepty Swarm - Sistema de Simulación de Opinión en Redes Sociales"
   },
   "nav": {
     "visitGithub": "Visitar nuestra página de Github"
@@ -38,7 +38,7 @@
     "heroTitle1": "Sube informes,",
     "heroTitle2": "Predice el futuro",
     "heroDesc": "A partir de un solo documento, {brand} extrae semillas de realidad para generar automáticamente un mundo paralelo con hasta {agentScale}. Inyecta variables desde una perspectiva divina para encontrar el {optimalSolution} en dinámicas de grupo complejas.",
-    "heroDescBrand": "MiroFish",
+    "heroDescBrand": "Homepty Swarm",
     "heroDescAgentScale": "Agentes a escala millonaria",
     "heroDescOptimalSolution": "\"óptimo local\"",
     "slogan": "Que los Agentes ensayen el futuro, que las decisiones prevalezcan",
@@ -67,7 +67,7 @@
     "inputParams": "Parámetros de Entrada",
     "simulationPrompt": ">_ 02 / Prompt de Simulación",
     "promptPlaceholder": "// Describe tu requisito de simulación o predicción en lenguaje natural",
-    "engineBadge": "Motor: MiroFish-V1.0",
+    "engineBadge": "Motor: Homepty-Swarm-V1.0",
     "startEngine": "Iniciar Motor",
     "initializing": "Inicializando..."
   },
@@ -177,7 +177,7 @@
     "setupComplete": "Configuración Completa",
     "setupCompleteDesc": "El entorno de simulación está listo. Ya puedes iniciar la simulación.",
     "roundsConfig": "Configuración de Rondas de Simulación",
-    "roundsConfigDesc": "MiroFish planifica automáticamente simular {hours} horas del mundo real, donde cada ronda representa {minutesPerRound} minutos de tiempo transcurrido",
+    "roundsConfigDesc": "Homepty Swarm planifica automáticamente simular {hours} horas del mundo real, donde cada ronda representa {minutesPerRound} minutos de tiempo transcurrido",
     "customToggle": "Personalizado",
     "roundsUnit": "rondas",
     "estimatedDuration": "Para 100 Agentes: est. ~{minutes} minutos",
@@ -289,7 +289,7 @@
     "selectChatTarget": "Seleccionar objetivo de chat",
     "sendSurvey": "Enviar encuesta al mundo",
     "reportAgentChat": "Agente de Informes - Chat",
-    "reportAgentDesc": "Una versión conversacional del agente de generación de informes con acceso a 4 herramientas profesionales y la memoria completa de MiroFish",
+    "reportAgentDesc": "Una versión conversacional del agente de generación de informes con acceso a 4 herramientas profesionales y la memoria completa de Homepty Swarm",
     "toolInsightForge": "Atribución Profunda InsightForge",
     "toolInsightForgeDesc": "Alinea datos de semillas del mundo real con el estado de la simulación, combinando Memoria Global/Local para análisis de atribución profunda cross-temporal",
     "toolPanoramaSearch": "Rastreo Completo PanoramaSearch",

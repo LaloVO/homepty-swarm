@@ -20,7 +20,7 @@ from ..models.task import TaskManager, TaskStatus
 from ..models.project import ProjectManager, ProjectStatus
 
 # 获取日志器
-logger = get_logger('mirofish.api')
+logger = get_logger('homepty_swarm.api')
 
 
 def allowed_file(filename: str) -> bool:
@@ -377,7 +377,7 @@ def build_graph():
         # 启动后台任务
         def build_task():
             set_locale(current_locale)
-            build_logger = get_logger('mirofish.build')
+            build_logger = get_logger('homepty_swarm.build')
             try:
                 build_logger.info(f"[{task_id}] 开始构建图谱...")
                 task_manager.update_task(

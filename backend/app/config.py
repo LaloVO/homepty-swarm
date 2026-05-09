@@ -7,7 +7,7 @@ import os
 from dotenv import load_dotenv
 
 # Load .env file from project root
-# Path: MiroFish/.env (relative to backend/app/config.py)
+# Path: homepty-swarm/.env (relative to backend/app/config.py)
 project_root_env = os.path.join(os.path.dirname(__file__), '../../.env')
 
 if os.path.exists(project_root_env):
@@ -21,7 +21,7 @@ class Config:
     """Flask configuration class"""
     
     # Flask configuration
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'mirofish-secret-key')
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'homepty-swarm-secret-key')
     DEBUG = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
     
     # JSON configuration - Disable ASCII escape to display non-ASCII characters directly

@@ -1,9 +1,9 @@
 services:
-  mirofish:
-    image: ghcr.io/666ghj/mirofish:latest
-    # 加速镜像（如拉取缓慢可替换上方地址）
-    # image: ghcr.nju.edu.cn/666ghj/mirofish:latest
-    container_name: mirofish
+  homepty-swarm:
+    image: ghcr.io/lalovo/homepty-swarm:latest
+    # Mirror image (replace above URL if pulling is slow)
+    # image: ghcr.nju.edu.cn/lalovo/homepty-swarm:latest
+    container_name: homepty-swarm
     env_file:
       - .env
     ports:

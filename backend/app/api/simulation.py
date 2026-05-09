@@ -17,7 +17,7 @@ from ..utils.logger import get_logger
 from ..utils.locale import t, get_locale, set_locale
 from ..models.project import ProjectManager
 
-logger = get_logger('mirofish.api.simulation')
+logger = get_logger('homepty_swarm.api.simulation')
 
 
 # Interview prompt 优化前缀

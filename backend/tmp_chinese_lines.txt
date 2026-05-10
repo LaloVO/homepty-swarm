@@ -1,0 +1,38 @@
+210: logger.warning(f"Zep客户端初始化失败: {e}")
+314: logger.debug(f"跳过Zep检索：未设置graph_id")
+337: logger.debug(f"Zep边搜索第 {attempt + 1} 次失败: {str(e)[:80]}, 重试中...")
+341: logger.debug(f"Zep边搜索在 {max_retries} 次尝试后仍失败: {e}")
+362: logger.debug(f"Zep节点搜索第 {attempt + 1} 次失败: {str(e)[:80]}, 重试中...")
+366: logger.debug(f"Zep节点搜索在 {max_retries} 次尝试后仍失败: {e}")
+394: all_summaries.add(f"相关实体: {node.name}")
+405: logger.info(f"Zep混合检索完成: {entity_name}, 获取 {len(results['facts'])} 条事实, {len(results['node_summaries'])} 个相关节点")
+408: logger.warning(f"Zep检索超时 ({entity_name})")
+410: logger.warning(f"Zep检索失败 ({entity_name}): {e}")
+448: relationships.append(f"- {entity.name} --[{edge_name}]--> (相关实体)")
+450: relationships.append(f"- (相关实体) --[{edge_name}]--> {entity.name}")
+557: result["persona"] = entity_summary or f"{entity_name}是一个{entity_type}。"
+562: logger.warning(f"JSON解析失败 (attempt {attempt+1}): {str(je)[:80]}")
+573: logger.warning(f"LLM调用失败 (attempt {attempt+1}): {str(e)[:80]}")
+578: logger.warning(f"LLM生成人设失败（{max_attempts}次尝试）: {last_error}, 使用规则生成")
+654: persona = persona_match.group(1) if persona_match else (entity_summary or f"{entity_name}是一个{entity_type}。")
+658: logger.info(f"从损坏的JSON中提取了部分信息")
+666: logger.warning(f"JSON修复失败，返回基础结构")
+669: "persona": entity_summary or f"{entity_name}是一个{entity_type}。"
+917: logger.warning(f"实时保存 profiles 失败: {e}")
+940: logger.error(f"生成实体 {entity.name} 的人设失败: {str(e)}")
+953: logger.info(f"开始并行生成 {total} 个Agent人设（并行数: {parallel_count}）...")
+955: print(f"开始生成Agent人设 - 共 {total} 个实体，并行数: {parallel_count}")
+986: f"已完成 {current}/{total}: {entity.name}（{entity_type}）"
+990: logger.warning(f"[{current}/{total}] {entity.name} 使用备用人设: {error}")
+992: logger.info(f"[{current}/{total}] 成功生成人设: {entity.name} ({entity_type})")
+995: logger.error(f"处理实体 {entity.name} 时发生异常: {str(e)}")
+1011: print(f"人设生成完成！共生成 {len([p for p in profiles if p])} 个Agent")
+1027: f"用户名: {profile.user_name}",
+1029: f"【简介】",
+1032: f"【详细人设】",
+1035: f"【基本属性】",
+1036: f"年龄: {profile.age} | 性别: {profile.gender} | MBTI: {profile.mbti}",
+1037: f"职业: {profile.profession} | 国家: {profile.country}",
+1038: f"兴趣话题: {topics_str}",
+1119: logger.info(f"已保存 {len(profiles)} 个Twitter Profile到 {file_path} (OASIS CSV格式)")
+1193: logger.info(f"已保存 {len(profiles)} 个Reddit Profile到 {file_path} (JSON格式，包含user_id字段)")

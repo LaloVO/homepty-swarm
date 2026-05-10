@@ -39,7 +39,7 @@ class AgentActivity:
         Uses a natural language description format to allow Zep to extract entities and relationships.
         No simulation-related prefixes are added to avoid misleading the graph update.
         """
-        # 根据不同的动作类型生成不同的描述
+        # Generate different descriptions based on different action types
         action_descriptions = {
             "CREATE_POST": self._describe_create_post,
             "LIKE_POST": self._describe_like_post,
@@ -458,20 +458,20 @@ class ZepGraphMemoryUpdater:
                 self._platform_buffers[platform] = []
     
     def get_stats(self) -> Dict[str, Any]:
-        """获取统计信息"""
+        """Get statistics"""
         with self._buffer_lock:
             buffer_sizes = {p: len(b) for p, b in self._platform_buffers.items()}
         
         return {
             "graph_id": self.graph_id,
             "batch_size": self.BATCH_SIZE,
-            "total_activities": self._total_activities,  # 添加到队列的活动总数
-            "batches_sent": self._total_sent,            # 成功发送的批次数
-            "items_sent": self._total_items_sent,        # 成功发送的活动条数
-            "failed_count": self._failed_count,          # 发送失败的批次数
-            "skipped_count": self._skipped_count,        # 被过滤跳过的活动数（DO_NOTHING）
+            "total_activities": self._total_activities,  # Total activities added to the queue
+            "batches_sent": self._total_sent,            # Number of batches successfully sent
+            "items_sent": self._total_items_sent,        # Number of activities successfully sent
+            "failed_count": self._failed_count,          # Number of failed batches
+            "skipped_count": self._skipped_count,        # Number of skipped activities (DO_NOTHING)
             "queue_size": self._activity_queue.qsize(),
-            "buffer_sizes": buffer_sizes,                # 各平台缓冲区大小
+            "buffer_sizes": buffer_sizes,                # Buffer size for each platform
             "running": self._running,
         }
 
@@ -499,7 +499,7 @@ class ZepGraphMemoryManager:
             ZepGraphMemoryUpdater instance
         """
         with cls._lock:
-            # 如果已存在，先停止旧的
+            # If it already exists, stop the old one first
             if simulation_id in cls._updaters:
                 cls._updaters[simulation_id].stop()
             

@@ -1,0 +1,1 @@
+1434: clean_text = re.sub(r'问题\d+[：:]\s*', '', clean_text)

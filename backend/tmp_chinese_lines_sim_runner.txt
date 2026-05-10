@@ -1,0 +1,348 @@
+2: OASIS模拟运行器
+3: 在后台运行模拟并记录每个Agent的动作，支持实时状态监控
+29: # 标记是否已注册清理函数
+32: # 平台检测
+37: """运行器状态"""
+50: """Agent动作记录"""
+77: """每轮摘要"""
+103: """模拟运行状态（实时）"""
+107: # 进度信息
+113: # 各平台独立轮次和模拟时间（用于双平台并行显示）
+119: # 平台状态
+125: # 平台完成状态（通过检测 actions.jsonl 中的 simulation_end 事件）
+129: # 每轮摘要
+132: # 最近动作（用于前端实时展示）
+136: # 时间戳
+141: # 错误信息
+144: # 进程ID（用于停止）
+148: """添加动作到最近动作列表"""
+169: # 各平台独立轮次和时间
+189: """包含最近动作的详细信息"""
+198: 模拟运行器
+200: 负责：
+201: 1. 在后台进程中运行OASIS模拟
+202: 2. 解析运行日志，记录每个Agent的动作
+203: 3. 提供实时状态查询接口
+204: 4. 支持暂停/停止/恢复操作
+207: # 运行状态存储目录
+213: # 脚本目录
+219: # 内存中的运行状态
+224: _stdout_files: Dict[str, Any] = {}  # 存储 stdout 文件句柄
+225: _stderr_files: Dict[str, Any] = {}  # 存储 stderr 文件句柄
+227: # 图谱记忆更新配置
+232: """获取运行状态"""
+236: # 尝试从文件加载
+244: """从文件加载运行状态"""
+260: # 各平台独立轮次和时间
+278: # 加载最近动作
+295: logger.error(f"加载运行状态失败: {str(e)}")
+300: """保存运行状态到文件"""
+317: max_rounds: int = None,  # 最大模拟轮数（可选，用于截断过长的模拟）
+318: enable_graph_memory_update: bool = False,  # 是否将活动更新到Zep图谱
+319: graph_id: str = None  # Zep图谱ID（启用图谱更新时必需）
+322: 启动模拟
+325: simulation_id: 模拟ID
+326: platform: 运行平台 (twitter/reddit/parallel)
+327: max_rounds: 最大模拟轮数（可选，用于截断过长的模拟）
+328: enable_graph_memory_update: 是否将Agent活动动态更新到Zep图谱
+329: graph_id: Zep图谱ID（启用图谱更新时必需）
+334: # 检查是否已在运行
+337: raise ValueError(f"模拟已在运行中: {simulation_id}")
+339: # 加载模拟配置
+344: raise ValueError(f"模拟配置不存在，请先调用 /prepare 接口")
+349: # 初始化运行状态
+355: # 如果指定了最大轮数，则截断
+360: logger.info(f"轮数已截断: {original_rounds} -> {total_rounds} (max_rounds={max_rounds})")
+372: # 如果启用图谱记忆更新，创建更新器
+375: raise ValueError("启用图谱记忆更新时必须提供 graph_id")
+380: logger.info(f"已启用图谱记忆更新: simulation_id={simulation_id}, graph_id={graph_id}")
+382: logger.error(f"创建图谱记忆更新器失败: {e}")
+387: # 确定运行哪个脚本（脚本位于 backend/scripts/ 目录）
+402: raise ValueError(f"脚本不存在: {script_path}")
+404: # 创建动作队列
+408: # 启动模拟进程
+410: # 构建运行命令，使用完整路径
+411: # 新的日志结构：
+412: #   twitter/actions.jsonl - Twitter 动作日志
+413: #   reddit/actions.jsonl  - Reddit 动作日志
+414: #   simulation.log        - 主进程日志
+417: sys.executable,  # Python解释器
+419: "--config", config_path,  # 使用完整配置文件路径
+422: # 如果指定了最大轮数，添加到命令行参数
+426: # 创建主日志文件，避免 stdout/stderr 管道缓冲区满导致进程阻塞
+430: # 设置子进程环境变量，确保 Windows 上使用 UTF-8 编码
+431: # 这可以修复第三方库（如 OASIS）读取文件时未指定编码的问题
+433: env['PYTHONUTF8'] = '1'  # Python 3.7+ 支持，让所有 open() 默认使用 UTF-8
+434: env['PYTHONIOENCODING'] = 'utf-8'  # 确保 stdout/stderr 使用 UTF-8
+436: # 设置工作目录为模拟目录（数据库等文件会生成在此）
+437: # 使用 start_new_session=True 创建新的进程组，确保可以通过 os.killpg 终止所有子进程
+442: stderr=subprocess.STDOUT,  # stderr 也写入同一个文件
+444: encoding='utf-8',  # 显式指定编码
+446: env=env,  # 传递带有 UTF-8 设置的环境变量
+447: start_new_session=True,  # 创建新进程组，确保服务器关闭时能终止所有相关进程
+450: # 保存文件句柄以便后续关闭
+452: cls._stderr_files[simulation_id] = None  # 不再需要单独的 stderr
+462: # 启动监控线程
+471: logger.info(f"模拟启动成功: {simulation_id}, pid={process.pid}, platform={platform}")
+483: """监控模拟进程，解析动作日志"""
+487: # 新的日志结构：分平台的动作日志
+501: while process.poll() is None:  # 进程仍在运行
+502: # 读取 Twitter 动作日志
+508: # 读取 Reddit 动作日志
+514: # 更新状态
+518: # 进程结束后，最后读取一次日志
+524: # 进程结束
+530: logger.info(f"模拟完成: {simulation_id}")
+533: # 从主日志文件读取错误信息
+539: error_info = f.read()[-2000:]  # 取最后2000字符
+542: state.error = f"进程退出码: {exit_code}, 错误: {error_info}"
+543: logger.error(f"模拟失败: {simulation_id}, error={state.error}")
+550: logger.error(f"监控线程异常: {simulation_id}, error={str(e)}")
+556: # 停止图谱记忆更新器
+560: logger.info(f"已停止图谱记忆更新: simulation_id={simulation_id}")
+562: logger.error(f"停止图谱记忆更新器失败: {e}")
+565: # 清理进程资源
+569: # 关闭日志文件句柄
+592: 读取动作日志文件
+595: log_path: 日志文件路径
+596: position: 上次读取位置
+597: state: 运行状态对象
+598: platform: 平台名称 (twitter/reddit)
+601: 新的读取位置
+603: # 检查是否启用了图谱记忆更新
+618: # 处理事件类型的条目
+622: # 检测 simulation_end 事件，标记平台已完成
+627: logger.info(f"Twitter 模拟已完成: {state.simulation_id}, total_rounds={action_data.get('total_rounds')}, total_actions={action_data.get('total_actions')}")
+631: logger.info(f"Reddit 模拟已完成: {state.simulation_id}, total_rounds={action_data.get('total_rounds')}, total_actions={action_data.get('total_actions')}")
+633: # 检查是否所有启用的平台都已完成
+634: # 如果只运行了一个平台，只检查那个平台
+635: # 如果运行了两个平台，需要两个都完成
+640: logger.info(f"所有平台模拟已完成: {state.simulation_id}")
+642: # 更新轮次信息（从 round_end 事件）
+647: # 更新各平台独立的轮次和时间
+657: # 总体轮次取两个平台的最大值
+660: # 总体时间取两个平台的最大值
+678: # 更新轮次
+682: # 如果启用了图谱记忆更新，将活动发送到Zep
+690: logger.warning(f"读取动作日志失败: {log_path}, error={e}")
+696: 检查所有启用的平台是否都已完成模拟
+698: 通过检查对应的 actions.jsonl 文件是否存在来判断平台是否被启用
+701: True 如果所有启用的平台都已完成
+707: # 检查哪些平台被启用（通过文件是否存在判断）
+711: # 如果平台被启用但未完成，则返回 False
+717: # 至少有一个平台被启用且已完成
+723: 跨平台终止进程及其子进程
+726: process: 要终止的进程
+727: simulation_id: 模拟ID（用于日志）
+728: timeout: 等待进程退出的超时时间（秒）
+731: # Windows: 使用 taskkill 命令终止进程树
+732: # /F = 强制终止, /T = 终止进程树（包括子进程）
+733: logger.info(f"终止进程树 (Windows): simulation={simulation_id}, pid={process.pid}")
+735: # 先尝试优雅终止
+744: # 强制终止
+745: logger.warning(f"进程未响应，强制终止: {simulation_id}")
+753: logger.warning(f"taskkill 失败，尝试 terminate: {e}")
+760: # Unix: 使用进程组终止
+761: # 由于使用了 start_new_session=True，进程组 ID 等于主进程 PID
+763: logger.info(f"终止进程组 (Unix): simulation={simulation_id}, pgid={pgid}")
+765: # 先发送 SIGTERM 给整个进程组
+771: # 如果超时后还没结束，强制发送 SIGKILL
+772: logger.warning(f"进程组未响应 SIGTERM，强制终止: {simulation_id}")
+778: """停止模拟"""
+781: raise ValueError(f"模拟不存在: {simulation_id}")
+784: raise ValueError(f"模拟未在运行: {simulation_id}, status={state.runner_status}")
+789: # 终止进程
+795: # 进程已经不存在
+798: logger.error(f"终止进程组失败: {simulation_id}, error={e}")
+799: # 回退到直接终止进程
+812: # 停止图谱记忆更新器
+816: logger.info(f"已停止图谱记忆更新: simulation_id={simulation_id}")
+818: logger.error(f"停止图谱记忆更新器失败: {e}")
+821: logger.info(f"模拟已停止: {simulation_id}")
+834: 从单个动作文件中读取动作
+837: file_path: 动作日志文件路径
+838: default_platform: 默认平台（当动作记录中没有 platform 字段时使用）
+839: platform_filter: 过滤平台
+840: agent_id: 过滤 Agent ID
+841: round_num: 过滤轮次
+857: # 跳过非动作记录（如 simulation_start, round_start, round_end 等事件）
+861: # 跳过没有 agent_id 的记录（非 Agent 动作）
+865: # 获取平台：优先使用记录中的 platform，否则使用默认平台
+868: # 过滤
+902: 获取所有平台的完整动作历史（无分页限制）
+905: simulation_id: 模拟ID
+906: platform: 过滤平台（twitter/reddit）
+907: agent_id: 过滤Agent
+908: round_num: 过滤轮次
+911: 完整的动作列表（按时间戳排序，新的在前）
+916: # 读取 Twitter 动作文件（根据文件路径自动设置 platform 为 twitter）
+921: default_platform="twitter",  # 自动填充 platform 字段
+927: # 读取 Reddit 动作文件（根据文件路径自动设置 platform 为 reddit）
+932: default_platform="reddit",  # 自动填充 platform 字段
+938: # 如果分平台文件不存在，尝试读取旧的单一文件格式
+943: default_platform=None,  # 旧格式文件中应该有 platform 字段
+949: # 按时间戳排序（新的在前）
+965: 获取动作历史（带分页）
+968: simulation_id: 模拟ID
+969: limit: 返回数量限制
+970: offset: 偏移量
+971: platform: 过滤平台
+972: agent_id: 过滤Agent
+973: round_num: 过滤轮次
+976: 动作列表
+985: # 分页
+996: 获取模拟时间线（按轮次汇总）
+999: simulation_id: 模拟ID
+1000: start_round: 起始轮次
+1001: end_round: 结束轮次
+1004: 每轮的汇总信息
+1008: # 按轮次分组
+1041: # 转换为列表
+1062: 获取每个Agent的统计信息
+1065: Agent统计列表
+1097: # 按总动作数排序
+1105: 清理模拟的运行日志（用于强制重新开始模拟）
+1107: 会删除以下文件：
+1113: - twitter_simulation.db（模拟数据库）
+1114: - reddit_simulation.db（模拟数据库）
+1115: - env_status.json（环境状态）
+1117: 注意：不会删除配置文件（simulation_config.json）和 profile 文件
+1120: simulation_id: 模拟ID
+1123: 清理结果信息
+1130: return {"success": True, "message": "模拟目录不存在，无需清理"}
+1135: # 要删除的文件列表（包括数据库文件）
+1141: "twitter_simulation.db",  # Twitter 平台数据库
+1142: "reddit_simulation.db",   # Reddit 平台数据库
+1143: "env_status.json",        # 环境状态文件
+1146: # 要删除的目录列表（包含动作日志）
+1149: # 删除文件
+1157: errors.append(f"删除 {filename} 失败: {str(e)}")
+1159: # 清理平台目录中的动作日志
+1169: errors.append(f"删除 {dir_name}/actions.jsonl 失败: {str(e)}")
+1171: # 清理内存中的运行状态
+1175: logger.info(f"清理模拟日志完成: {simulation_id}, 删除文件: {cleaned_files}")
+1183: # 防止重复清理的标志
+1189: 清理所有运行中的模拟进程
+1191: 在服务器关闭时调用，确保所有子进程被终止
+1193: # 防止重复清理
+1198: # 检查是否有内容需要清理（避免空进程的进程打印无用日志）
+1203: return  # 没有需要清理的内容，静默返回
+1205: logger.info("正在清理所有模拟进程...")
+1207: # 首先停止所有图谱记忆更新器（stop_all 内部会打印日志）
+1211: logger.error(f"停止图谱记忆更新器失败: {e}")
+1214: # 复制字典以避免在迭代时修改
+1219: if process.poll() is None:  # 进程仍在运行
+1220: logger.info(f"终止模拟进程: {simulation_id}, pid={process.pid}")
+1223: # 使用跨平台的进程终止方法
+1226: # 进程可能已经不存在，尝试直接终止
+1233: # 更新 run_state.json
+1240: state.error = "服务器关闭，模拟被终止"
+1243: # 同时更新 state.json，将状态设为 stopped
+1247: logger.info(f"尝试更新 state.json: {state_file}")
+1255: logger.info(f"已更新 state.json 状态为 stopped: {simulation_id}")
+1257: logger.warning(f"state.json 不存在: {state_file}")
+1259: logger.warning(f"更新 state.json 失败: {simulation_id}, error={state_err}")
+1262: logger.error(f"清理进程失败: {simulation_id}, error={e}")
+1264: # 清理文件句柄
+1281: # 清理内存中的状态
+1285: logger.info("模拟进程清理完成")
+1290: 注册清理函数
+1292: 在 Flask 应用启动时调用，确保服务器关闭时清理所有模拟进程
+1299: # Flask debug 模式下，只在 reloader 子进程中注册清理（实际运行应用的进程）
+1300: # WERKZEUG_RUN_MAIN=true 表示是 reloader 子进程
+1301: # 如果不是 debug 模式，则没有这个环境变量，也需要注册
+1305: # 在 debug 模式下，只在 reloader 子进程中注册；非 debug 模式下始终注册
+1307: _cleanup_registered = True  # 标记已注册，防止子进程再次尝试
+1310: # 保存原有的信号处理器
+1313: # SIGHUP 只在 Unix 系统存在（macOS/Linux），Windows 没有
+1320: """信号处理器：先清理模拟进程，再调用原处理器"""
+1321: # 只有在有进程需要清理时才打印日志
+1323: logger.info(f"收到信号 {signum}，开始清理...")
+1326: # 调用原有的信号处理器，让 Flask 正常退出
+1332: # SIGHUP: 终端关闭时发送
+1336: # 默认行为：正常退出
+1339: # 如果原处理器不可调用（如 SIG_DFL），则使用默认行为
+1342: # 注册 atexit 处理器（作为备用）
+1345: # 注册信号处理器（仅在主线程中）
+1347: # SIGTERM: kill 命令默认信号
+1351: # SIGHUP: 终端关闭（仅 Unix 系统）
+1355: # 不在主线程中，只能使用 atexit
+1356: logger.warning("无法注册信号处理器（不在主线程），仅使用 atexit")
+1363: 获取所有正在运行的模拟ID列表
+1371: # ============== Interview 功能 ==============
+1376: 检查模拟环境是否存活（可以接收Interview命令）
+1379: simulation_id: 模拟ID
+1382: True 表示环境存活，False 表示环境已关闭
+1394: 获取模拟环境的详细状态信息
+1397: simulation_id: 模拟ID
+1400: 状态详情字典，包含 status, twitter_available, reddit_available, timestamp
+1437: 采访单个Agent
+1440: simulation_id: 模拟ID
+1442: prompt: 采访问题
+1443: platform: 指定平台（可选）
+1444: - "twitter": 只采访Twitter平台
+1445: - "reddit": 只采访Reddit平台
+1446: - None: 双平台模拟时同时采访两个平台，返回整合结果
+1447: timeout: 超时时间（秒）
+1450: 采访结果字典
+1453: ValueError: 模拟不存在或环境未运行
+1454: TimeoutError: 等待响应超时
+1458: raise ValueError(f"模拟不存在: {simulation_id}")
+1463: raise ValueError(f"模拟环境未运行或已关闭，无法执行Interview: {simulation_id}")
+1465: logger.info(f"发送Interview命令: simulation_id={simulation_id}, agent_id={agent_id}, platform={platform}")
+1500: 批量采访多个Agent
+1503: simulation_id: 模拟ID
+1504: interviews: 采访列表，每个元素包含 {"agent_id": int, "prompt": str, "platform": str(可选)}
+1505: platform: 默认平台（可选，会被每个采访项的platform覆盖）
+1506: - "twitter": 默认只采访Twitter平台
+1507: - "reddit": 默认只采访Reddit平台
+1508: - None: 双平台模拟时每个Agent同时采访两个平台
+1509: timeout: 超时时间（秒）
+1512: 批量采访结果字典
+1515: ValueError: 模拟不存在或环境未运行
+1516: TimeoutError: 等待响应超时
+1520: raise ValueError(f"模拟不存在: {simulation_id}")
+1525: raise ValueError(f"模拟环境未运行或已关闭，无法执行Interview: {simulation_id}")
+1527: logger.info(f"发送批量Interview命令: simulation_id={simulation_id}, count={len(interviews)}, platform={platform}")
+1559: 采访所有Agent（全局采访）
+1561: 使用相同的问题采访模拟中的所有Agent
+1564: simulation_id: 模拟ID
+1565: prompt: 采访问题（所有Agent使用相同问题）
+1566: platform: 指定平台（可选）
+1567: - "twitter": 只采访Twitter平台
+1568: - "reddit": 只采访Reddit平台
+1569: - None: 双平台模拟时每个Agent同时采访两个平台
+1570: timeout: 超时时间（秒）
+1573: 全局采访结果字典
+1577: raise ValueError(f"模拟不存在: {simulation_id}")
+1579: # 从配置文件获取所有Agent信息
+1582: raise ValueError(f"模拟配置不存在: {simulation_id}")
+1589: raise ValueError(f"模拟配置中没有Agent: {simulation_id}")
+1591: # 构建批量采访列表
+1601: logger.info(f"发送全局Interview命令: simulation_id={simulation_id}, agent_count={len(interviews)}, platform={platform}")
+1617: 关闭模拟环境（而不是停止模拟进程）
+1619: 向模拟发送关闭环境命令，使其优雅退出等待命令模式
+1622: simulation_id: 模拟ID
+1623: timeout: 超时时间（秒）
+1626: 操作结果字典
+1630: raise ValueError(f"模拟不存在: {simulation_id}")
+1637: "message": "环境已经关闭"
+1640: logger.info(f"发送关闭环境命令: simulation_id={simulation_id}")
+1647: "message": "环境关闭命令已发送",
+1652: # 超时可能是因为环境正在关闭
+1655: "message": "环境关闭命令已发送（等待响应超时，环境可能正在关闭）"
+1666: """从单个数据库获取Interview历史"""
+1712: logger.error(f"读取Interview历史失败 ({platform_name}): {e}")
+1725: 获取Interview历史记录（从数据库读取）
+1728: simulation_id: 模拟ID
+1729: platform: 平台类型（reddit/twitter/None）
+1730: - "reddit": 只获取Reddit平台的历史
+1731: - "twitter": 只获取Twitter平台的历史
+1732: - None: 获取两个平台的所有历史
+1733: agent_id: 指定Agent ID（可选，只获取该Agent的历史）
+1734: limit: 每个平台返回数量限制
+1737: Interview历史记录列表
+1743: # 确定要查询的平台
+1747: # 不指定platform时，查询两个平台
+1760: # 按时间降序排序
+1763: # 如果查询了多个平台，限制总数

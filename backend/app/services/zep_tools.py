@@ -1431,7 +1431,7 @@ Return a list of sub-questions in JSON format."""
                 clean_text = re.sub(r'[*_`|>~\-]{2,}', '', clean_text)
                 clean_text = re.sub(r'Question\s*\d+[：:]\s*', '', clean_text)
                 clean_text = re.sub(r'Question\s*\d+[：:]\s*', '', clean_text)
-                clean_text = re.sub(r'问题\d+[：:]\s*', '', clean_text)
+                clean_text = re.sub(r'Question\d+[:：]\s*', '', clean_text)
                 clean_text = re.sub(r'【[^】]+】', '', clean_text)
 
                 # Strategy 1 (Main): Extract complete sentences with substantive content

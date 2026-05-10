@@ -238,23 +238,23 @@ Ontology definition (entity_types, edge_types, etc.)
         combined_text = "\n\n---\n\n".join(document_texts)
         original_length = len(combined_text)
         
-        # If the text exceeds 50,000 words, it will be truncated (only affects the content passed to LLM, not the map construction)
+        # If the text exceeds 50,000 words, it will be truncated
         if len(combined_text) > self.MAX_TEXT_LENGTH_FOR_LLM:
             combined_text = combined_text[:self.MAX_TEXT_LENGTH_FOR_LLM]
-            combined_text += f"\n\n...(原文共{original_length}字，已截取前{self.MAX_TEXT_LENGTH_FOR_LLM}字用于本体分析)..."
+            combined_text += f"\n\n...(Original text was {original_length} characters, truncated to the first {self.MAX_TEXT_LENGTH_FOR_LLM} characters for ontology analysis)..."
         
-        message = f"""## 模拟需求
+        message = f"""## Simulation Requirements
 
 {simulation_requirement}
 
-## 文档内容
+## Document Content
 
 {combined_text}
 """
         
         if additional_context:
             message += f"""
-## 额外说明
+## Additional Context
 
 {additional_context}
 """

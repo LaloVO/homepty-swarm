@@ -31,6 +31,12 @@ class Config:
     LLM_API_KEY = os.environ.get('LLM_API_KEY')
     LLM_BASE_URL = os.environ.get('LLM_BASE_URL', 'https://api.openai.com/v1')
     LLM_MODEL_NAME = os.environ.get('LLM_MODEL_NAME', 'gpt-4o-mini')
+
+    # LLM Boost configuration — large-context model for heavy generation tasks (report sections)
+    # Falls back to the main LLM if not configured
+    LLM_BOOST_API_KEY = os.environ.get('LLM_BOOST_API_KEY')
+    LLM_BOOST_BASE_URL = os.environ.get('LLM_BOOST_BASE_URL', 'https://api.openai.com/v1')
+    LLM_BOOST_MODEL_NAME = os.environ.get('LLM_BOOST_MODEL_NAME')
     
     # Zep configuration
     ZEP_API_KEY = os.environ.get('ZEP_API_KEY')

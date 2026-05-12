@@ -904,6 +904,7 @@ class ReportAgent:
         self.simulation_requirement = simulation_requirement
         
         self.llm = llm_client or LLMClient()
+        self.llm_boost = LLMClient.create_boost()  # large-context model for section generation
         self.zep_tools = zep_tools or ZepToolsService()
         
         # Tool definitions
@@ -1301,8 +1302,8 @@ class ReportAgent:
                     t('progress.deepSearchAndWrite', current=tool_calls_count, max=self.MAX_TOOL_CALLS_PER_SECTION)
                 )
             
-            # Call LLM
-            response = self.llm.chat(
+            # Call LLM (use boost model with large context window for section generation)
+            response = self.llm_boost.chat(
                 messages=messages,
                 temperature=0.5,
                 max_tokens=4096

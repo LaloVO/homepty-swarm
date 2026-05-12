@@ -10,7 +10,7 @@ from flask import request, jsonify, send_file
 
 from . import report_bp
 from ..config import Config
-from ..services.report_agent import ReportAgent, ReportManager, ReportStatus
+from ..services.report_agent import ReportAgent, ReportManager, ReportStatus, Report
 from ..services.simulation_manager import SimulationManager
 from ..models.project import ProjectManager
 from ..models.task import TaskManager, TaskStatus
@@ -108,8 +108,21 @@ def generate_report():
         
         # Pre-generate report_id to return to frontend immediately
         import uuid
+        from datetime import datetime
         report_id = f"report_{uuid.uuid4().hex[:12]}"
-        
+
+        # Pre-save the initial report so GET /api/report/<id> works immediately
+        initial_report = Report(
+            report_id=report_id,
+            simulation_id=simulation_id,
+            graph_id=graph_id,
+            simulation_requirement=simulation_requirement,
+            status=ReportStatus.PENDING,
+            created_at=datetime.now().isoformat()
+        )
+        ReportManager._ensure_report_folder(report_id)
+        ReportManager.save_report(initial_report)
+
         # Create async task
         task_manager = TaskManager()
         task_id = task_manager.create_task(

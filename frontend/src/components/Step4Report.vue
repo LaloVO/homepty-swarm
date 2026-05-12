@@ -8,7 +8,7 @@
           <!-- Report Header -->
           <div class="report-header-block">
             <div class="report-meta">
-              <span class="report-tag">Prediction Report</span>
+              <span class="report-tag">{{ $t('step4.predictionReport') }}</span>
               <span class="report-id">ID: {{ reportId || 'REF-2024-X92' }}</span>
             </div>
             <h1 class="main-title">{{ reportOutline.title }}</h1>
@@ -89,15 +89,15 @@
         <div class="workflow-overview" v-if="agentLogs.length > 0 || reportOutline">
           <div class="workflow-metrics">
             <div class="metric">
-              <span class="metric-label">Sections</span>
+              <span class="metric-label">{{ $t('step4.metricSections') }}</span>
               <span class="metric-value mono">{{ completedSections }}/{{ totalSections }}</span>
             </div>
             <div class="metric">
-              <span class="metric-label">Elapsed</span>
+              <span class="metric-label">{{ $t('step4.metricElapsed') }}</span>
               <span class="metric-value mono">{{ formatElapsedTime }}</span>
             </div>
             <div class="metric">
-              <span class="metric-label">Tools</span>
+              <span class="metric-label">{{ $t('step4.metricTools') }}</span>
               <span class="metric-value mono">{{ totalToolCalls }}</span>
             </div>
             <div class="metric metric-right">
@@ -136,6 +136,16 @@
             </svg>
           </button>
 
+          <!-- Retry Button - shown when generation failed -->
+          <button v-if="isFailed && !isRetrying" class="retry-btn" @click="retryGeneration">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 .49-3.51"></path>
+            </svg>
+            <span>{{ $t('step4.retryReport') }}</span>
+          </button>
+          <div v-if="isFailed && isRetrying" class="retry-loading">{{ $t('step4.retryStarting') }}</div>
+
           <div class="workflow-divider"></div>
         </div>
 
@@ -166,11 +176,11 @@
                   <!-- Report Start -->
                   <template v-if="log.action === 'report_start'">
                     <div class="info-row">
-                      <span class="info-key">Simulation</span>
+                      <span class="info-key">{{ $t('step4.infoSimulation') }}</span>
                       <span class="info-val mono">{{ log.details?.simulation_id }}</span>
                     </div>
                     <div class="info-row" v-if="log.details?.simulation_requirement">
-                      <span class="info-key">Requirement</span>
+                      <span class="info-key">{{ $t('step4.infoRequirement') }}</span>
                       <span class="info-val">{{ log.details.simulation_requirement }}</span>
                     </div>
                   </template>
@@ -182,7 +192,7 @@
                   <template v-if="log.action === 'planning_complete'">
                     <div class="status-message success">{{ log.details?.message }}</div>
                     <div class="outline-badge" v-if="log.details?.outline">
-                      {{ log.details.outline.sections?.length || 0 }} sections planned
+                      {{ $t('step4.sectionsPlanned', { count: log.details.outline.sections?.length || 0 }) }}
                     </div>
                   </template>
 
@@ -307,12 +317,12 @@
                   <!-- LLM Response -->
                   <template v-if="log.action === 'llm_response'">
                     <div class="llm-meta">
-                      <span class="meta-tag">Iteration {{ log.details?.iteration }}</span>
+                      <span class="meta-tag">{{ $t('step4.iterationLabel', { n: log.details?.iteration }) }}</span>
                       <span class="meta-tag" :class="{ active: log.details?.has_tool_calls }">
-                        Tools: {{ log.details?.has_tool_calls ? 'Yes' : 'No' }}
+                        {{ $t('step4.toolsUsed', { val: log.details?.has_tool_calls ? $t('common.yes') : $t('common.no') }) }}
                       </span>
                       <span class="meta-tag" :class="{ active: log.details?.has_final_answer, 'final-answer': log.details?.has_final_answer }">
-                        Final: {{ log.details?.has_final_answer ? 'Yes' : 'No' }}
+                        {{ $t('step4.finalAnswer', { val: log.details?.has_final_answer ? $t('common.yes') : $t('common.no') }) }}
                       </span>
                     </div>
                     <!-- Show special hint when it is the final answer -->
@@ -320,7 +330,7 @@
                       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
-                      <span>Section "{{ log.section_title }}" content generated</span>
+                      <span>{{ $t('step4.sectionContentGenerated', { title: log.section_title }) }}</span>
                     </div>
                     <div v-if="expandedLogs.has(log.timestamp) && log.details?.response" class="llm-content">
                       <pre>{{ log.details.response }}</pre>
@@ -334,7 +344,7 @@
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                         <polyline points="22 4 12 14.01 9 11.01"></polyline>
                       </svg>
-                      <span>Report Generation Complete</span>
+                      <span>{{ $t('step4.reportGenerationComplete') }}</span>
                     </div>
                   </template>
                 </div>
@@ -368,7 +378,7 @@
           <!-- Empty State -->
           <div v-if="agentLogs.length === 0 && !isComplete" class="workflow-empty">
             <div class="empty-pulse"></div>
-            <span>Waiting for agent activity...</span>
+            <span>{{ $t('step4.waitingForActivity') }}</span>
           </div>
         </div>
       </div>
@@ -377,7 +387,7 @@
     <!-- Bottom Console Logs -->
     <div class="console-logs">
       <div class="log-header">
-        <span class="log-title">CONSOLE OUTPUT</span>
+        <span class="log-title">{{ $t('step4.consoleOutput') }}</span>
         <span class="log-id">{{ reportId || 'NO_REPORT' }}</span>
       </div>
       <div class="log-content" ref="logContent">
@@ -393,7 +403,7 @@
 import { ref, computed, watch, onMounted, onUnmounted, nextTick, h, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { getAgentLog, getConsoleLog } from '../api/report'
+import { getAgentLog, getConsoleLog, generateReport } from '../api/report'
 
 const router = useRouter()
 const { t } = useI18n()
@@ -413,6 +423,32 @@ const goToInteraction = () => {
   }
 }
 
+const retryGeneration = async () => {
+  if (!props.simulationId) {
+    addLog('Cannot retry: simulation ID not available')
+    return
+  }
+  isRetrying.value = true
+  addLog(`Retrying report generation for simulation ${props.simulationId}...`)
+  try {
+    const res = await generateReport({
+      simulation_id: props.simulationId,
+      force_regenerate: true
+    })
+    if (res.success && res.data) {
+      const newReportId = res.data.report_id
+      addLog(`New report started: ${newReportId}`)
+      router.push({ name: 'Report', params: { reportId: newReportId } })
+    } else {
+      addLog(`Retry failed: ${res.error || 'Unknown error'}`)
+      isRetrying.value = false
+    }
+  } catch (err) {
+    addLog(`Retry error: ${err.message}`)
+    isRetrying.value = false
+  }
+}
+
 // State
 const agentLogs = ref([])
 const consoleLogs = ref([])
@@ -425,6 +461,8 @@ const expandedContent = ref(new Set())
 const expandedLogs = ref(new Set())
 const collapsedSections = ref(new Set())
 const isComplete = ref(false)
+const isFailed = ref(false)
+const isRetrying = ref(false)
 const startTime = ref(null)
 const leftPanel = ref(null)
 const rightPanel = ref(null)
@@ -495,49 +533,25 @@ const isLogCollapsed = (log) => {
 }
 
 // Tool configurations with display names and colors
-const toolConfig = {
-  'insight_forge': {
-    name: 'Deep Insight',
-    color: 'purple',
-    icon: 'lightbulb' // Lightbulb icon - represents insight
-  },
-  'panorama_search': {
-    name: 'Panorama Search',
-    color: 'blue',
-    icon: 'globe' // Globe icon - represents panorama search
-  },
-  'interview_agents': {
-    name: 'Agent Interview',
-    color: 'green',
-    icon: 'users' // Users icon - represents conversation
-  },
-  'quick_search': {
-    name: 'Quick Search',
-    color: 'orange',
-    icon: 'zap' // Zap icon - represents fast
-  },
-  'get_graph_statistics': {
-    name: 'Graph Stats',
-    color: 'cyan',
-    icon: 'chart' // Chart icon - represents statistics
-  },
-  'get_entities_by_type': {
-    name: 'Entity Query',
-    color: 'pink',
-    icon: 'database' // Database icon - represents entities
-  }
-}
+const toolConfig = computed(() => ({
+  'insight_forge': { name: t('step4.toolDeepInsight'), color: 'purple', icon: 'lightbulb' },
+  'panorama_search': { name: t('step4.toolPanoramaSearch'), color: 'blue', icon: 'globe' },
+  'interview_agents': { name: t('step4.toolAgentInterview'), color: 'green', icon: 'users' },
+  'quick_search': { name: t('step4.toolQuickSearch'), color: 'orange', icon: 'zap' },
+  'get_graph_statistics': { name: t('step4.toolGraphStats'), color: 'cyan', icon: 'chart' },
+  'get_entities_by_type': { name: t('step4.toolEntityQuery'), color: 'pink', icon: 'database' }
+}))
 
 const getToolDisplayName = (toolName) => {
-  return toolConfig[toolName]?.name || toolName
+  return toolConfig.value[toolName]?.name || toolName
 }
 
 const getToolColor = (toolName) => {
-  return toolConfig[toolName]?.color || 'gray'
+  return toolConfig.value[toolName]?.color || 'gray'
 }
 
 const getToolIcon = (toolName) => {
-  return toolConfig[toolName]?.icon || 'tool'
+  return toolConfig.value[toolName]?.icon || 'tool'
 }
 
 // Parse functions
@@ -1708,14 +1722,16 @@ const QuickSearchDisplay = {
 // Computed
 const statusClass = computed(() => {
   if (isComplete.value) return 'completed'
+  if (isFailed.value) return 'failed'
   if (agentLogs.value.length > 0) return 'processing'
   return 'pending'
 })
 
 const statusText = computed(() => {
-  if (isComplete.value) return 'Completed'
-  if (agentLogs.value.length > 0) return 'Generating...'
-  return 'Waiting'
+  if (isComplete.value) return t('step4.statusCompleted')
+  if (isFailed.value) return t('step4.statusFailed')
+  if (agentLogs.value.length > 0) return t('step4.statusGenerating')
+  return t('step4.statusWaiting')
 })
 
 const totalSections = computed(() => {
@@ -1792,9 +1808,9 @@ const workflowSteps = computed(() => {
   steps.push({
     key: 'planning',
     noLabel: 'PL',
-    title: 'Planning / Outline',
+    title: t('step4.stepPlanning'),
     status: planningStatus,
-    meta: planningStatus === 'active' ? 'IN PROGRESS' : ''
+    meta: planningStatus === 'active' ? t('step4.stepInProgress') : ''
   })
 
   // Sections (if outline exists)
@@ -1810,7 +1826,7 @@ const workflowSteps = computed(() => {
       noLabel: String(idx).padStart(2, '0'),
       title: section.title,
       status,
-      meta: status === 'active' ? 'IN PROGRESS' : ''
+      meta: status === 'active' ? t('step4.stepInProgress') : ''
     })
   })
 
@@ -1819,9 +1835,9 @@ const workflowSteps = computed(() => {
   steps.push({
     key: 'complete',
     noLabel: 'OK',
-    title: 'Complete',
+    title: t('step4.stepComplete'),
     status: completeStatus,
-    meta: completeStatus === 'active' ? 'FINALIZING' : ''
+    meta: completeStatus === 'active' ? t('step4.stepInProgress') : ''
   })
 
   return steps
@@ -1996,16 +2012,17 @@ const getConnectorClass = (log, idx, total) => {
 
 const getActionLabel = (action) => {
   const labels = {
-    'report_start': 'Report Started',
-    'planning_start': 'Planning',
-    'planning_complete': 'Plan Complete',
-    'section_start': 'Section Start',
-    'section_content': 'Content Ready',
-    'section_complete': 'Section Done',
+    'report_start': t('step4.actionReportStart'),
+    'planning_start': t('step4.actionPlanningStart'),
+    'planning_complete': t('step4.actionPlanningComplete'),
+    'section_start': t('step4.actionSectionStart'),
+    'section_content': t('step4.actionSectionComplete'),
+    'section_complete': t('step4.actionSectionComplete'),
     'tool_call': 'Tool Call',
     'tool_result': 'Tool Result',
     'llm_response': 'LLM Response',
-    'report_complete': 'Complete'
+    'report_complete': t('step4.actionComplete'),
+    'error': t('step4.actionError')
   }
   return labels[action] || action
 }
@@ -2058,6 +2075,13 @@ const fetchAgentLog = async () => {
             emit('update-status', 'completed')
             stopPolling()
             // Scroll logic is group-handled in nextTick after the loop
+          }
+
+          if (log.action === 'error') {
+            isFailed.value = true
+            currentSectionIndex.value = null
+            emit('update-status', 'error')
+            stopPolling()
           }
           
           if (log.action === 'report_start') {
@@ -2200,8 +2224,10 @@ watch(() => props.reportId, (newId) => {
     expandedLogs.value = new Set()
     collapsedSections.value = new Set()
     isComplete.value = false
+    isFailed.value = false
+    isRetrying.value = false
     startTime.value = null
-    
+
     startPolling()
   }
 }, { immediate: true })
@@ -2774,6 +2800,12 @@ watch(() => props.reportId, (newId) => {
   background: #ECFDF5;
   border-color: #A7F3D0;
   color: #065F46;
+}
+
+.metric-pill.pill--failed {
+  background: #FEF2F2;
+  border-color: #FECACA;
+  color: #991B1B;
 }
 
 .metric-pill.pill--pending {
@@ -3430,6 +3462,37 @@ watch(() => props.reportId, (newId) => {
 
 .next-step-btn:hover svg {
   transform: translateX(4px);
+}
+
+.retry-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: calc(100% - 40px);
+  margin: 12px 20px 0;
+  padding: 12px 20px;
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.retry-btn:hover {
+  background: #FEE2E2;
+  border-color: #FCA5A5;
+}
+
+.retry-loading {
+  text-align: center;
+  margin: 12px 20px 0;
+  padding: 10px;
+  font-size: 13px;
+  color: #6B7280;
 }
 
 /* Workflow Empty */

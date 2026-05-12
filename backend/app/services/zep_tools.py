@@ -488,7 +488,7 @@ class ZepToolsService:
         logger.info(t("console.graphSearch", graphId=graph_id, query=query[:50]))
         
         # Try using Zep Cloud Search API
-        try::
+        try:
             search_results = self._call_with_retry(
                 func=lambda: self.client.graph.search(
                     graph_id=graph_id,

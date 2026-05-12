@@ -515,21 +515,21 @@ def prepare_simulation():
                 )
                 
                 # Prepare simulation (with callback)
-        # Store stage details
-        stage_details = {}
-        
-        def progress_callback(stage, progress, message, **kwargs):
-            # Calculate total progress
+                # Store stage details
+                stage_details = {}
+
+                def progress_callback(stage, progress, message, **kwargs):
+                    # Calculate total progress
                     stage_weights = {
                         "reading": (0, 20),           # 0-20%
                         "generating_profiles": (20, 70),  # 20-70%
                         "generating_config": (70, 90),    # 70-90%
                         "copying_scripts": (90, 100)       # 90-100%
                     }
-                    
+
                     start, end = stage_weights.get(stage, (0, 100))
                     current_progress = int(start + (end - start) * progress / 100)
-                    
+
                     # Build detailed progress info
                     stage_names = {
                         "reading": t('progress.readingGraphEntities'),
@@ -537,10 +537,10 @@ def prepare_simulation():
                         "generating_config": t('progress.generatingSimConfig'),
                         "copying_scripts": t('progress.preparingScripts')
                     }
-                    
+
                     stage_index = list(stage_weights.keys()).index(stage) + 1 if stage in stage_weights else 1
                     total_stages = len(stage_weights)
-                    
+
                     # Update stage details
                     stage_details[stage] = {
                         "stage_name": stage_names.get(stage, stage),
@@ -549,7 +549,7 @@ def prepare_simulation():
                         "total": kwargs.get("total", 0),
                         "item_name": kwargs.get("item_name", "")
                     }
-                    
+
                     # Build detailed progress data
                     detail = stage_details[stage]
                     progress_detail_data = {
@@ -562,7 +562,7 @@ def prepare_simulation():
                         "total_items": detail["total"],
                         "item_description": message
                     }
-                    
+
                     # Build concise message
                     if detail["total"] > 0:
                         detailed_message = (
@@ -571,7 +571,7 @@ def prepare_simulation():
                         )
                     else:
                         detailed_message = f"[{stage_index}/{total_stages}] {stage_names.get(stage, stage)}: {message}"
-                    
+
                     task_manager.update_task(
                         task_id,
                         progress=current_progress,

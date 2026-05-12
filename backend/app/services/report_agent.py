@@ -1213,24 +1213,33 @@ class ReportAgent:
                 summary="Analysis of future trends and risks based on simulation predictions",
                 sections=[
                     ReportSection(title="Prediction Scenarios and Core Findings"),
-                                    # Insufficient tool calls, refuse and request to continue calling tools
-                if tool_calls_count < min_tool_calls:
-                    messages.append({"role": "assistant", "content": response})
-                    unused_tools = all_tools - used_tools
-                    unused_hint = f"(These tools haven't been used yet, it is recommended to try them: {', '.join(unused_tools)})" if unused_tools else ""
-                    messages.append({
-                        "role": "user",
-                        "content": REACT_INSUFFICIENT_TOOLS_MSG.format(
-                            tool_calls_count=tool_calls_count,
-                            min_tool_calls=min_tool_calls,
-                            unused_hint=unused_hint,
-                        ),
-                    })
-                    continue
- 
-                # Normal termination
-                final_answer = response.split("Final Answer:")[-1].strip()
-                logger.info(t('report.sectionGenDone', title=section.title, count=tool_calls_count))ous_sections: Content of previous sections (for maintaining continuity)
+                    ReportSection(title="Population Behavior Prediction Analysis"),
+                    ReportSection(title="Trend Outlook and Risk Alerts")
+                ]
+            )
+
+    def _generate_section_react(
+        self,
+        section: ReportSection,
+        outline: ReportOutline,
+        previous_sections: List[str],
+        progress_callback: Optional[Callable] = None,
+        section_index: int = 0
+    ) -> str:
+        """
+        Generate individual section content using ReACT mode
+
+        ReACT loop:
+        1. Thought - Analyze what information is needed
+        2. Action - Call tools to get information
+        3. Observation - Analyze tool return results
+        4. Repeat until information is sufficient or maximum iterations reached
+        5. Final Answer - Generate section content
+
+        Args:
+            section: Section to generate
+            outline: Full outline
+            previous_sections: Content of previous sections (for maintaining continuity)
             progress_callback: Progress callback
             section_index: Section index (for logging)
             

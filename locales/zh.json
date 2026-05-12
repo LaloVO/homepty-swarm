@@ -316,6 +316,7 @@
     "requestFailed": "请求失败",
     "selectAgentFirst": "请先选择一个模拟个体"
   },
+  "graph": {
     "toggleMaximize": "最大化/还原",
     "closeHint": "关闭提示",
     "refresh": "刷新",

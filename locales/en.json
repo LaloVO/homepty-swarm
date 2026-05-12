@@ -316,6 +316,7 @@
     "requestFailed": "Request failed",
     "selectAgentFirst": "Please select a simulated individual first"
   },
+  "graph": {
     "toggleMaximize": "Maximize/Restore",
     "closeHint": "Close hint",
     "refresh": "Refresh",

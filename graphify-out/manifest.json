@@ -1,0 +1,678 @@
+{
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\run.py": {
+    "mtime": 1778523697.3642192,
+    "hash": "0fd982efeca33af5a67f50290dd21ace"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\config.py": {
+    "mtime": 1778588770.7485693,
+    "hash": "e998949a56a1d3caed57eeb7f69bd0a4"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\__init__.py": {
+    "mtime": 1778523697.3244228,
+    "hash": "13d89c31f0b25873c9214c7bf665e9bb"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\api\\graph.py": {
+    "mtime": 1778570985.8355658,
+    "hash": "f7fda46dffa00e19bee1037c1ca83d00"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\api\\report.py": {
+    "mtime": 1778586830.9343395,
+    "hash": "890e538d28782078830693bc5f4560f2"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\api\\simulation.py": {
+    "mtime": 1778523697.3348649,
+    "hash": "3ea1b32284637644278c3c2e764d2c69"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\api\\__init__.py": {
+    "mtime": 1778523697.325418,
+    "hash": "d220a18757165eba6461236cc57730c5"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\models\\project.py": {
+    "mtime": 1778523697.3378592,
+    "hash": "1b669119699a0555ad2fabe4325183aa"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\models\\task.py": {
+    "mtime": 1778523697.3388598,
+    "hash": "e258fa7ab0c51ccc48ade65f3913b1a7"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\models\\__init__.py": {
+    "mtime": 1778523697.3368573,
+    "hash": "b9adbfc66d7812b7d886d8ea56db4b34"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\graph_builder.py": {
+    "mtime": 1778523697.340859,
+    "hash": "ac8cb29b0963b2120df7bf613562e977"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\oasis_profile_generator.py": {
+    "mtime": 1778523697.3418593,
+    "hash": "a9037c849260b73ff9ce03e651bcc848"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\ontology_generator.py": {
+    "mtime": 1778523697.343858,
+    "hash": "67844f951641b2804d28f2f7fa5557a0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\report_agent.py": {
+    "mtime": 1778588822.079191,
+    "hash": "7058e2e53bda83a5027d3c3ab7385af9"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\simulation_config_generator.py": {
+    "mtime": 1778523697.3468566,
+    "hash": "209af8be0d9c302074e37b70b6258553"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\simulation_ipc.py": {
+    "mtime": 1778523697.3478577,
+    "hash": "88bdb37a841a61e9772dd9b8f237aa2c"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\simulation_manager.py": {
+    "mtime": 1778523697.3488607,
+    "hash": "99be2ec3538c831830106b3f6160987f"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\simulation_runner.py": {
+    "mtime": 1778523697.3498566,
+    "hash": "28edd26bb92903e3842c017b0e024a50"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\text_processor.py": {
+    "mtime": 1778523697.3508534,
+    "hash": "c85eaa2e7d4e7be2c5a3174708487c5e"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\zep_entity_reader.py": {
+    "mtime": 1778523697.3518617,
+    "hash": "e3deb11e4b1d27c383dfd44c073e9d23"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\zep_graph_memory_updater.py": {
+    "mtime": 1778523697.3530364,
+    "hash": "ff6f1abf0c08347e96b2f4c0ba08a868"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\zep_tools.py": {
+    "mtime": 1778523697.3550398,
+    "hash": "6345264d7f6e33c8ddb5c656453624d2"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\services\\__init__.py": {
+    "mtime": 1778523697.3398573,
+    "hash": "7563f01be3e71ea6710c910ef5f306b3"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\utils\\file_parser.py": {
+    "mtime": 1778523697.3570404,
+    "hash": "7a2ecd161cfe818f5e8157228bdb7a46"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\utils\\llm_client.py": {
+    "mtime": 1778589463.3142252,
+    "hash": "48c2489d206b9cc4e054561cf0edb31a"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\utils\\locale.py": {
+    "mtime": 1778593230.0147746,
+    "hash": "b2b0ee6c4aa42354887da7b172010694"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\utils\\logger.py": {
+    "mtime": 1778523697.3592186,
+    "hash": "8acae586e37b6375fc61a660cdaa698a"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\utils\\retry.py": {
+    "mtime": 1778523697.3602204,
+    "hash": "516028290c4ac9b5652dd2bdf2a15469"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\utils\\zep_paging.py": {
+    "mtime": 1778523697.361217,
+    "hash": "b08f2a605f92760b612c26cca6b2352c"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\app\\utils\\__init__.py": {
+    "mtime": 1778523697.3560393,
+    "hash": "aec520ccbdb947a7c9d4251b0ef5178c"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\scripts\\action_logger.py": {
+    "mtime": 1778523697.3662174,
+    "hash": "bc9fb0d94ebd102d99a9e167c3844907"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\scripts\\run_parallel_simulation.py": {
+    "mtime": 1778523697.368217,
+    "hash": "20a7bee16071fbbbe5b0be21febb37aa"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\scripts\\run_reddit_simulation.py": {
+    "mtime": 1778523697.3702178,
+    "hash": "7900bbc7653d61061782de578da8f2b7"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\scripts\\run_twitter_simulation.py": {
+    "mtime": 1778523697.3712215,
+    "hash": "32c141c7384537575eb3cb7c47163fc0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\scripts\\scan_chinese.py": {
+    "mtime": 1778523697.3722205,
+    "hash": "d4909d62ba97671b4be14a0defb3f6ff"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\scripts\\test_profile_format.py": {
+    "mtime": 1778523697.3732207,
+    "hash": "d89c17a60920640082d06b819b2d4126"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\scripts\\translate_all_chinese.py": {
+    "mtime": 1778523697.3742201,
+    "hash": "8ad2ad488b1b0a6c786308b317a4746c"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\scripts\\translate_backend.py": {
+    "mtime": 1778523697.3752215,
+    "hash": "5352be729908352c75bcf7997df782c0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\scripts\\_translate_targeted.py": {
+    "mtime": 1778523697.365218,
+    "hash": "13ba9f83f7070f951d506f2da4601d31"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\vite.config.js": {
+    "mtime": 1778523697.476542,
+    "hash": "7834ab688ffbdb1a29b91df1412070fe"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\App.vue": {
+    "mtime": 1778523697.408819,
+    "hash": "01cbb2d1a555b81a51be6757129d2d1a"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\main.js": {
+    "mtime": 1778523697.4372208,
+    "hash": "6055eb2637455e9027904e9fd5100354"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\api\\graph.js": {
+    "mtime": 1778523697.4098246,
+    "hash": "c49724908d06ba66917aa0c88df1b2f9"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\api\\index.js": {
+    "mtime": 1778602089.0958173,
+    "hash": "79293ff7bfaa728d93b5e717d8208d4e"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\api\\report.js": {
+    "mtime": 1778523697.410824,
+    "hash": "7a2221622422e24de054dd76eddf0581"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\api\\simulation.js": {
+    "mtime": 1778523697.4118242,
+    "hash": "457be6801cd56a837957ae8e7deeefa3"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\components\\GraphPanel.vue": {
+    "mtime": 1778523697.4238245,
+    "hash": "f62251383d50ffd7069a49d635a081fa"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\components\\HistoryDatabase.vue": {
+    "mtime": 1778523697.4258232,
+    "hash": "021b352642b2482e8296bc4ab7ff35bc"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\components\\LanguageSwitcher.vue": {
+    "mtime": 1778523697.4268208,
+    "hash": "9e10722192c04f8ea19b0d6e86ba82bf"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\components\\Step1GraphBuild.vue": {
+    "mtime": 1778523697.4281318,
+    "hash": "7428355d7be4a7d4203a37cea2aac538"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\components\\Step2EnvSetup.vue": {
+    "mtime": 1778523697.4290028,
+    "hash": "f96c184be50dc34a7d3e34f64d8cebf7"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\components\\Step3Simulation.vue": {
+    "mtime": 1778523697.431014,
+    "hash": "97ed4e1bc8a8a2b83aba833906fc5294"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\components\\Step4Report.vue": {
+    "mtime": 1778593101.0973828,
+    "hash": "6ccfe730befd30428ffa234edab330f0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\components\\Step5Interaction.vue": {
+    "mtime": 1778602203.382356,
+    "hash": "4a7051ebb70054944228132d3601b9d6"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\i18n\\index.js": {
+    "mtime": 1778593219.304318,
+    "hash": "fe43c8e2b110cb964d1ddf3bcb5c101c"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\router\\index.js": {
+    "mtime": 1778523697.4382205,
+    "hash": "52c9f7567d831649533bf55e1b0a69db"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\store\\pendingUpload.js": {
+    "mtime": 1778523697.4392164,
+    "hash": "97670cd35684cffa8a288100aedb7a14"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\views\\Home.vue": {
+    "mtime": 1778523697.4412186,
+    "hash": "26b7fdf120ea53ce6faae6b420814c98"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\views\\InteractionView.vue": {
+    "mtime": 1778523697.4422202,
+    "hash": "cf97426afed94a55de92b0c1d2f8f42f"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\views\\MainView.vue": {
+    "mtime": 1778523697.4432187,
+    "hash": "b449d3471b2e275858faae42067ce733"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\views\\Process.vue": {
+    "mtime": 1778523697.4452183,
+    "hash": "a788fa595eab655ac0207b8de1725f06"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\views\\ReportView.vue": {
+    "mtime": 1778523697.472963,
+    "hash": "b9d0c5fcb80706ffa6ebd6c281677d35"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\views\\SimulationRunView.vue": {
+    "mtime": 1778523697.4735413,
+    "hash": "83b7fa7f36ad3362cf0687f878143f80"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\views\\SimulationView.vue": {
+    "mtime": 1778523697.4755433,
+    "hash": "a4815d4086d8f761a0d9eae190b68610"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\AGENTS.md": {
+    "mtime": 1778687389.2973073,
+    "hash": "22e263ebb43e933f6bc6423bf78e892f"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\CLAUDE.md": {
+    "mtime": 1778689060.6323183,
+    "hash": "bd32a50fed1a908c03d98ed8c924dd68"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\docker-compose.yml": {
+    "mtime": 1778523697.3934038,
+    "hash": "be58a0ca6fe3e7ec74320fdf2afbec34"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\README-ZH.md": {
+    "mtime": 1778523697.3214152,
+    "hash": "f40eced8531d21a711107607759d7938"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\README.md": {
+    "mtime": 1778523697.3234165,
+    "hash": "a564b45ca6d3f9e80e0bd0253495f97d"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\requirements.txt": {
+    "mtime": 1778523697.3632169,
+    "hash": "3ca89637dada96ad6a40fcc6a3707ed5"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\tmp_chinese_lines.txt": {
+    "mtime": 1778523697.3794024,
+    "hash": "62f58a1c1fde4b8d53d3879e89c4c2f5"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\tmp_chinese_lines_report_agent.txt": {
+    "mtime": 1778523697.381403,
+    "hash": "c870830a2843534a87cf7357b29454c4"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\tmp_chinese_lines_sim_conf.txt": {
+    "mtime": 1778523697.383401,
+    "hash": "2e2c4278a32c4d15c1b8915c51d5a943"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\tmp_chinese_lines_sim_runner.txt": {
+    "mtime": 1778523697.3844001,
+    "hash": "b2c93de0cb7d917ff23b218dc2605bf3"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\tmp_chinese_lines_zep.txt": {
+    "mtime": 1778523697.3854022,
+    "hash": "4e423dc0f3e0c8dccb6a9fcc727d36c2"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\scripts\\chinese_scan_report.txt": {
+    "mtime": 1778523697.3672175,
+    "hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_0e1feebbd79e\\extracted_text.txt": {
+    "mtime": 1778570653.9509122,
+    "hash": "4dddb82cfa2221931cec4037d9888a64"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_21ff4397cc4b\\extracted_text.txt": {
+    "mtime": 1778574026.0696955,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_4efc7ba505ee\\extracted_text.txt": {
+    "mtime": 1778573337.5118196,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_55514f4d1bfd\\extracted_text.txt": {
+    "mtime": 1778573479.54278,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_5eb27a24def2\\extracted_text.txt": {
+    "mtime": 1778571210.2051303,
+    "hash": "4dddb82cfa2221931cec4037d9888a64"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_634a90a80c72\\extracted_text.txt": {
+    "mtime": 1778572138.882891,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_65bc12f4a01c\\extracted_text.txt": {
+    "mtime": 1778570649.1169562,
+    "hash": "4dddb82cfa2221931cec4037d9888a64"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_72631b107f11\\extracted_text.txt": {
+    "mtime": 1778574034.2099972,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_7c189b01a7a3\\extracted_text.txt": {
+    "mtime": 1778574518.712286,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_927750fc1a6e\\extracted_text.txt": {
+    "mtime": 1778572327.0028098,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_a107945f35ed\\extracted_text.txt": {
+    "mtime": 1778573332.4938426,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_a23581ffe28e\\extracted_text.txt": {
+    "mtime": 1778572146.707555,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_a4f40d44370b\\extracted_text.txt": {
+    "mtime": 1778571204.02119,
+    "hash": "4dddb82cfa2221931cec4037d9888a64"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_c88cbfa337a5\\extracted_text.txt": {
+    "mtime": 1778572320.4645543,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_c9b34f89d142\\extracted_text.txt": {
+    "mtime": 1778573491.103811,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_cb2d1a3dacb8\\extracted_text.txt": {
+    "mtime": 1778574613.9929483,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_cff9b083c3f6\\extracted_text.txt": {
+    "mtime": 1778571197.5293467,
+    "hash": "4dddb82cfa2221931cec4037d9888a64"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_d1acf659d9e7\\extracted_text.txt": {
+    "mtime": 1778574030.321256,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_db0d28f9eb72\\extracted_text.txt": {
+    "mtime": 1778570635.7388601,
+    "hash": "4dddb82cfa2221931cec4037d9888a64"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_ea813c931e80\\extracted_text.txt": {
+    "mtime": 1778573484.5665405,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_ef40ed67d01c\\extracted_text.txt": {
+    "mtime": 1778573343.892454,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_ef9520629623\\extracted_text.txt": {
+    "mtime": 1778572133.8091204,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_f64de0a80628\\extracted_text.txt": {
+    "mtime": 1778572313.581826,
+    "hash": "e5972560e6e98a21fcbb342a12604dec"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_8366856ea76a\\console_log.txt": {
+    "mtime": 1778589175.5764623,
+    "hash": "12396d337f39438632bf325a91d43d24"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_9fdac40bf3e5\\console_log.txt": {
+    "mtime": 1778588530.8329523,
+    "hash": "de8fa6a1cf56e6a1fe4598f86b337965"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_a4c7cca88fd5\\console_log.txt": {
+    "mtime": 1778585806.5395174,
+    "hash": "8c99b66517b1043f450af6edc789c300"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_c2718587a77c\\console_log.txt": {
+    "mtime": 1778588235.9198065,
+    "hash": "56af9ee73fb3d89fdeec3b75dd781bd1"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_e6759561b970\\console_log.txt": {
+    "mtime": 1778590043.59884,
+    "hash": "0cb35d4536b1894a1ea1e68c51785c89"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_e6759561b970\\full_report.md": {
+    "mtime": 1778590043.6089237,
+    "hash": "ed3e05415b4471edf352446ef6ff5ec7"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_e6759561b970\\section_01.md": {
+    "mtime": 1778589796.070952,
+    "hash": "152a430e3611dc56d5a95ef86a2a186e"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_e6759561b970\\section_02.md": {
+    "mtime": 1778589908.6972325,
+    "hash": "596a6eb76bac20d6f7ff1be0df5964e6"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_e6759561b970\\section_03.md": {
+    "mtime": 1778590043.5211046,
+    "hash": "934bc8513128b6a7f6f8c047614cb820"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_fd139afc5936\\console_log.txt": {
+    "mtime": 1778593798.6442394,
+    "hash": "5aad43f06535a387f7da95cbdb9fa386"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_fd139afc5936\\full_report.md": {
+    "mtime": 1778593798.6442394,
+    "hash": "f1d52f16d4c2892b812bd0afe24fa4f0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_fd139afc5936\\section_01.md": {
+    "mtime": 1778593460.6525695,
+    "hash": "a3c66eb71956e8d3c142bdb42d63e39a"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_fd139afc5936\\section_02.md": {
+    "mtime": 1778593628.7799428,
+    "hash": "6eb797df70f356981922a7632ec728a5"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\reports\\report_fd139afc5936\\section_03.md": {
+    "mtime": 1778593798.5489707,
+    "hash": "1db06799e4f4ba6ec000a07aa073594a"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\index.html": {
+    "mtime": 1778523697.3944058,
+    "hash": "c3389e9ce8ec69d3d32a476f392b9b9a"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_0e1feebbd79e\\files\\e4d28757.pdf": {
+    "mtime": 1778570653.7769718,
+    "hash": "390f245aabf6f1758b5175a91f5d99db"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_21ff4397cc4b\\files\\31f5ec72.pdf": {
+    "mtime": 1778574025.7226179,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_21ff4397cc4b\\files\\9391dff5.pdf": {
+    "mtime": 1778574026.0128815,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_4efc7ba505ee\\files\\4a4ceffc.pdf": {
+    "mtime": 1778573337.4389453,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_4efc7ba505ee\\files\\c87d18e4.pdf": {
+    "mtime": 1778573337.408341,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_55514f4d1bfd\\files\\909c6eb2.pdf": {
+    "mtime": 1778573479.4248054,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_55514f4d1bfd\\files\\c7c758b1.pdf": {
+    "mtime": 1778573479.4657722,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_5eb27a24def2\\files\\852a19d9.pdf": {
+    "mtime": 1778571209.9345076,
+    "hash": "390f245aabf6f1758b5175a91f5d99db"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_634a90a80c72\\files\\ac1df7d3.pdf": {
+    "mtime": 1778572138.6651986,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_634a90a80c72\\files\\df966bef.pdf": {
+    "mtime": 1778572138.70142,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_65bc12f4a01c\\files\\a4d3408a.pdf": {
+    "mtime": 1778570648.9453897,
+    "hash": "390f245aabf6f1758b5175a91f5d99db"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_72631b107f11\\files\\bfc3cc3d.pdf": {
+    "mtime": 1778574034.103696,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_72631b107f11\\files\\ea62e92d.pdf": {
+    "mtime": 1778574034.136051,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_7c189b01a7a3\\files\\18e3ad6a.pdf": {
+    "mtime": 1778574518.2323587,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_7c189b01a7a3\\files\\6625c56a.pdf": {
+    "mtime": 1778574518.6436045,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_927750fc1a6e\\files\\3ef0fb82.pdf": {
+    "mtime": 1778572326.8059962,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_927750fc1a6e\\files\\47dbb7b7.pdf": {
+    "mtime": 1778572326.772191,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_a107945f35ed\\files\\040b6cdf.pdf": {
+    "mtime": 1778573332.3486829,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_a107945f35ed\\files\\33fa1583.pdf": {
+    "mtime": 1778573332.4057229,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_a23581ffe28e\\files\\560f3ba7.pdf": {
+    "mtime": 1778572146.62722,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_a23581ffe28e\\files\\e6e55822.pdf": {
+    "mtime": 1778572146.5908306,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_a4f40d44370b\\files\\63d9a77d.pdf": {
+    "mtime": 1778571203.8404882,
+    "hash": "390f245aabf6f1758b5175a91f5d99db"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_c88cbfa337a5\\files\\36b96989.pdf": {
+    "mtime": 1778572320.3732498,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_c88cbfa337a5\\files\\6eca8c4c.pdf": {
+    "mtime": 1778572320.4030242,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_c9b34f89d142\\files\\0c375d3d.pdf": {
+    "mtime": 1778573490.990221,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_c9b34f89d142\\files\\bee360b9.pdf": {
+    "mtime": 1778573491.0246682,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_cb2d1a3dacb8\\files\\5990e543.pdf": {
+    "mtime": 1778574613.910197,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_cb2d1a3dacb8\\files\\b036a3bc.pdf": {
+    "mtime": 1778574613.8543284,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_cff9b083c3f6\\files\\70d0b1d4.pdf": {
+    "mtime": 1778571197.0916667,
+    "hash": "390f245aabf6f1758b5175a91f5d99db"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_d1acf659d9e7\\files\\32125c83.pdf": {
+    "mtime": 1778574030.223097,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_d1acf659d9e7\\files\\49ddbdd1.pdf": {
+    "mtime": 1778574030.2538478,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_db0d28f9eb72\\files\\10290629.pdf": {
+    "mtime": 1778570631.5005722,
+    "hash": "390f245aabf6f1758b5175a91f5d99db"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_ea813c931e80\\files\\0f3d855c.pdf": {
+    "mtime": 1778573484.46239,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_ea813c931e80\\files\\8bd2c082.pdf": {
+    "mtime": 1778573484.4925573,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_ef40ed67d01c\\files\\10947e9e.pdf": {
+    "mtime": 1778573343.8228004,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_ef40ed67d01c\\files\\e3f4e4ee.pdf": {
+    "mtime": 1778573343.7946284,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_ef9520629623\\files\\f57056b5.pdf": {
+    "mtime": 1778572133.7208664,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_ef9520629623\\files\\fe54303f.pdf": {
+    "mtime": 1778572133.6858623,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_f64de0a80628\\files\\0a1e452f.pdf": {
+    "mtime": 1778572313.5285542,
+    "hash": "67d833c67fdd1eb66373f21bd4708e26"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\backend\\uploads\\projects\\proj_f64de0a80628\\files\\5b5223ae.pdf": {
+    "mtime": 1778572313.2605402,
+    "hash": "ecad677ebb58528bae2e3f6c1e757ba0"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\public\\icon.png": {
+    "mtime": 1778523697.4075675,
+    "hash": "50f08383fc68027f1d8857ddf0c5d427"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\assets\\logo\\MiroFish_logo_compressed.jpeg": {
+    "mtime": 1778523697.4148202,
+    "hash": "3a9d0e3fda3d7474a40a07a080833a16"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\frontend\\src\\assets\\logo\\MiroFish_logo_left.jpeg": {
+    "mtime": 1778523697.4228206,
+    "hash": "bee7ce080a5c8fa072ac1cace9c371b6"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\dream_of_red_mansions_simulation_cover.jpg": {
+    "mtime": 1778523697.5088582,
+    "hash": "779cd0a5df1253ce20ff46abf4d90d48"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\MiroFish_logo.jpeg": {
+    "mtime": 1778337238.1611886,
+    "hash": "90c700a02f20cf201696de943f4f0977"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\MiroFish_logo_compressed.jpeg": {
+    "mtime": 1778523697.4874299,
+    "hash": "3a9d0e3fda3d7474a40a07a080833a16"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\qq_group.png": {
+    "mtime": 1778523697.5098631,
+    "hash": "99e4c2039b0795cbbee1d5c43235b607"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\shanda_logo.png": {
+    "mtime": 1778523697.5255613,
+    "hash": "3428ed8f6419ec5c8f1a62773460e089"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\whu_simulation_demo_cover.png": {
+    "mtime": 1778523697.5275795,
+    "hash": "896504198d201af067f6b111749efa17"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\Screenshot\\screenshot_1.png": {
+    "mtime": 1778523697.4894278,
+    "hash": "32700967e8222441c20864f9dc665b16"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\Screenshot\\screenshot_2.png": {
+    "mtime": 1778523697.4924326,
+    "hash": "490d60851d2e66cda35e2b6653d75657"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\Screenshot\\screenshot_3.png": {
+    "mtime": 1778523697.4944298,
+    "hash": "08e090af46b611212eaee2a2e54f1441"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\Screenshot\\screenshot_4.png": {
+    "mtime": 1778523697.4964306,
+    "hash": "8326c75dcb0014f87adfd5af82f6fc92"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\Screenshot\\screenshot_5.png": {
+    "mtime": 1778523697.4984322,
+    "hash": "4e64ca84061ce6dbc9d885de4485b755"
+  },
+  "C:\\Users\\eduar\\OneDrive\\Desktop\\homepty-swarm\\static\\image\\Screenshot\\screenshot_6.png": {
+    "mtime": 1778523697.5024276,
+    "hash": "d5cfe32b42776fd9bb0f5ca4e4163fe2"
+  }
+}

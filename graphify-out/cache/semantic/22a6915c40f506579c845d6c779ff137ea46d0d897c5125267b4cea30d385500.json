@@ -1,0 +1,1 @@
+{"nodes": [{"id": "services_text_proc_TextProcessor", "label": "TextProcessor", "file_type": "code", "source_file": "backend/app/services/text_processor.py", "source_location": "text_processor.py:9", "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}

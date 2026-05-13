@@ -1,0 +1,822 @@
+{
+  "chunk_id": "chunk_05",
+  "chunk_index": 5,
+  "total_chunks": 8,
+  "source_files": [
+    "backend/uploads/reports/report_fd139afc5936/section_01.md",
+    "backend/uploads/reports/report_fd139afc5936/section_02.md",
+    "backend/uploads/reports/report_fd139afc5936/section_03.md",
+    "frontend/index.html",
+    "backend/uploads/proj_0e1feebbd79e/files/e4d28757.pdf",
+    "backend/uploads/proj_21ff4397cc4b/files/31f5ec72.pdf",
+    "backend/uploads/proj_21ff4397cc4b/files/9391dff5.pdf",
+    "backend/uploads/proj_4efc7ba505ee/files/4a4ceffc.pdf",
+    "backend/uploads/proj_4efc7ba505ee/files/c87d18e4.pdf",
+    "backend/uploads/proj_55514f4d1bfd/files/909c6eb2.pdf",
+    "backend/uploads/proj_55514f4d1bfd/files/c7c758b1.pdf",
+    "backend/uploads/proj_5eb27a24def2/files/852a19d9.pdf",
+    "backend/uploads/proj_634a90a80c72/files/ac1df7d3.pdf",
+    "backend/uploads/proj_634a90a80c72/files/df966bef.pdf",
+    "backend/uploads/proj_65bc12f4a01c/files/a4d3408a.pdf",
+    "backend/uploads/proj_72631b107f11/files/bfc3cc3d.pdf",
+    "backend/uploads/proj_72631b107f11/files/ea62e92d.pdf",
+    "backend/uploads/proj_7c189b01a7a3/files/18e3ad6a.pdf",
+    "backend/uploads/proj_7c189b01a7a3/files/6625c56a.pdf"
+  ],
+  "nodes": [
+    {
+      "id": "file::backend/uploads/reports/report_fd139afc5936/section_01.md",
+      "label": "section_01.md",
+      "file_type": "document",
+      "path": "backend/uploads/reports/report_fd139afc5936/section_01.md",
+      "summary": "Financial context and market opportunity analysis for the Saltillo real estate digital market. Analyzes viability of 180-web goal, identifies three market segments (boutique agencies 40%, established agencies 35%, independent advisors 25%) with different decision timelines, projects a 6-week critical conversion window, and notes seasonal slowdown risk in month 3.",
+      "tags": ["report", "market-analysis", "saltillo", "financial", "simulation"]
+    },
+    {
+      "id": "file::backend/uploads/reports/report_fd139afc5936/section_02.md",
+      "label": "section_02.md",
+      "file_type": "document",
+      "path": "backend/uploads/reports/report_fd139afc5936/section_02.md",
+      "summary": "Advisor behavior patterns and sales friction analysis. Maps 4 critical funnel drop-off points: price objection (60%), reference delay (45%), decision delay (35%), internal competition (20%). Identifies negotiation differences between independent advisors and established agencies. Documents senior advisor tech resistance (40% of market). Notes abandonment peaks at days 10-15.",
+      "tags": ["report", "sales-friction", "advisor-behavior", "simulation", "saltillo"]
+    },
+    {
+      "id": "file::backend/uploads/reports/report_fd139afc5936/section_03.md",
+      "label": "section_03.md",
+      "file_type": "document",
+      "path": "backend/uploads/reports/report_fd139afc5936/section_03.md",
+      "summary": "Market saturation trends and competitive response analysis. Documents 3 saturation thresholds (60, 120, 150+ webs), conversion rate drop from 18% to 11% after 30% multi-contact, 6-week competitive response cycle, 65% probability of price war above 40% penetration in 8 weeks. Identifies WhatsApp groups as negative-sentiment amplifiers (3x impact). Recommends operational differentiation over technological.",
+      "tags": ["report", "competitive-analysis", "market-saturation", "simulation", "saltillo"]
+    },
+    {
+      "id": "file::frontend/index.html",
+      "label": "index.html",
+      "file_type": "code",
+      "path": "frontend/index.html",
+      "summary": "Homepty Swarm SPA entry point. Title 'Homepty Swarm - Predict Everything'. Meta description: 'Social Media Opinion Simulation System'. Default language zh with localStorage locale override. Loads fonts Inter, JetBrains Mono, Noto Sans SC, Space Grotesk. Mounts Vue.js app via /src/main.js into #app div.",
+      "tags": ["frontend", "html", "spa", "vue", "entry-point"]
+    },
+    {
+      "id": "file::backend/uploads/proj_0e1feebbd79e/files/e4d28757.pdf",
+      "label": "e4d28757.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_0e1feebbd79e/files/e4d28757.pdf",
+      "summary": "PDF upload associated with simulation project proj_0e1feebbd79e. File size ~524.4KB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_0e1feebbd79e"]
+    },
+    {
+      "id": "file::backend/uploads/proj_21ff4397cc4b/files/31f5ec72.pdf",
+      "label": "31f5ec72.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_21ff4397cc4b/files/31f5ec72.pdf",
+      "summary": "PDF upload associated with simulation project proj_21ff4397cc4b. File size ~5.7MB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_21ff4397cc4b"]
+    },
+    {
+      "id": "file::backend/uploads/proj_21ff4397cc4b/files/9391dff5.pdf",
+      "label": "9391dff5.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_21ff4397cc4b/files/9391dff5.pdf",
+      "summary": "PDF upload associated with simulation project proj_21ff4397cc4b. File size ~21.5KB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_21ff4397cc4b"]
+    },
+    {
+      "id": "file::backend/uploads/proj_4efc7ba505ee/files/4a4ceffc.pdf",
+      "label": "4a4ceffc.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_4efc7ba505ee/files/4a4ceffc.pdf",
+      "summary": "PDF upload associated with simulation project proj_4efc7ba505ee. File size ~21.5KB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_4efc7ba505ee"]
+    },
+    {
+      "id": "file::backend/uploads/proj_4efc7ba505ee/files/c87d18e4.pdf",
+      "label": "c87d18e4.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_4efc7ba505ee/files/c87d18e4.pdf",
+      "summary": "PDF upload associated with simulation project proj_4efc7ba505ee. File size ~5.7MB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_4efc7ba505ee"]
+    },
+    {
+      "id": "file::backend/uploads/proj_55514f4d1bfd/files/909c6eb2.pdf",
+      "label": "909c6eb2.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_55514f4d1bfd/files/909c6eb2.pdf",
+      "summary": "PDF upload associated with simulation project proj_55514f4d1bfd. File size ~5.7MB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_55514f4d1bfd"]
+    },
+    {
+      "id": "file::backend/uploads/proj_55514f4d1bfd/files/c7c758b1.pdf",
+      "label": "c7c758b1.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_55514f4d1bfd/files/c7c758b1.pdf",
+      "summary": "PDF upload associated with simulation project proj_55514f4d1bfd. File size ~21.5KB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_55514f4d1bfd"]
+    },
+    {
+      "id": "file::backend/uploads/proj_5eb27a24def2/files/852a19d9.pdf",
+      "label": "852a19d9.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_5eb27a24def2/files/852a19d9.pdf",
+      "summary": "PDF upload associated with simulation project proj_5eb27a24def2. File size ~524.4KB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_5eb27a24def2"]
+    },
+    {
+      "id": "file::backend/uploads/proj_634a90a80c72/files/ac1df7d3.pdf",
+      "label": "ac1df7d3.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_634a90a80c72/files/ac1df7d3.pdf",
+      "summary": "PDF upload associated with simulation project proj_634a90a80c72. File size ~5.7MB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_634a90a80c72"]
+    },
+    {
+      "id": "file::backend/uploads/proj_634a90a80c72/files/df966bef.pdf",
+      "label": "df966bef.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_634a90a80c72/files/df966bef.pdf",
+      "summary": "PDF upload associated with simulation project proj_634a90a80c72. File size ~21.5KB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_634a90a80c72"]
+    },
+    {
+      "id": "file::backend/uploads/proj_65bc12f4a01c/files/a4d3408a.pdf",
+      "label": "a4d3408a.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_65bc12f4a01c/files/a4d3408a.pdf",
+      "summary": "PDF upload associated with simulation project proj_65bc12f4a01c. File size ~524.4KB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_65bc12f4a01c"]
+    },
+    {
+      "id": "file::backend/uploads/proj_72631b107f11/files/bfc3cc3d.pdf",
+      "label": "bfc3cc3d.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_72631b107f11/files/bfc3cc3d.pdf",
+      "summary": "PDF upload associated with simulation project proj_72631b107f11. File size ~5.7MB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_72631b107f11"]
+    },
+    {
+      "id": "file::backend/uploads/proj_72631b107f11/files/ea62e92d.pdf",
+      "label": "ea62e92d.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_72631b107f11/files/ea62e92d.pdf",
+      "summary": "PDF upload associated with simulation project proj_72631b107f11. File size ~21.5KB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_72631b107f11"]
+    },
+    {
+      "id": "file::backend/uploads/proj_7c189b01a7a3/files/18e3ad6a.pdf",
+      "label": "18e3ad6a.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_7c189b01a7a3/files/18e3ad6a.pdf",
+      "summary": "PDF upload associated with simulation project proj_7c189b01a7a3. File size ~5.7MB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_7c189b01a7a3"]
+    },
+    {
+      "id": "file::backend/uploads/proj_7c189b01a7a3/files/6625c56a.pdf",
+      "label": "6625c56a.pdf",
+      "file_type": "document",
+      "path": "backend/uploads/proj_7c189b01a7a3/files/6625c56a.pdf",
+      "summary": "PDF upload associated with simulation project proj_7c189b01a7a3. File size ~21.5KB. Content not extractable from binary.",
+      "tags": ["pdf", "upload", "project-file", "proj_7c189b01a7a3"]
+    },
+    {
+      "id": "concept::report_fd139afc5936",
+      "label": "Simulation Report fd139afc5936",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "Market simulation report analyzing the Saltillo, Mexico real estate digital market. Composed of at least 3 sections covering financial context, advisor behavior/sales friction, and competitive saturation/response. Targets 180 real estate websites in a 3-month horizon.",
+      "tags": ["report", "simulation", "saltillo", "real-estate", "market-analysis"]
+    },
+    {
+      "id": "concept::saltillo_real_estate_market",
+      "label": "Saltillo Real Estate Digital Market",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "The target market for the 180-web sales goal. Composed of boutique agencies (40%), established agencies (35%), and independent advisors (25%). Market has high informal connectivity via WhatsApp groups. A 6-week critical window exists before competitive saturation and seasonal slowdown. Saturation thresholds at 60, 120, and 150+ webs.",
+      "tags": ["market", "saltillo", "real-estate", "mexico", "digital"]
+    },
+    {
+      "id": "concept::180_webs_goal",
+      "label": "180 Webs Sales Goal",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "Strategic objective to sell 180 real estate websites in Saltillo within 3 months. Economically viable but dependent on accelerating agency decision cycles. Risk factors: seasonal slowdown in month 3, competitive saturation, price wars above 40% market penetration.",
+      "tags": ["goal", "sales", "180-webs", "saltillo", "3-month"]
+    },
+    {
+      "id": "concept::boutique_agencies_segment",
+      "label": "Boutique Agencies Segment",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "40% of Saltillo real estate market potential. Decision timeline 2-3 weeks. Higher propensity to innovate for differentiation. More agile in digital adoption.",
+      "tags": ["market-segment", "boutique", "agencies", "saltillo"]
+    },
+    {
+      "id": "concept::established_agencies_segment",
+      "label": "Established Agencies Segment",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "35% of Saltillo real estate market potential. Decision timeline 4-6 weeks. Require local case studies as validation. Respond defensively when >10% of client base is contacted by alternatives. Prefer performance guarantees and exit clauses over pricing discussions.",
+      "tags": ["market-segment", "established", "agencies", "saltillo"]
+    },
+    {
+      "id": "concept::independent_advisors_segment",
+      "label": "Independent Advisors Segment",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "25% of Saltillo real estate market potential. Fastest decision timeline 1-2 weeks. Sensitive to flexible payment models. Ask about payment options on first contact. Primary targets for new market entrants using commission-based pricing.",
+      "tags": ["market-segment", "independent", "advisors", "saltillo"]
+    },
+    {
+      "id": "concept::sales_friction_points",
+      "label": "Sales Friction Points",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "Four critical funnel drop-off points identified in simulation: price objection (60% of initial conversations), reference delay/unmet (45% abandon without verifiable case studies within 48h), decision delay (35% cool off after 2 weeks without active follow-up), internal competition (20% postpone to develop internal solutions). Abandonment peaks at days 10-15 of sales cycle.",
+      "tags": ["sales", "friction", "funnel", "objections", "conversion"]
+    },
+    {
+      "id": "concept::competitive_saturation",
+      "label": "Competitive Saturation Dynamics",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "Market saturation model with 3 thresholds: 60 webs (high receptivity), 120 webs (active competitor comparison, +25% price objections), 150+ webs (demands unique differentiators). Conversion rate drops from 18% to 11% after 30% multi-contact. 6-week competitive response cycle from threat detection to countermeasures. Established competitors reduce prices 15-20% when threatened. 65% probability of price war if >40% penetration in 8 weeks.",
+      "tags": ["competition", "saturation", "market-dynamics", "pricing", "conversion"]
+    },
+    {
+      "id": "concept::homepty_swarm_system",
+      "label": "Homepty Swarm System",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "Social Media Opinion Simulation System with tagline 'Predict Everything'. Multi-language SPA (default zh, localStorage locale override). Vue.js frontend. Used for market simulation and report generation for real estate projects.",
+      "tags": ["system", "simulation", "vue", "spa", "social-media", "prediction"]
+    },
+    {
+      "id": "concept::whatsapp_network_effect",
+      "label": "WhatsApp Network Effect in Saltillo",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "Informal advisor WhatsApp groups act as market perception amplifiers. Negative word-of-mouth has 3x more impact than positive on adoption decisions. A single negative experience shared can neutralize up to 15 subsequent positive commercial contacts. Agencies share provider information more frequently than expected.",
+      "tags": ["network-effect", "whatsapp", "word-of-mouth", "social-dynamics", "saltillo"]
+    },
+    {
+      "id": "concept::senior_advisor_tech_resistance",
+      "label": "Senior Advisor Technology Resistance",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "Advisors with 10+ years experience (~40% of target market) show specific resistance patterns: request extended trials (30+ days), require in-person training, prefer references from same age group, distrust automation that may replace their judgment. Core insight: they reject the perception of being made dispensable, not technology itself.",
+      "tags": ["advisor", "senior", "tech-resistance", "adoption", "change-management"]
+    },
+    {
+      "id": "concept::pdf_size_cluster_large",
+      "label": "Large PDF Cluster (~5.7MB)",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "Group of project PDF uploads sharing ~5.7MB file size, suggesting they may be the same document type or template across multiple projects: proj_21ff4397cc4b/31f5ec72.pdf, proj_4efc7ba505ee/c87d18e4.pdf, proj_55514f4d1bfd/909c6eb2.pdf, proj_634a90a80c72/ac1df7d3.pdf, proj_72631b107f11/bfc3cc3d.pdf, proj_7c189b01a7a3/18e3ad6a.pdf.",
+      "tags": ["pdf", "cluster", "upload", "5.7MB", "project-files"]
+    },
+    {
+      "id": "concept::pdf_size_cluster_small",
+      "label": "Small PDF Cluster (~21.5KB)",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "Group of project PDF uploads sharing ~21.5KB file size, suggesting a common lightweight document type across projects: proj_21ff4397cc4b/9391dff5.pdf, proj_4efc7ba505ee/4a4ceffc.pdf, proj_55514f4d1bfd/c7c758b1.pdf, proj_634a90a80c72/df966bef.pdf, proj_72631b107f11/ea62e92d.pdf, proj_7c189b01a7a3/6625c56a.pdf.",
+      "tags": ["pdf", "cluster", "upload", "21.5KB", "project-files"]
+    },
+    {
+      "id": "concept::pdf_size_cluster_medium",
+      "label": "Medium PDF Cluster (~524.4KB)",
+      "file_type": "rationale",
+      "path": null,
+      "summary": "Group of project PDF uploads sharing ~524.4KB file size: proj_0e1feebbd79e/e4d28757.pdf, proj_5eb27a24def2/852a19d9.pdf, proj_65bc12f4a01c/a4d3408a.pdf. May represent a common document type specific to certain projects.",
+      "tags": ["pdf", "cluster", "upload", "524KB", "project-files"]
+    }
+  ],
+  "edges": [
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_01.md",
+      "to": "concept::report_fd139afc5936",
+      "relation": "PART_OF",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_02.md",
+      "to": "concept::report_fd139afc5936",
+      "relation": "PART_OF",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_03.md",
+      "to": "concept::report_fd139afc5936",
+      "relation": "PART_OF",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "concept::report_fd139afc5936",
+      "to": "concept::saltillo_real_estate_market",
+      "relation": "ANALYZES",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "concept::report_fd139afc5936",
+      "to": "concept::180_webs_goal",
+      "relation": "EVALUATES",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_01.md",
+      "to": "concept::saltillo_real_estate_market",
+      "relation": "DESCRIBES",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_01.md",
+      "to": "concept::180_webs_goal",
+      "relation": "ANALYZES",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_01.md",
+      "to": "concept::boutique_agencies_segment",
+      "relation": "DEFINES",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_01.md",
+      "to": "concept::established_agencies_segment",
+      "relation": "DEFINES",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_01.md",
+      "to": "concept::independent_advisors_segment",
+      "relation": "DEFINES",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_02.md",
+      "to": "concept::sales_friction_points",
+      "relation": "DOCUMENTS",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_02.md",
+      "to": "concept::senior_advisor_tech_resistance",
+      "relation": "DOCUMENTS",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_02.md",
+      "to": "concept::saltillo_real_estate_market",
+      "relation": "ANALYZES",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_02.md",
+      "to": "concept::independent_advisors_segment",
+      "relation": "DETAILS_BEHAVIOR_OF",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_02.md",
+      "to": "concept::established_agencies_segment",
+      "relation": "DETAILS_BEHAVIOR_OF",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_03.md",
+      "to": "concept::competitive_saturation",
+      "relation": "DOCUMENTS",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_03.md",
+      "to": "concept::whatsapp_network_effect",
+      "relation": "DOCUMENTS",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_03.md",
+      "to": "concept::saltillo_real_estate_market",
+      "relation": "ANALYZES",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "file::backend/uploads/reports/report_fd139afc5936/section_03.md",
+      "to": "concept::180_webs_goal",
+      "relation": "RISK_FACTORS_FOR",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "concept::competitive_saturation",
+      "to": "concept::180_webs_goal",
+      "relation": "THREATENS",
+      "confidence": 0.95,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "concept::sales_friction_points",
+      "to": "concept::180_webs_goal",
+      "relation": "IMPEDES",
+      "confidence": 0.95,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "concept::whatsapp_network_effect",
+      "to": "concept::competitive_saturation",
+      "relation": "ACCELERATES",
+      "confidence": 0.85,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "concept::senior_advisor_tech_resistance",
+      "to": "concept::sales_friction_points",
+      "relation": "CONTRIBUTES_TO",
+      "confidence": 0.85,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "concept::boutique_agencies_segment",
+      "to": "concept::180_webs_goal",
+      "relation": "FASTEST_PATH_TO",
+      "confidence": 0.85,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "concept::independent_advisors_segment",
+      "to": "concept::180_webs_goal",
+      "relation": "FASTEST_PATH_TO",
+      "confidence": 0.85,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::frontend/index.html",
+      "to": "concept::homepty_swarm_system",
+      "relation": "ENTRY_POINT_OF",
+      "confidence": 1.0,
+      "origin": "EXTRACTED"
+    },
+    {
+      "from": "concept::homepty_swarm_system",
+      "to": "concept::report_fd139afc5936",
+      "relation": "GENERATES",
+      "confidence": 0.95,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "concept::homepty_swarm_system",
+      "to": "concept::saltillo_real_estate_market",
+      "relation": "SIMULATES",
+      "confidence": 0.85,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_0e1feebbd79e/files/e4d28757.pdf",
+      "to": "concept::pdf_size_cluster_medium",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_5eb27a24def2/files/852a19d9.pdf",
+      "to": "concept::pdf_size_cluster_medium",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_65bc12f4a01c/files/a4d3408a.pdf",
+      "to": "concept::pdf_size_cluster_medium",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_21ff4397cc4b/files/31f5ec72.pdf",
+      "to": "concept::pdf_size_cluster_large",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_4efc7ba505ee/files/c87d18e4.pdf",
+      "to": "concept::pdf_size_cluster_large",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_55514f4d1bfd/files/909c6eb2.pdf",
+      "to": "concept::pdf_size_cluster_large",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_634a90a80c72/files/ac1df7d3.pdf",
+      "to": "concept::pdf_size_cluster_large",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_72631b107f11/files/bfc3cc3d.pdf",
+      "to": "concept::pdf_size_cluster_large",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_7c189b01a7a3/files/18e3ad6a.pdf",
+      "to": "concept::pdf_size_cluster_large",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_21ff4397cc4b/files/9391dff5.pdf",
+      "to": "concept::pdf_size_cluster_small",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_4efc7ba505ee/files/4a4ceffc.pdf",
+      "to": "concept::pdf_size_cluster_small",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_55514f4d1bfd/files/c7c758b1.pdf",
+      "to": "concept::pdf_size_cluster_small",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_634a90a80c72/files/df966bef.pdf",
+      "to": "concept::pdf_size_cluster_small",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_72631b107f11/files/ea62e92d.pdf",
+      "to": "concept::pdf_size_cluster_small",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_7c189b01a7a3/files/6625c56a.pdf",
+      "to": "concept::pdf_size_cluster_small",
+      "relation": "MEMBER_OF",
+      "confidence": 0.75,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_21ff4397cc4b/files/31f5ec72.pdf",
+      "to": "file::backend/uploads/proj_21ff4397cc4b/files/9391dff5.pdf",
+      "relation": "CO_UPLOADED_WITH",
+      "confidence": 0.85,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_4efc7ba505ee/files/c87d18e4.pdf",
+      "to": "file::backend/uploads/proj_4efc7ba505ee/files/4a4ceffc.pdf",
+      "relation": "CO_UPLOADED_WITH",
+      "confidence": 0.85,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_55514f4d1bfd/files/909c6eb2.pdf",
+      "to": "file::backend/uploads/proj_55514f4d1bfd/files/c7c758b1.pdf",
+      "relation": "CO_UPLOADED_WITH",
+      "confidence": 0.85,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_634a90a80c72/files/ac1df7d3.pdf",
+      "to": "file::backend/uploads/proj_634a90a80c72/files/df966bef.pdf",
+      "relation": "CO_UPLOADED_WITH",
+      "confidence": 0.85,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_72631b107f11/files/bfc3cc3d.pdf",
+      "to": "file::backend/uploads/proj_72631b107f11/files/ea62e92d.pdf",
+      "relation": "CO_UPLOADED_WITH",
+      "confidence": 0.85,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_7c189b01a7a3/files/18e3ad6a.pdf",
+      "to": "file::backend/uploads/proj_7c189b01a7a3/files/6625c56a.pdf",
+      "relation": "CO_UPLOADED_WITH",
+      "confidence": 0.85,
+      "origin": "INFERRED"
+    },
+    {
+      "from": "file::backend/uploads/proj_21ff4397cc4b/files/31f5ec72.pdf",
+      "to": "file::backend/uploads/proj_4efc7ba505ee/files/c87d18e4.pdf",
+      "relation": "SIMILAR_SIZE_DOCUMENT",
+      "confidence": 0.2,
+      "origin": "AMBIGUOUS"
+    },
+    {
+      "from": "file::backend/uploads/proj_21ff4397cc4b/files/9391dff5.pdf",
+      "to": "file::backend/uploads/proj_4efc7ba505ee/files/4a4ceffc.pdf",
+      "relation": "SIMILAR_SIZE_DOCUMENT",
+      "confidence": 0.2,
+      "origin": "AMBIGUOUS"
+    },
+    {
+      "from": "file::backend/uploads/proj_0e1feebbd79e/files/e4d28757.pdf",
+      "to": "file::backend/uploads/proj_5eb27a24def2/files/852a19d9.pdf",
+      "relation": "SIMILAR_SIZE_DOCUMENT",
+      "confidence": 0.2,
+      "origin": "AMBIGUOUS"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "hyperedge::report_fd139afc5936_sections",
+      "label": "Report fd139afc5936 Section Cluster",
+      "relation": "COMPOSE_REPORT",
+      "participants": [
+        "file::backend/uploads/reports/report_fd139afc5936/section_01.md",
+        "file::backend/uploads/reports/report_fd139afc5936/section_02.md",
+        "file::backend/uploads/reports/report_fd139afc5936/section_03.md",
+        "concept::report_fd139afc5936"
+      ],
+      "confidence": 1.0,
+      "origin": "EXTRACTED",
+      "note": "All three section files are parts of the same simulation report (report_fd139afc5936) covering financial context, sales friction, and competitive saturation for the Saltillo real estate digital market."
+    },
+    {
+      "id": "hyperedge::saltillo_market_segments",
+      "label": "Saltillo Market Segments",
+      "relation": "SEGMENT_OF_MARKET",
+      "participants": [
+        "concept::boutique_agencies_segment",
+        "concept::established_agencies_segment",
+        "concept::independent_advisors_segment",
+        "concept::saltillo_real_estate_market"
+      ],
+      "confidence": 1.0,
+      "origin": "EXTRACTED",
+      "note": "Three distinct segments compose the Saltillo real estate market target audience: boutique agencies (40%), established agencies (35%), independent advisors (25%)."
+    },
+    {
+      "id": "hyperedge::proj_21ff4397cc4b_files",
+      "label": "Project 21ff4397cc4b Uploaded Files",
+      "relation": "PROJECT_UPLOADS",
+      "participants": [
+        "file::backend/uploads/proj_21ff4397cc4b/files/31f5ec72.pdf",
+        "file::backend/uploads/proj_21ff4397cc4b/files/9391dff5.pdf"
+      ],
+      "confidence": 0.85,
+      "origin": "INFERRED",
+      "note": "Two PDF files co-uploaded under the same simulation project folder."
+    },
+    {
+      "id": "hyperedge::proj_4efc7ba505ee_files",
+      "label": "Project 4efc7ba505ee Uploaded Files",
+      "relation": "PROJECT_UPLOADS",
+      "participants": [
+        "file::backend/uploads/proj_4efc7ba505ee/files/4a4ceffc.pdf",
+        "file::backend/uploads/proj_4efc7ba505ee/files/c87d18e4.pdf"
+      ],
+      "confidence": 0.85,
+      "origin": "INFERRED",
+      "note": "Two PDF files co-uploaded under the same simulation project folder."
+    },
+    {
+      "id": "hyperedge::proj_55514f4d1bfd_files",
+      "label": "Project 55514f4d1bfd Uploaded Files",
+      "relation": "PROJECT_UPLOADS",
+      "participants": [
+        "file::backend/uploads/proj_55514f4d1bfd/files/909c6eb2.pdf",
+        "file::backend/uploads/proj_55514f4d1bfd/files/c7c758b1.pdf"
+      ],
+      "confidence": 0.85,
+      "origin": "INFERRED",
+      "note": "Two PDF files co-uploaded under the same simulation project folder."
+    },
+    {
+      "id": "hyperedge::proj_634a90a80c72_files",
+      "label": "Project 634a90a80c72 Uploaded Files",
+      "relation": "PROJECT_UPLOADS",
+      "participants": [
+        "file::backend/uploads/proj_634a90a80c72/files/ac1df7d3.pdf",
+        "file::backend/uploads/proj_634a90a80c72/files/df966bef.pdf"
+      ],
+      "confidence": 0.85,
+      "origin": "INFERRED",
+      "note": "Two PDF files co-uploaded under the same simulation project folder."
+    },
+    {
+      "id": "hyperedge::proj_72631b107f11_files",
+      "label": "Project 72631b107f11 Uploaded Files",
+      "relation": "PROJECT_UPLOADS",
+      "participants": [
+        "file::backend/uploads/proj_72631b107f11/files/bfc3cc3d.pdf",
+        "file::backend/uploads/proj_72631b107f11/files/ea62e92d.pdf"
+      ],
+      "confidence": 0.85,
+      "origin": "INFERRED",
+      "note": "Two PDF files co-uploaded under the same simulation project folder."
+    },
+    {
+      "id": "hyperedge::proj_7c189b01a7a3_files",
+      "label": "Project 7c189b01a7a3 Uploaded Files",
+      "relation": "PROJECT_UPLOADS",
+      "participants": [
+        "file::backend/uploads/proj_7c189b01a7a3/files/18e3ad6a.pdf",
+        "file::backend/uploads/proj_7c189b01a7a3/files/6625c56a.pdf"
+      ],
+      "confidence": 0.85,
+      "origin": "INFERRED",
+      "note": "Two PDF files co-uploaded under the same simulation project folder."
+    },
+    {
+      "id": "hyperedge::large_pdf_cluster",
+      "label": "Large PDF Document Cluster (~5.7MB)",
+      "relation": "SAME_SIZE_CLASS",
+      "participants": [
+        "file::backend/uploads/proj_21ff4397cc4b/files/31f5ec72.pdf",
+        "file::backend/uploads/proj_4efc7ba505ee/files/c87d18e4.pdf",
+        "file::backend/uploads/proj_55514f4d1bfd/files/909c6eb2.pdf",
+        "file::backend/uploads/proj_634a90a80c72/files/ac1df7d3.pdf",
+        "file::backend/uploads/proj_72631b107f11/files/bfc3cc3d.pdf",
+        "file::backend/uploads/proj_7c189b01a7a3/files/18e3ad6a.pdf",
+        "concept::pdf_size_cluster_large"
+      ],
+      "confidence": 0.65,
+      "origin": "INFERRED",
+      "note": "Six PDFs across different project folders share the same ~5.7MB file size, suggesting a common document template or type used across multiple simulation projects."
+    },
+    {
+      "id": "hyperedge::small_pdf_cluster",
+      "label": "Small PDF Document Cluster (~21.5KB)",
+      "relation": "SAME_SIZE_CLASS",
+      "participants": [
+        "file::backend/uploads/proj_21ff4397cc4b/files/9391dff5.pdf",
+        "file::backend/uploads/proj_4efc7ba505ee/files/4a4ceffc.pdf",
+        "file::backend/uploads/proj_55514f4d1bfd/files/c7c758b1.pdf",
+        "file::backend/uploads/proj_634a90a80c72/files/df966bef.pdf",
+        "file::backend/uploads/proj_72631b107f11/files/ea62e92d.pdf",
+        "file::backend/uploads/proj_7c189b01a7a3/files/6625c56a.pdf",
+        "concept::pdf_size_cluster_small"
+      ],
+      "confidence": 0.65,
+      "origin": "INFERRED",
+      "note": "Six PDFs across different project folders share the same ~21.5KB file size, suggesting a common lightweight document (e.g., summary sheet or form) used across simulation projects."
+    },
+    {
+      "id": "hyperedge::medium_pdf_cluster",
+      "label": "Medium PDF Document Cluster (~524.4KB)",
+      "relation": "SAME_SIZE_CLASS",
+      "participants": [
+        "file::backend/uploads/proj_0e1feebbd79e/files/e4d28757.pdf",
+        "file::backend/uploads/proj_5eb27a24def2/files/852a19d9.pdf",
+        "file::backend/uploads/proj_65bc12f4a01c/files/a4d3408a.pdf",
+        "concept::pdf_size_cluster_medium"
+      ],
+      "confidence": 0.65,
+      "origin": "INFERRED",
+      "note": "Three PDFs across different project folders share the same ~524.4KB file size, suggesting a common document type used across a subset of simulation projects."
+    },
+    {
+      "id": "hyperedge::homepty_swarm_frontend_report",
+      "label": "Homepty Swarm Frontend to Report Pipeline",
+      "relation": "SYSTEM_PRODUCES_OUTPUT",
+      "participants": [
+        "file::frontend/index.html",
+        "concept::homepty_swarm_system",
+        "concept::report_fd139afc5936",
+        "concept::saltillo_real_estate_market"
+      ],
+      "confidence": 0.85,
+      "origin": "INFERRED",
+      "note": "The Homepty Swarm SPA (entry point index.html) is the system that runs simulations and produces reports like report_fd139afc5936 analyzing markets like Saltillo."
+    }
+  ]
+}

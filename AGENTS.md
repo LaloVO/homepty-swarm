@@ -1,11 +1,8 @@
-# Instrucciones del proyecto
-- Usa el modelo Claude Code con contexto completo.
-- Recuerda el estado actual del proyecto antes de reiniciar.
-- Ejecuta `claude --resume` para recuperar sesiones.
-
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+When the user types `/graphify`, invoke the `skill` tool with `skill: "graphify"` before doing anything else.
 
 Rules:
 - ALWAYS read graphify-out/GRAPH_REPORT.md before reading any source files, running grep/glob searches, or answering codebase questions. The graph is your primary map of the codebase.

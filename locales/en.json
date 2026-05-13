@@ -339,6 +339,7 @@
     "profileBio": "Bio",
     "chatEmptyReportAgent": "Chat with Report Agent to explore report content in depth",
     "chatEmptyAgent": "Chat with simulated individuals to understand their perspectives",
+    "envNotRunning": "Simulation environment is not running. Individual agent chat is unavailable.",
     "chatInputPlaceholder": "Type your question...",
     "selectSurveyTarget": "Select survey targets",
     "selectedCount": "Selected {selected} / {total}",

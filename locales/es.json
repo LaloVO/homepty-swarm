@@ -339,6 +339,7 @@
     "profileBio": "Biografía",
     "chatEmptyReportAgent": "Chatea con el Agente de Informes para explorar el contenido del informe en profundidad",
     "chatEmptyAgent": "Chatea con individuos simulados para entender sus perspectivas",
+    "envNotRunning": "El entorno de simulación no está en ejecución. El chat con agentes individuales no está disponible.",
     "chatInputPlaceholder": "Escribe tu pregunta...",
     "selectSurveyTarget": "Seleccionar objetivos de encuesta",
     "selectedCount": "Seleccionados {selected} / {total}",

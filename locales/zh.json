@@ -339,6 +339,7 @@
     "profileBio": "简介",
     "chatEmptyReportAgent": "与 Report Agent 对话，深入了解报告内容",
     "chatEmptyAgent": "与模拟个体对话，了解他们的观点",
+    "envNotRunning": "模拟环境未运行，无法与单个 Agent 对话。",
     "chatInputPlaceholder": "输入您的问题...",
     "selectSurveyTarget": "选择调查对象",
     "selectedCount": "已选 {selected} / {total}",

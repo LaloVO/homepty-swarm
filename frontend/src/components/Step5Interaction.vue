@@ -241,6 +241,16 @@
             </div>
           </div>
 
+          <!-- Env not running warning -->
+          <div v-if="chatTarget === 'agent' && envAlive === false" class="env-warning-banner">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>{{ $t('step5.envNotRunning') }}</span>
+          </div>
+
           <!-- Chat Messages -->
           <div class="chat-messages" ref="chatMessages">
             <div v-if="chatHistory.length === 0" class="chat-empty">
@@ -294,14 +304,14 @@
               class="chat-input"
               :placeholder="$t('step5.chatInputPlaceholder')"
               @keydown.enter.exact.prevent="sendMessage"
-              :disabled="isSending || (!selectedAgent && chatTarget === 'agent')"
+              :disabled="isSending || (!selectedAgent && chatTarget === 'agent') || (chatTarget === 'agent' && envAlive === false)"
               rows="1"
               ref="chatInputRef"
             ></textarea>
             <button 
               class="send-btn"
               @click="sendMessage"
-              :disabled="!chatInput.trim() || isSending || (!selectedAgent && chatTarget === 'agent')"
+              :disabled="!chatInput.trim() || isSending || (!selectedAgent && chatTarget === 'agent') || (chatTarget === 'agent' && envAlive === false)"
             >
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -414,7 +424,7 @@
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { chatWithReport, getReport, getAgentLog } from '../api/report'
-import { interviewAgents, getSimulationProfilesRealtime } from '../api/simulation'
+import { interviewAgents, getSimulationProfilesRealtime, getEnvStatus } from '../api/simulation'
 
 const { t } = useI18n()
 
@@ -447,6 +457,9 @@ const selectedAgents = ref(new Set())
 const surveyQuestion = ref('')
 const surveyResults = ref([])
 const isSurveying = ref(false)
+
+// Env status
+const envAlive = ref(null) // null = unknown, true = alive, false = not running
 
 // Report Data
 const reportOutline = ref(null)
@@ -954,9 +967,15 @@ watch(() => props.reportId, (newId) => {
   }
 }, { immediate: true })
 
-watch(() => props.simulationId, (newId) => {
+watch(() => props.simulationId, async (newId) => {
   if (newId) {
     loadProfiles()
+    try {
+      const res = await getEnvStatus({ simulation_id: newId })
+      envAlive.value = res?.data?.env_alive === true
+    } catch {
+      envAlive.value = false
+    }
   }
 }, { immediate: true })
 </script>
@@ -1905,6 +1924,19 @@ watch(() => props.simulationId, (newId) => {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Env warning banner */
+.env-warning-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #FFF8E1;
+  border-top: 1px solid #FFE082;
+  border-bottom: 1px solid #FFE082;
+  color: #795548;
+  font-size: 13px;
 }
 
 /* Chat Messages */

@@ -1,0 +1,9 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Generated public compiler stepKey SHA-256 identifiers, never workload keys; schema and cross-repo parity tested"
+condition = "AND"
+paths = ['''^contracts/run-v1/(compiled-job|s1-job)\.fixture\.json$''']
+regexTarget = "line"
+regexes = ['''^\s*"stepKey": "[a-f0-9]{64}",?\s*$''']

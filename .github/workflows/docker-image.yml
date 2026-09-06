@@ -57,6 +57,8 @@ jobs:
           PYTHONPATH=backend runtime/.venv/bin/pytest backend/tests/runtime/test_container_images.py -q
       - name: API vulnerability and secret scan
         uses: aquasecurity/trivy-action@d2a0b60797ff03db6132bd4e2b293f9b37081297
+        env:
+          TRIVY_SCAN_REMOVED_PACKAGES: "true"
         with:
           input: ${{ runner.temp }}/api.tar
           scanners: vuln,secret
@@ -65,9 +67,10 @@ jobs:
           format: json
           output: api-scan.json
           trivyignores: ""
-          scan-removed-packages: true
       - name: Worker vulnerability and secret scan
         uses: aquasecurity/trivy-action@d2a0b60797ff03db6132bd4e2b293f9b37081297
+        env:
+          TRIVY_SCAN_REMOVED_PACKAGES: "true"
         with:
           input: ${{ runner.temp }}/worker.tar
           scanners: vuln,secret
@@ -76,7 +79,6 @@ jobs:
           format: json
           output: worker-scan.json
           trivyignores: ""
-          scan-removed-packages: true
       - name: API SBOM
         uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610
         with:

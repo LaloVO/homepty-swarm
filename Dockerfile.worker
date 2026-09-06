@@ -4,6 +4,8 @@ COPY runtime/requirements.lock.txt ./requirements.lock.txt
 RUN python -m venv /opt/runtime && /opt/runtime/bin/pip install --no-cache-dir --only-binary=:all: --require-hashes -r requirements.lock.txt
 
 FROM python:3.12.14-alpine3.24@sha256:b64631e04e4920160c50fbe8d8df828f7f35f06f425cb44aa09bca53e708a35a
+# Alpine security fix for the util-linux/libuuid findings in release run 34035637983.
+RUN apk add --no-cache libuuid=2.42.3-r1
 ENV PATH="/opt/runtime/bin:$PATH" PYTHONPATH=/srv/backend PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 WORKDIR /srv
 COPY --from=dependencies /opt/runtime /opt/runtime

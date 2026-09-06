@@ -16,10 +16,10 @@ def forbidden(path: str) -> bool:
     p = PurePosixPath(path)
     if ".." in p.parts:
         return True
-    # Observed Debian debconf executable and public CA bundles from the pinned base.
+    # Observed OS executable and public CA bundles from the pinned bases.
     # These are not a web frontend, application data, or private signing keys.
     if str(p) in {
-        "usr/share/debconf/frontend", "usr/lib/ssl/cert.pem",
+        "usr/share/debconf/frontend", "usr/lib/ssl/cert.pem", "etc/ssl1.1/cert.pem",
         "opt/runtime/lib/python3.12/site-packages/pip/_vendor/certifi/cacert.pem",
     }:
         return False

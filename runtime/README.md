@@ -28,7 +28,11 @@ uv export --project runtime --frozen --no-dev --no-emit-project --format require
 uvx pip-audit --require-hashes --disable-pip -r runtime/requirements.lock.txt
 ```
 
-Python 3.12.13 slim Bookworm is pinned by its registry manifest digest. A dependency audit
+Python 3.12.14 Alpine 3.24 is pinned by its registry manifest digest. The former Bookworm
+candidate was rejected by CI for OS HIGH/CRITICAL vulnerabilities, including unfixed
+ones; no scan exception was added. Native musllinux wheels must be in the existing
+hashed lock and install without compilation. The actual container tests revalidate
+PostgreSQL, S3, process restart and transport on this base. A dependency audit
 does not replace the image/OS scan. CI builds both images and scans their SBOMs; it does
 not build containers on developer machines. The release workflow tests and inspects both
 images, generates image SBOMs, scans vulnerabilities/secrets and publishes the exact

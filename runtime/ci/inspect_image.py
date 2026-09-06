@@ -28,6 +28,7 @@ def forbidden(path: str) -> bool:
 
 def inspect_archive(archive: str):
     violations = 0
+    rejected = []
     layers = 0
     with tarfile.open(archive) as image:
         manifest = json.load(image.extractfile("manifest.json"))
@@ -40,9 +41,13 @@ def inspect_archive(archive: str):
             layers += 1
             with tarfile.open(fileobj=image.extractfile(layer), mode="r|*") as files:
                 for member in files:
-                    violations += int(forbidden(member.name))
+                    if forbidden(member.name):
+                        violations += 1
+                        if len(rejected) < 20:
+                            rejected.append(member.name)
     if violations:
-        raise ValueError(f"image containment failed: {violations} forbidden layer entries (paths withheld)")
+        # These are build-layer paths, never file contents or runtime variables.
+        raise ValueError(f"image containment failed: {violations} forbidden layer entries: {json.dumps(rejected)}")
     return {"layersInspected": layers, "forbiddenEntries": 0, "user": config["User"]}
 
 

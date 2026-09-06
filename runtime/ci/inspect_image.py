@@ -9,7 +9,13 @@ APP_ROOTS = {"api", "contracts", "security", "ports", "runtime", "observability"
 
 
 def forbidden(path: str) -> bool:
-    p = PurePosixPath(path.lstrip("./"))
+    # Tar paths may start with ./ or /; never strip dots from hidden filenames.
+    path = path.lstrip("/")
+    while path.startswith("./"):
+        path = path[2:]
+    p = PurePosixPath(path)
+    if ".." in p.parts:
+        return True
     if FORBIDDEN_PARTS.intersection(p.parts):
         return True
     if p.name.startswith(".env") or p.suffix in {".sqlite", ".sqlite3", ".db", ".key", ".pem"}:

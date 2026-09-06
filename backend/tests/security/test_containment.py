@@ -20,7 +20,7 @@ def test_current_tree_rejects_derived_secrets_and_databases():
 
 def test_layer_gate_includes_hidden_and_deleted_layer_families():
     check = load("inspect_image").forbidden
-    for path in ("srv/frontend/app.js", "srv/backend/uploads/file", "root/.cache/pip/x", "srv/.env", "srv/backend/app/services/legacy.py", "srv/backend/app/runtime/__pycache__/x.pyc"):
+    for path in (".env", "./.env", "/.env", "././.git/config", ".git/config", "../hidden", "srv/frontend/app.js", "srv/backend/uploads/file", "root/.cache/pip/x", "srv/.env", "srv/backend/app/services/legacy.py", "srv/backend/app/runtime/__pycache__/x.pyc"):
         assert check(path)
     for path in ("srv/backend/app/runtime/settings.py", "etc/ssl/certs/ca-certificates.crt", "etc/ssl/cert.pem", "opt/runtime/lib/python3.12/site-packages/certifi/cacert.pem"):
         assert not check(path)

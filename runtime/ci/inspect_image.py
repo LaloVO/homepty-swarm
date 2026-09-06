@@ -44,6 +44,9 @@ def inspect_archive(archive: str):
         config = json.load(image.extractfile(manifest[0]["Config"]))["config"]
         if config.get("User") != "65532:65532":
             raise ValueError("runtime must be non-root")
+        allowed_env = {"PATH", "LANG", "GPG_KEY", "PYTHON_VERSION", "PYTHON_SHA256", "PYTHONPATH", "PYTHONDONTWRITEBYTECODE", "PYTHONUNBUFFERED"}
+        if any(entry.split("=", 1)[0] not in allowed_env for entry in config.get("Env", [])):
+            raise ValueError("image contains unapproved baked environment variables; values withheld")
         for layer in manifest[0]["Layers"]:
             layers += 1
             with tarfile.open(fileobj=image.extractfile(layer), mode="r|*") as files:

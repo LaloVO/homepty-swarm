@@ -59,6 +59,7 @@ jobs:
         uses: aquasecurity/trivy-action@d2a0b60797ff03db6132bd4e2b293f9b37081297
         env:
           TRIVY_SCAN_REMOVED_PACKAGES: "true"
+          TRIVY_IMAGE_CONFIG_SCANNERS: secret
         with:
           input: ${{ runner.temp }}/api.tar
           scanners: vuln,secret
@@ -71,6 +72,7 @@ jobs:
         uses: aquasecurity/trivy-action@d2a0b60797ff03db6132bd4e2b293f9b37081297
         env:
           TRIVY_SCAN_REMOVED_PACKAGES: "true"
+          TRIVY_IMAGE_CONFIG_SCANNERS: secret
         with:
           input: ${{ runner.temp }}/worker.tar
           scanners: vuln,secret

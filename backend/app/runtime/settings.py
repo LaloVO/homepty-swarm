@@ -28,6 +28,7 @@ class Settings:
     max_artifact_bytes: int = 8_388_608
     max_jobs_per_tenant: int = 20
     artifact_region: str = "auto"
+    artifact_addressing_style: str = "path"
 
     def __post_init__(self):
         if self.environment not in ("local", "preview", "qa", "production"):
@@ -39,6 +40,8 @@ class Settings:
             raise ValueError("SWARM_KEYS_INVALID")
         if not self.inbox_url or not self.artifact_bucket or not self.artifact_access_key or not self.artifact_secret_key:
             raise ValueError("SWARM_BINDINGS_REQUIRED")
+        if self.artifact_addressing_style not in ("path", "virtual"):
+            raise ValueError("SWARM_ARTIFACT_ADDRESSING_INVALID")
         endpoint = urlsplit(self.artifact_endpoint)
         if endpoint.username or endpoint.password or endpoint.query or endpoint.fragment or not endpoint.hostname:
             raise ValueError("SWARM_EGRESS_INVALID")
@@ -86,6 +89,7 @@ class Settings:
                 concurrency=int(os.environ.get("SWARM_MAX_CONCURRENCY", "2")),
                 max_deliveries=int(os.environ.get("SWARM_MAX_DELIVERIES", "3")),
                 artifact_region=os.environ.get("SWARM_ARTIFACT_REGION", "auto"),
+                artifact_addressing_style=os.environ.get("SWARM_ARTIFACT_ADDRESSING_STYLE", "path"),
             )
         except (KeyError, TypeError, ValueError):
             raise ValueError("SWARM_CONFIG_INVALID") from None

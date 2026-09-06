@@ -20,6 +20,16 @@ def test_protocol_numeric_keys_match_brain():
         assert checksum(vector["body"]) == vector["checksum"]
 
 
+def test_bucket_addressing_is_explicit_and_validated(settings):
+    from dataclasses import replace
+    from app.ports.artifact_store import S3ArtifactStore
+    for style in ("path", "virtual"):
+        store = S3ArtifactStore(replace(settings, artifact_addressing_style=style))
+        assert store.client.meta.config.s3["addressing_style"] == style
+    with pytest.raises(ValueError, match="SWARM_ARTIFACT_ADDRESSING_INVALID"):
+        replace(settings, artifact_addressing_style="automatic-guess")
+
+
 def test_real_compiler_requires_approved_providers(compiled_job, settings):
     with pytest.raises(ContractError, match="CAPABILITY_NOT_REGISTERED"):
         validate_job(compiled_job, settings)

@@ -16,6 +16,13 @@ def forbidden(path: str) -> bool:
     p = PurePosixPath(path)
     if ".." in p.parts:
         return True
+    # Observed Debian debconf executable and public CA bundles from the pinned base.
+    # These are not a web frontend, application data, or private signing keys.
+    if str(p) in {
+        "usr/share/debconf/frontend", "usr/lib/ssl/cert.pem",
+        "opt/runtime/lib/python3.12/site-packages/pip/_vendor/certifi/cacert.pem",
+    }:
+        return False
     if FORBIDDEN_PARTS.intersection(p.parts):
         return True
     if p.name.startswith(".env") or p.suffix in {".sqlite", ".sqlite3", ".db", ".key", ".pem"}:

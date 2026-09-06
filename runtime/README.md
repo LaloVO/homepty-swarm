@@ -53,6 +53,7 @@ customer data: historical public remediation remains a separate, explicitly scop
 | `SWARM_ARTIFACT_BUCKET` | Private dedicated bucket |
 | `SWARM_ARTIFACT_ACCESS_KEY`, `SWARM_ARTIFACT_SECRET_KEY` | Bucket-scoped credentials |
 | `SWARM_ARTIFACT_REGION` | Provider region; default auto |
+| `SWARM_ARTIFACT_ADDRESSING_STYLE` | `path` (legacy/default) or `virtual`; use the created Railway bucket's declared URL style |
 | `SWARM_SOURCE_COMMIT` | Exact published 40-character source commit |
 | `SWARM_IMAGE_DIGEST` | Exact deployed sha256 digest |
 | `SWARM_ALLOWED_PROJECTION_POLICIES` | Nonempty JSON array of Brain-approved versions |

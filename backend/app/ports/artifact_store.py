@@ -22,7 +22,7 @@ class S3ArtifactStore:
             region_name=settings.artifact_region,
             config=Config(connect_timeout=3, read_timeout=10,
                           retries={"max_attempts": 2, "mode": "standard"},
-                          s3={"addressing_style": "path"}))
+                          s3={"addressing_style": settings.artifact_addressing_style}))
 
     def ready(self):
         self.client.head_bucket(Bucket=self.settings.artifact_bucket)

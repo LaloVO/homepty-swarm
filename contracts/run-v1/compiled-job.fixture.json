@@ -1,0 +1,278 @@
+{
+  "contractVersion": 1,
+  "runId": "fixture_compiled_run",
+  "attempt": 1,
+  "tenantScope": "fixture_tenant",
+  "snapshot": {
+    "contractVersion": 1,
+    "snapshotId": "fixture_projection",
+    "state": "partial",
+    "tenantScope": "fixture_tenant",
+    "nodes": [
+      {
+        "nodeId": "fixture_zone",
+        "entityRef": {
+          "type": "zone",
+          "id": "fixture_zone"
+        },
+        "label": "Zona sintética",
+        "population": "observed",
+        "sourceAsOf": "2026-09-04T12:00:00.000Z",
+        "relevance": 1,
+        "aliasCandidates": []
+      }
+    ],
+    "hyperedges": [],
+    "validAt": "2026-09-04T12:00:00.000Z",
+    "sourceAsOf": "2026-09-04T12:00:00.000Z",
+    "projectionPolicyVersion": "fixture-policy@v1",
+    "budget": {
+      "maxNodes": 300,
+      "maxHyperedges": 300,
+      "maxHops": 2
+    },
+    "truncated": false,
+    "blockers": [],
+    "checksum": "e8ba2257db2d564f69308e168184bfcb230c4c49662f72b54bf6392edd4abc98"
+  },
+  "plan": {
+    "contractVersion": 1,
+    "planVersion": "scenario-plan@v2",
+    "policyVersion": "plan-policy@v1",
+    "steps": [
+      {
+        "stepId": "project_context",
+        "stepType": "project_context",
+        "dependsOn": [],
+        "consumes": [],
+        "produces": [
+          "context_snapshot"
+        ],
+        "capabilityRef": null,
+        "stepKey": "282b41f66561788353dc803d0cb77a33702ba87563c3b86d194d6ef6b17ba23d",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 0
+        }
+      },
+      {
+        "stepId": "query_market",
+        "stepType": "query_capability",
+        "dependsOn": [
+          "project_context"
+        ],
+        "consumes": [
+          "context_snapshot"
+        ],
+        "produces": [
+          "market_context",
+          "price_trend"
+        ],
+        "capabilityRef": "market",
+        "stepKey": "0226e051b966d46616121ed7edf0d15479bd55403d69fe86c46b759df7b33eaa",
+        "worstCase": {
+          "tokens": 4000,
+          "costUsd": 0.04,
+          "wallTimeMs": 15000
+        }
+      },
+      {
+        "stepId": "merge_findings",
+        "stepType": "merge_findings",
+        "dependsOn": [
+          "query_market"
+        ],
+        "consumes": [
+          "market_context",
+          "price_trend"
+        ],
+        "produces": [
+          "contradiction_sets",
+          "merged_findings"
+        ],
+        "capabilityRef": null,
+        "stepKey": "668f77521b5035aab51e7a86f4e49a130f18b8a371270d4c2944b32dc304dae3",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 30000
+        }
+      },
+      {
+        "stepId": "validate_run_graph",
+        "stepType": "validate_run_graph",
+        "dependsOn": [
+          "merge_findings"
+        ],
+        "consumes": [
+          "merged_findings"
+        ],
+        "produces": [
+          "run_graph"
+        ],
+        "capabilityRef": null,
+        "stepKey": "8a8b76f8b83a8ed8bf6a26f95f893376b8f942c2ab56aa3a29cfafad5f92001c",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 30000
+        }
+      },
+      {
+        "stepId": "compile_report",
+        "stepType": "compile_report",
+        "dependsOn": [
+          "merge_findings",
+          "validate_run_graph"
+        ],
+        "consumes": [
+          "contradiction_sets",
+          "merged_findings",
+          "run_graph"
+        ],
+        "produces": [
+          "structured_report"
+        ],
+        "capabilityRef": null,
+        "executionInputs": {
+          "kind": "report",
+          "requestedOutputs": [
+            "market_context"
+          ]
+        },
+        "stepKey": "b9e0c8193caf07d6cb06967582427a4281a64373cb54c062ec0de71f41a33072",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 30000
+        }
+      },
+      {
+        "stepId": "evaluate_value",
+        "stepType": "evaluate_value",
+        "dependsOn": [
+          "compile_report"
+        ],
+        "consumes": [
+          "structured_report"
+        ],
+        "produces": [
+          "value_evaluation"
+        ],
+        "capabilityRef": null,
+        "stepKey": "e86052d9dc1a235f2ceb95605fc43324f602270d56e11c5cb8743b3e21eb5667",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 0
+        }
+      }
+    ],
+    "topologicalOrder": [
+      "project_context",
+      "query_market",
+      "merge_findings",
+      "validate_run_graph",
+      "compile_report",
+      "evaluate_value"
+    ],
+    "selectionTrace": [
+      {
+        "capabilityRef": "valuation",
+        "chosen": false,
+        "marginalScore": 0,
+        "components": {},
+        "reason": "required_input_absent"
+      },
+      {
+        "capabilityRef": "risk",
+        "chosen": false,
+        "marginalScore": 0,
+        "components": {},
+        "reason": "required_input_absent"
+      },
+      {
+        "capabilityRef": "market",
+        "chosen": true,
+        "marginalScore": 1.5476,
+        "components": {
+          "requiredCoverage": 1,
+          "frontierCoverage": 0.5,
+          "informationGain": 0.6,
+          "diversity": 1,
+          "redundancy": 0,
+          "cost": 0.004,
+          "latency": 0.125,
+          "failureRisk": 0.05
+        },
+        "reason": "selected"
+      },
+      {
+        "capabilityRef": "spatial",
+        "chosen": false,
+        "marginalScore": 0.6632,
+        "components": {
+          "requiredCoverage": 0,
+          "frontierCoverage": 1,
+          "informationGain": 0.5,
+          "diversity": 1,
+          "redundancy": 0,
+          "cost": 0.003,
+          "latency": 0.1,
+          "failureRisk": 0.05
+        },
+        "reason": "budget_or_coverage_exhausted"
+      },
+      {
+        "capabilityRef": "demand",
+        "chosen": false,
+        "marginalScore": 0.564566667,
+        "components": {
+          "requiredCoverage": 0,
+          "frontierCoverage": 1,
+          "informationGain": 0.55,
+          "diversity": 0.5,
+          "redundancy": 0,
+          "cost": 0.0035000000000000005,
+          "latency": 0.11666666666666667,
+          "failureRisk": 0.1
+        },
+        "reason": "budget_or_coverage_exhausted"
+      },
+      {
+        "capabilityRef": "market_secondary",
+        "chosen": false,
+        "marginalScore": -0.424666667,
+        "components": {
+          "requiredCoverage": 0,
+          "frontierCoverage": 0,
+          "informationGain": 0.3,
+          "diversity": 0,
+          "redundancy": 1,
+          "cost": 0.005,
+          "latency": 0.13333333333333333,
+          "failureRisk": 0.05
+        },
+        "reason": "no_marginal_value"
+      }
+    ],
+    "reservedBudget": {
+      "maxTokens": 4000,
+      "maxCostUsd": 0.04,
+      "maxWallTimeMs": 105000,
+      "maxConcurrency": 4
+    },
+    "blockers": []
+  },
+  "budget": {
+    "maxTokens": 100000,
+    "maxCostUsd": 10,
+    "maxWallTimeMs": 120000,
+    "maxConcurrency": 4
+  },
+  "nonce": "fixture_job_nonce",
+  "issuedAt": "2026-09-04T12:00:00.000Z",
+  "expiresAt": "2026-09-04T12:02:00.000Z",
+  "payloadChecksum": "d6cb46ee45003e733de064be65f37af7d64894f465a9d3e19df0c38f4da9c25b"
+}

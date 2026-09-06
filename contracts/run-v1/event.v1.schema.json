@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "attempt": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "stepId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "stepSequence": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "eventType": {
+      "type": "string",
+      "enum": [
+        "run.queued",
+        "run.started",
+        "step.started",
+        "step.completed",
+        "step.failed",
+        "finding.emitted",
+        "run.cancelling",
+        "run.terminal"
+      ]
+    },
+    "payloadChecksum": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "payload": {},
+    "emittedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+    }
+  },
+  "required": [
+    "eventId",
+    "runId",
+    "attempt",
+    "stepId",
+    "stepSequence",
+    "eventType",
+    "payloadChecksum",
+    "payload",
+    "emittedAt"
+  ],
+  "additionalProperties": false
+}

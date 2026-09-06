@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "runId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "attempt": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "artifactId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "run_graph",
+              "structured_report",
+              "findings",
+              "metrics"
+            ]
+          },
+          "checksum": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "byteSize": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "artifactId",
+          "kind",
+          "checksum",
+          "byteSize"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "runId",
+    "attempt",
+    "artifacts"
+  ],
+  "additionalProperties": false
+}

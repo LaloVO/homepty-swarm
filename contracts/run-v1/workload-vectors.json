@@ -1,0 +1,1067 @@
+{
+  "contractVersion": "homepty-workload-vectors.v1",
+  "fixtureOnly": true,
+  "valid": [
+    {
+      "name": "submit-unicode-numeric-keys",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "status-empty",
+      "method": "GET",
+      "target": "/v1/runs/fixture_run_a/attempts/1/status",
+      "body": null,
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "null",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_1_00000000",
+        "bodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "signature": "c678cd2926acb53ddc238362c6edd6a2c7d8d744163c2842c82c08c906f6d085",
+        "body": null
+      }
+    },
+    {
+      "name": "events-query",
+      "method": "GET",
+      "target": "/v1/runs/fixture_run_a/attempts/1/events?afterStepSequence=42",
+      "body": null,
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "null",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_2_00000000",
+        "bodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "signature": "1c44f9cfde3824956be0fc3bb59a3bb1f0f53dc53f8b480b534367f36106fbf7",
+        "body": null
+      }
+    },
+    {
+      "name": "cancel-previous-key",
+      "method": "POST",
+      "target": "/v1/runs/fixture_run_b/attempts/2/cancel",
+      "body": {
+        "runId": "fixture_run_b",
+        "attempt": 2,
+        "reason": "fixture cancellation"
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "1f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100",
+      "canonicalBody": "{\"attempt\":2,\"reason\":\"fixture cancellation\",\"runId\":\"fixture_run_b\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-previous",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_3_00000000",
+        "bodySha256": "63810db90ba135981e2611bc768dc892435b09bd8f53f57572c71f99d499d310",
+        "signature": "0188c9b62bb4e71582a544e0a3b884a40b724c7be59e72e29cc8fb65ffa16749",
+        "body": {
+          "runId": "fixture_run_b",
+          "attempt": 2,
+          "reason": "fixture cancellation"
+        }
+      }
+    }
+  ],
+  "invalid": [
+    {
+      "name": "body-tamper",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "injected": true
+        }
+      }
+    },
+    {
+      "name": "signature-tamper",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "unknown-key",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "unconfigured",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "algorithm-downgrade",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "none",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "unsupported-version",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v2",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "nonce-newline",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000\n",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "extra-envelope-field",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        },
+        "tenant": "injected"
+      }
+    },
+    {
+      "name": "expired-at-boundary",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:05:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "future-outside-skew",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T11:59:29.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "ttl-too-long",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.001Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "invalid-date",
+      "method": "POST",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-02-30T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "method-tamper",
+      "method": "GET",
+      "target": "/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "target-tamper",
+      "method": "POST",
+      "target": "/v1/runs/another/attempts/1/cancel",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "query-tamper",
+      "method": "GET",
+      "target": "/v1/runs/fixture_run_a/attempts/1/events?afterStepSequence=43",
+      "body": null,
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "null",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_2_00000000",
+        "bodySha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "signature": "1c44f9cfde3824956be0fc3bb59a3bb1f0f53dc53f8b480b534367f36106fbf7",
+        "body": null
+      },
+      "base": 2
+    },
+    {
+      "name": "encoded-slash",
+      "method": "POST",
+      "target": "/v1/runs/foo%2Fbar",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "dot-segment",
+      "method": "POST",
+      "target": "/v1/runs/../cancel",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "absolute-url",
+      "method": "POST",
+      "target": "https://swarm.invalid/v1/runs",
+      "body": {
+        "runId": "fixture_run_a",
+        "attempt": 1,
+        "fixtureOnly": true,
+        "context": {
+          "2": "two",
+          "10": "ten",
+          "😀": "astral",
+          "": "bmp",
+          "label": "Renta – México",
+          "values": [
+            0,
+            0,
+            1.25,
+            1e-7,
+            0.000001,
+            9007199254740991
+          ]
+        }
+      },
+      "now": "2026-09-04T12:00:00.000Z",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "canonicalBody": "{\"attempt\":1,\"context\":{\"10\":\"ten\",\"2\":\"two\",\"label\":\"Renta – México\",\"values\":[0,0,1.25,1e-7,0.000001,9007199254740991],\"😀\":\"astral\",\"\":\"bmp\"},\"fixtureOnly\":true,\"runId\":\"fixture_run_a\"}",
+      "envelope": {
+        "contractVersion": "homepty-workload.v1",
+        "keyId": "fixture-current",
+        "algorithm": "HMAC-SHA256",
+        "issuedAt": "2026-09-04T12:00:00.000Z",
+        "expiresAt": "2026-09-04T12:05:00.000Z",
+        "nonce": "fixture_nonce_0_00000000",
+        "bodySha256": "674392303a2f74694da0568a34067f0ba8d4afcb4edd3544233ab08da1f2ce61",
+        "signature": "e99d6c4b72a7f1dff670b68fc01cc02a16b8b6d37d330aced7605188208118a6",
+        "body": {
+          "runId": "fixture_run_a",
+          "attempt": 1,
+          "fixtureOnly": true,
+          "context": {
+            "2": "two",
+            "10": "ten",
+            "😀": "astral",
+            "": "bmp",
+            "label": "Renta – México",
+            "values": [
+              0,
+              0,
+              1.25,
+              1e-7,
+              0.000001,
+              9007199254740991
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

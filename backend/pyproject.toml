@@ -2,7 +2,7 @@
 name = "homepty-swarm-backend"
 version = "0.1.0"
 description = "Homepty Swarm - Concise & Universal Swarm Intelligence Engine"
-requires-python = ">=3.11"
+requires-python = ">=3.12,<3.13"
 license = { text = "AGPL-3.0" }
 authors = [
     { name = "Homepty Swarm Team" }
@@ -32,6 +32,8 @@ dependencies = [
     # Utilities
     "python-dotenv>=1.0.0",
     "pydantic>=2.0.0",
+    # Canonical workload bodies shared with Brain (RFC 8785)
+    "rfc8785==0.1.4",
 ]
 
 [project.optional-dependencies]

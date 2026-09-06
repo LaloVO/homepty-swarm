@@ -1,0 +1,19 @@
+FROM python:3.12.13-slim-bookworm@sha256:4766d8b510c428e595d74b9cc5bbb2fae8e26316fffb4adc89908d79aacd58a2 AS dependencies
+WORKDIR /build
+COPY runtime/requirements.lock.txt ./requirements.lock.txt
+RUN python -m venv /opt/runtime && /opt/runtime/bin/pip install --no-cache-dir --require-hashes -r requirements.lock.txt
+
+FROM python:3.12.13-slim-bookworm@sha256:4766d8b510c428e595d74b9cc5bbb2fae8e26316fffb4adc89908d79aacd58a2
+ENV PATH="/opt/runtime/bin:$PATH" PYTHONPATH=/srv/backend PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+WORKDIR /srv
+COPY --from=dependencies /opt/runtime /opt/runtime
+COPY LICENSE THIRD_PARTY_NOTICES.md ./
+COPY contracts/run-v1/*.schema.json ./contracts/run-v1/
+COPY backend/app/__init__.py ./backend/app/__init__.py
+COPY backend/app/contracts/ ./backend/app/contracts/
+COPY backend/app/security/ ./backend/app/security/
+COPY backend/app/ports/ ./backend/app/ports/
+COPY backend/app/runtime/ ./backend/app/runtime/
+COPY backend/app/observability/ ./backend/app/observability/
+USER 65532:65532
+CMD ["python", "-m", "app.runtime.job_consumer"]

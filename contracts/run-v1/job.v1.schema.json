@@ -1,0 +1,3664 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "contractVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "attempt": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "tenantScope": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "snapshot": {
+      "type": "object",
+      "properties": {
+        "contractVersion": {
+          "type": "number",
+          "const": 1
+        },
+        "snapshotId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "partial",
+            "blocked",
+            "complete"
+          ]
+        },
+        "tenantScope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "nodeId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 240
+              },
+              "entityRef": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80
+                  },
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 240
+                  }
+                },
+                "required": [
+                  "type",
+                  "id"
+                ],
+                "additionalProperties": false
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 240
+              },
+              "population": {
+                "type": "string",
+                "enum": [
+                  "observed",
+                  "derived",
+                  "simulated",
+                  "hypothesis"
+                ]
+              },
+              "sourceAsOf": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "relevance": {
+                "type": "number",
+                "minimum": 0
+              },
+              "aliasCandidates": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 240
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "nodeId",
+              "entityRef",
+              "label",
+              "population",
+              "sourceAsOf",
+              "relevance",
+              "aliasCandidates"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "hyperedges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "edgeId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 240
+              },
+              "relationType": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "roleBindings": {
+                "minItems": 2,
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "role": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "nodeId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 240
+                    }
+                  },
+                  "required": [
+                    "role",
+                    "nodeId"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "population": {
+                "type": "string",
+                "enum": [
+                  "observed",
+                  "derived",
+                  "simulated",
+                  "hypothesis"
+                ]
+              },
+              "confidenceClass": {
+                "type": "string",
+                "enum": [
+                  "extracted",
+                  "calculated",
+                  "modeled",
+                  "inferred",
+                  "ambiguous"
+                ]
+              },
+              "evidenceRefs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "evidenceId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 240
+                    },
+                    "sourceFamily": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 120
+                    },
+                    "asOf": {
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                    }
+                  },
+                  "required": [
+                    "evidenceId",
+                    "sourceFamily",
+                    "asOf"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "validFrom": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "validTo": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "edgeId",
+              "relationType",
+              "roleBindings",
+              "population",
+              "confidenceClass",
+              "evidenceRefs",
+              "validFrom",
+              "validTo"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "validAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+        },
+        "sourceAsOf": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+        },
+        "projectionPolicyVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "budget": {
+          "type": "object",
+          "properties": {
+            "maxNodes": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 100000
+            },
+            "maxHyperedges": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 100000
+            },
+            "maxHops": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 8
+            }
+          },
+          "required": [
+            "maxNodes",
+            "maxHyperedges",
+            "maxHops"
+          ],
+          "additionalProperties": false
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": [
+                  "UNAUTHORIZED_SUBJECT",
+                  "UNAUTHORIZED_TENANT",
+                  "CAPABILITY_BLOCKED",
+                  "CAPABILITY_NOT_REGISTERED",
+                  "EVIDENCE_INSUFFICIENT",
+                  "NO_GOVERNED_SNAPSHOT",
+                  "BUDGET_EXCEEDED",
+                  "PLAN_INVALID",
+                  "IDEMPOTENCY_CONFLICT",
+                  "RUNTIME_UNAVAILABLE",
+                  "CONTRACT_VERSION_UNSUPPORTED",
+                  "INVALID_STATE_TRANSITION",
+                  "EVENT_CORRUPTION"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "ref": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 240
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "code",
+              "message",
+              "ref"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "checksum": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "contractVersion",
+        "snapshotId",
+        "state",
+        "tenantScope",
+        "nodes",
+        "hyperedges",
+        "validAt",
+        "sourceAsOf",
+        "projectionPolicyVersion",
+        "budget",
+        "truncated",
+        "blockers",
+        "checksum"
+      ],
+      "additionalProperties": false
+    },
+    "plan": {
+      "type": "object",
+      "properties": {
+        "contractVersion": {
+          "type": "number",
+          "const": 1
+        },
+        "planVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "policyVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "stepId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "stepType": {
+                "type": "string",
+                "enum": [
+                  "project_context",
+                  "load_deterministic_baseline",
+                  "query_capability",
+                  "simulate_variant",
+                  "merge_findings",
+                  "validate_run_graph",
+                  "compile_report",
+                  "evaluate_value"
+                ]
+              },
+              "dependsOn": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                }
+              },
+              "consumes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                }
+              },
+              "produces": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                }
+              },
+              "capabilityRef": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "executionInputs": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "const": "s1_baseline"
+                      },
+                      "bundle": {
+                        "type": "object",
+                        "properties": {
+                          "contractVersion": {
+                            "type": "string",
+                            "const": "s1-execution.v1"
+                          },
+                          "inputRef": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          },
+                          "sourceAsOf": {
+                            "type": "string",
+                            "format": "date-time",
+                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                          },
+                          "subjectRef": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "id"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "context": {
+                            "type": "object",
+                            "properties": {
+                              "episodeId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "propertyId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "familyId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "property": {
+                                "type": "object",
+                                "properties": {
+                                  "price": {
+                                    "type": "number",
+                                    "exclusiveMinimum": 0
+                                  },
+                                  "propertyType": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 120
+                                  },
+                                  "zoneId": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 120
+                                  },
+                                  "distanceKm": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "bedrooms": {
+                                    "anyOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "bathrooms": {
+                                    "anyOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "parking": {
+                                    "anyOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "areaSqm": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "exclusiveMinimum": 0
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "price",
+                                  "propertyType",
+                                  "zoneId",
+                                  "distanceKm",
+                                  "bedrooms",
+                                  "bathrooms",
+                                  "parking",
+                                  "areaSqm"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "referencePrice": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "owner": {
+                                "type": "object",
+                                "properties": {
+                                  "reservePrice": {
+                                    "type": "number",
+                                    "exclusiveMinimum": 0
+                                  },
+                                  "urgency": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "exclusivityWillingness": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  }
+                                },
+                                "required": [
+                                  "reservePrice",
+                                  "urgency",
+                                  "exclusivityWillingness"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "agreementDurationDays": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3650
+                              },
+                              "commissionRate": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "advisorCapacity": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "alternativeNetValue": {
+                                "type": "number"
+                              },
+                              "competitorInventory": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 9007199254740991
+                              },
+                              "marketScope": {
+                                "type": "string",
+                                "enum": [
+                                  "homepty_only",
+                                  "market_wide"
+                                ]
+                              },
+                              "horizonDays": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 365
+                              }
+                            },
+                            "required": [
+                              "episodeId",
+                              "propertyId",
+                              "familyId",
+                              "property",
+                              "referencePrice",
+                              "owner",
+                              "agreementDurationDays",
+                              "commissionRate",
+                              "advisorCapacity",
+                              "alternativeNetValue",
+                              "competitorInventory",
+                              "marketScope",
+                              "horizonDays"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "params": {
+                            "type": "object",
+                            "properties": {
+                              "parameterSetRef": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "provenance": {
+                                "type": "string",
+                                "enum": [
+                                  "declared_prior",
+                                  "calibrated",
+                                  "synthetic_ground_truth"
+                                ]
+                              },
+                              "stratumId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 160
+                              },
+                              "inheritedFromStratumId": {
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 160
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "lambdaBase": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "priceElasticity": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "stalenessDecay": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "stalenessFloor": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "priceFactorMin": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "priceFactorMax": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "campaignMaxUplift": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "campaignSaturation": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "channelReach": {
+                                "type": "object",
+                                "propertyNames": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 60
+                                },
+                                "additionalProperties": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                }
+                              },
+                              "openListingReachPerAdvisor": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "otherAdvisorCount": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 9007199254740991
+                              },
+                              "priceCutSignalStrength": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "priceCutSignalDecayDays": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "visitIntercept": {
+                                "type": "number"
+                              },
+                              "visitEffortCoef": {
+                                "type": "number"
+                              },
+                              "visitCampaignCoef": {
+                                "type": "number"
+                              },
+                              "visitQualifiedCoef": {
+                                "type": "number"
+                              },
+                              "visitUrgencyCoef": {
+                                "type": "number"
+                              },
+                              "offerIntercept": {
+                                "type": "number"
+                              },
+                              "offerFitCoef": {
+                                "type": "number"
+                              },
+                              "offerQualifiedCoef": {
+                                "type": "number"
+                              },
+                              "offerUrgencyCoef": {
+                                "type": "number"
+                              },
+                              "offerPriceRatioCoef": {
+                                "type": "number"
+                              },
+                              "conversionFloor": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "conversionCeiling": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "prospectAbandonRate": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "exclusiveEffortShare": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "openEffortShare": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "reserveDecayRate": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "reserveFloorRatio": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "counterofferPropensity": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fallthroughBase": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fallthroughPreapprovedReduction": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fallthroughDirect": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "preapprovedDtiHeadroom": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "directFinancingLtvBoost": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "competitorAdjustIntercept": {
+                                "type": "number"
+                              },
+                              "competitorAdjustDaysCoef": {
+                                "type": "number"
+                              },
+                              "competitorAdjustPriceRatioCoef": {
+                                "type": "number"
+                              },
+                              "competitorCutMin": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 0.5
+                              },
+                              "competitorCutMax": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 0.5
+                              },
+                              "newInventoryRate": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "competitorWithdrawalHazard": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "marketDriftPerDay": {
+                                "type": "number"
+                              },
+                              "withdrawalHazardBase": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "withdrawalHazardDaysCoef": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "openListingWithdrawalMultiplier": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "fitPriceScale": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "fitDistanceScale": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "fitAreaTolerance": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fitRoomTolerance": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 5
+                              },
+                              "segments": {
+                                "minItems": 1,
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "segmentId": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "maxLength": 80
+                                    },
+                                    "share": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 1
+                                    },
+                                    "urgency": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 1
+                                    },
+                                    "requirement": {
+                                      "type": "object",
+                                      "properties": {
+                                        "minPrice": {
+                                          "type": "number",
+                                          "minimum": 0
+                                        },
+                                        "maxPrice": {
+                                          "type": "number",
+                                          "exclusiveMinimum": 0
+                                        },
+                                        "propertyType": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxLength": 60
+                                        },
+                                        "zoneIds": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "maxLength": 80
+                                          }
+                                        },
+                                        "bedrooms": {
+                                          "anyOf": [
+                                            {
+                                              "type": "integer",
+                                              "minimum": 0,
+                                              "maximum": 20
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        },
+                                        "bathrooms": {
+                                          "anyOf": [
+                                            {
+                                              "type": "integer",
+                                              "minimum": 0,
+                                              "maximum": 20
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        },
+                                        "parking": {
+                                          "anyOf": [
+                                            {
+                                              "type": "integer",
+                                              "minimum": 0,
+                                              "maximum": 20
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        },
+                                        "areaSqm": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "exclusiveMinimum": 0
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "minPrice",
+                                        "maxPrice",
+                                        "propertyType",
+                                        "zoneIds",
+                                        "bedrooms",
+                                        "bathrooms",
+                                        "parking",
+                                        "areaSqm"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    "discountAlpha": {
+                                      "type": "number",
+                                      "exclusiveMinimum": 0
+                                    },
+                                    "discountBeta": {
+                                      "type": "number",
+                                      "exclusiveMinimum": 0
+                                    },
+                                    "supportingEpisodes": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 9007199254740991
+                                    }
+                                  },
+                                  "required": [
+                                    "segmentId",
+                                    "share",
+                                    "urgency",
+                                    "requirement",
+                                    "discountAlpha",
+                                    "discountBeta",
+                                    "supportingEpisodes"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              }
+                            },
+                            "required": [
+                              "parameterSetRef",
+                              "provenance",
+                              "stratumId",
+                              "inheritedFromStratumId",
+                              "lambdaBase",
+                              "priceElasticity",
+                              "stalenessDecay",
+                              "stalenessFloor",
+                              "priceFactorMin",
+                              "priceFactorMax",
+                              "campaignMaxUplift",
+                              "campaignSaturation",
+                              "channelReach",
+                              "openListingReachPerAdvisor",
+                              "otherAdvisorCount",
+                              "priceCutSignalStrength",
+                              "priceCutSignalDecayDays",
+                              "visitIntercept",
+                              "visitEffortCoef",
+                              "visitCampaignCoef",
+                              "visitQualifiedCoef",
+                              "visitUrgencyCoef",
+                              "offerIntercept",
+                              "offerFitCoef",
+                              "offerQualifiedCoef",
+                              "offerUrgencyCoef",
+                              "offerPriceRatioCoef",
+                              "conversionFloor",
+                              "conversionCeiling",
+                              "prospectAbandonRate",
+                              "exclusiveEffortShare",
+                              "openEffortShare",
+                              "reserveDecayRate",
+                              "reserveFloorRatio",
+                              "counterofferPropensity",
+                              "fallthroughBase",
+                              "fallthroughPreapprovedReduction",
+                              "fallthroughDirect",
+                              "preapprovedDtiHeadroom",
+                              "directFinancingLtvBoost",
+                              "competitorAdjustIntercept",
+                              "competitorAdjustDaysCoef",
+                              "competitorAdjustPriceRatioCoef",
+                              "competitorCutMin",
+                              "competitorCutMax",
+                              "newInventoryRate",
+                              "competitorWithdrawalHazard",
+                              "marketDriftPerDay",
+                              "withdrawalHazardBase",
+                              "withdrawalHazardDaysCoef",
+                              "openListingWithdrawalMultiplier",
+                              "fitPriceScale",
+                              "fitDistanceScale",
+                              "fitAreaTolerance",
+                              "fitRoomTolerance",
+                              "segments"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "baselineRef": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          },
+                          "baseline": {
+                            "type": "object",
+                            "properties": {
+                              "variantId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "capture": {
+                                "type": "string",
+                                "enum": [
+                                  "si",
+                                  "no",
+                                  "condicionada"
+                                ]
+                              },
+                              "askingPrice": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "exclusivity": {
+                                "type": "string",
+                                "enum": [
+                                  "exclusiva",
+                                  "abierta",
+                                  "ninguna"
+                                ]
+                              },
+                              "campaignIntensity": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "channelMix": {
+                                "type": "object",
+                                "propertyNames": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 60
+                                },
+                                "additionalProperties": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                }
+                              },
+                              "offeredFinancing": {
+                                "type": "string",
+                                "enum": [
+                                  "ninguno",
+                                  "preaprobado",
+                                  "directo"
+                                ]
+                              },
+                              "listingTimingDays": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 365
+                              },
+                              "priceSchedule": {
+                                "maxItems": 24,
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "day": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 3650
+                                    },
+                                    "cutFraction": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 0.5
+                                    }
+                                  },
+                                  "required": [
+                                    "day",
+                                    "cutFraction"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "conditionMaxReservePrice": {
+                                "anyOf": [
+                                  {
+                                    "type": "number",
+                                    "exclusiveMinimum": 0
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": [
+                              "variantId",
+                              "capture",
+                              "askingPrice",
+                              "exclusivity",
+                              "campaignIntensity",
+                              "channelMix",
+                              "offeredFinancing",
+                              "listingTimingDays",
+                              "priceSchedule",
+                              "conditionMaxReservePrice"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "interventions": {
+                            "minItems": 1,
+                            "maxItems": 8,
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "variantId": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 120
+                                },
+                                "capture": {
+                                  "type": "string",
+                                  "enum": [
+                                    "si",
+                                    "no",
+                                    "condicionada"
+                                  ]
+                                },
+                                "askingPrice": {
+                                  "type": "number",
+                                  "exclusiveMinimum": 0
+                                },
+                                "exclusivity": {
+                                  "type": "string",
+                                  "enum": [
+                                    "exclusiva",
+                                    "abierta",
+                                    "ninguna"
+                                  ]
+                                },
+                                "campaignIntensity": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                },
+                                "channelMix": {
+                                  "type": "object",
+                                  "propertyNames": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 60
+                                  },
+                                  "additionalProperties": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  }
+                                },
+                                "offeredFinancing": {
+                                  "type": "string",
+                                  "enum": [
+                                    "ninguno",
+                                    "preaprobado",
+                                    "directo"
+                                  ]
+                                },
+                                "listingTimingDays": {
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "maximum": 365
+                                },
+                                "priceSchedule": {
+                                  "maxItems": 24,
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "day": {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 3650
+                                      },
+                                      "cutFraction": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 0.5
+                                      }
+                                    },
+                                    "required": [
+                                      "day",
+                                      "cutFraction"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "conditionMaxReservePrice": {
+                                  "anyOf": [
+                                    {
+                                      "type": "number",
+                                      "exclusiveMinimum": 0
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "variantId",
+                                "capture",
+                                "askingPrice",
+                                "exclusivity",
+                                "campaignIntensity",
+                                "channelMix",
+                                "offeredFinancing",
+                                "listingTimingDays",
+                                "priceSchedule",
+                                "conditionMaxReservePrice"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "affordabilityMode": {
+                            "type": "string",
+                            "const": "declared_prior"
+                          },
+                          "seed": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 4294967295
+                          },
+                          "replicates": {
+                            "type": "integer",
+                            "minimum": 2,
+                            "maximum": 10000
+                          },
+                          "syntheticFixture": {
+                            "type": "boolean"
+                          },
+                          "evaluation": {
+                            "type": "object",
+                            "properties": {
+                              "seeds": {
+                                "minItems": 2,
+                                "maxItems": 10,
+                                "type": "array",
+                                "items": {
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "maximum": 4294967295
+                                }
+                              },
+                              "costBudgetUnits": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "latencyBudgetUnits": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              }
+                            },
+                            "required": [
+                              "seeds",
+                              "costBudgetUnits",
+                              "latencyBudgetUnits"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "contractVersion",
+                          "inputRef",
+                          "sourceAsOf",
+                          "subjectRef",
+                          "context",
+                          "params",
+                          "baselineRef",
+                          "baseline",
+                          "interventions",
+                          "affordabilityMode",
+                          "seed",
+                          "replicates",
+                          "syntheticFixture",
+                          "evaluation"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "bundle"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "const": "s1_variant"
+                      },
+                      "bundle": {
+                        "type": "object",
+                        "properties": {
+                          "contractVersion": {
+                            "type": "string",
+                            "const": "s1-execution.v1"
+                          },
+                          "inputRef": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          },
+                          "sourceAsOf": {
+                            "type": "string",
+                            "format": "date-time",
+                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                          },
+                          "subjectRef": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "id"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "context": {
+                            "type": "object",
+                            "properties": {
+                              "episodeId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "propertyId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "familyId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "property": {
+                                "type": "object",
+                                "properties": {
+                                  "price": {
+                                    "type": "number",
+                                    "exclusiveMinimum": 0
+                                  },
+                                  "propertyType": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 120
+                                  },
+                                  "zoneId": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 120
+                                  },
+                                  "distanceKm": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "bedrooms": {
+                                    "anyOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "bathrooms": {
+                                    "anyOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "parking": {
+                                    "anyOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "areaSqm": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "exclusiveMinimum": 0
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "price",
+                                  "propertyType",
+                                  "zoneId",
+                                  "distanceKm",
+                                  "bedrooms",
+                                  "bathrooms",
+                                  "parking",
+                                  "areaSqm"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "referencePrice": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "owner": {
+                                "type": "object",
+                                "properties": {
+                                  "reservePrice": {
+                                    "type": "number",
+                                    "exclusiveMinimum": 0
+                                  },
+                                  "urgency": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "exclusivityWillingness": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  }
+                                },
+                                "required": [
+                                  "reservePrice",
+                                  "urgency",
+                                  "exclusivityWillingness"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "agreementDurationDays": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3650
+                              },
+                              "commissionRate": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "advisorCapacity": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "alternativeNetValue": {
+                                "type": "number"
+                              },
+                              "competitorInventory": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 9007199254740991
+                              },
+                              "marketScope": {
+                                "type": "string",
+                                "enum": [
+                                  "homepty_only",
+                                  "market_wide"
+                                ]
+                              },
+                              "horizonDays": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 365
+                              }
+                            },
+                            "required": [
+                              "episodeId",
+                              "propertyId",
+                              "familyId",
+                              "property",
+                              "referencePrice",
+                              "owner",
+                              "agreementDurationDays",
+                              "commissionRate",
+                              "advisorCapacity",
+                              "alternativeNetValue",
+                              "competitorInventory",
+                              "marketScope",
+                              "horizonDays"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "params": {
+                            "type": "object",
+                            "properties": {
+                              "parameterSetRef": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "provenance": {
+                                "type": "string",
+                                "enum": [
+                                  "declared_prior",
+                                  "calibrated",
+                                  "synthetic_ground_truth"
+                                ]
+                              },
+                              "stratumId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 160
+                              },
+                              "inheritedFromStratumId": {
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 160
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "lambdaBase": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "priceElasticity": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "stalenessDecay": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "stalenessFloor": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "priceFactorMin": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "priceFactorMax": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "campaignMaxUplift": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "campaignSaturation": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "channelReach": {
+                                "type": "object",
+                                "propertyNames": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 60
+                                },
+                                "additionalProperties": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                }
+                              },
+                              "openListingReachPerAdvisor": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "otherAdvisorCount": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 9007199254740991
+                              },
+                              "priceCutSignalStrength": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "priceCutSignalDecayDays": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "visitIntercept": {
+                                "type": "number"
+                              },
+                              "visitEffortCoef": {
+                                "type": "number"
+                              },
+                              "visitCampaignCoef": {
+                                "type": "number"
+                              },
+                              "visitQualifiedCoef": {
+                                "type": "number"
+                              },
+                              "visitUrgencyCoef": {
+                                "type": "number"
+                              },
+                              "offerIntercept": {
+                                "type": "number"
+                              },
+                              "offerFitCoef": {
+                                "type": "number"
+                              },
+                              "offerQualifiedCoef": {
+                                "type": "number"
+                              },
+                              "offerUrgencyCoef": {
+                                "type": "number"
+                              },
+                              "offerPriceRatioCoef": {
+                                "type": "number"
+                              },
+                              "conversionFloor": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "conversionCeiling": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "prospectAbandonRate": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "exclusiveEffortShare": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "openEffortShare": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "reserveDecayRate": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "reserveFloorRatio": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "counterofferPropensity": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fallthroughBase": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fallthroughPreapprovedReduction": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fallthroughDirect": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "preapprovedDtiHeadroom": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "directFinancingLtvBoost": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "competitorAdjustIntercept": {
+                                "type": "number"
+                              },
+                              "competitorAdjustDaysCoef": {
+                                "type": "number"
+                              },
+                              "competitorAdjustPriceRatioCoef": {
+                                "type": "number"
+                              },
+                              "competitorCutMin": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 0.5
+                              },
+                              "competitorCutMax": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 0.5
+                              },
+                              "newInventoryRate": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "competitorWithdrawalHazard": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "marketDriftPerDay": {
+                                "type": "number"
+                              },
+                              "withdrawalHazardBase": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "withdrawalHazardDaysCoef": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "openListingWithdrawalMultiplier": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "fitPriceScale": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "fitDistanceScale": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "fitAreaTolerance": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fitRoomTolerance": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 5
+                              },
+                              "segments": {
+                                "minItems": 1,
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "segmentId": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "maxLength": 80
+                                    },
+                                    "share": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 1
+                                    },
+                                    "urgency": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 1
+                                    },
+                                    "requirement": {
+                                      "type": "object",
+                                      "properties": {
+                                        "minPrice": {
+                                          "type": "number",
+                                          "minimum": 0
+                                        },
+                                        "maxPrice": {
+                                          "type": "number",
+                                          "exclusiveMinimum": 0
+                                        },
+                                        "propertyType": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxLength": 60
+                                        },
+                                        "zoneIds": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "maxLength": 80
+                                          }
+                                        },
+                                        "bedrooms": {
+                                          "anyOf": [
+                                            {
+                                              "type": "integer",
+                                              "minimum": 0,
+                                              "maximum": 20
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        },
+                                        "bathrooms": {
+                                          "anyOf": [
+                                            {
+                                              "type": "integer",
+                                              "minimum": 0,
+                                              "maximum": 20
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        },
+                                        "parking": {
+                                          "anyOf": [
+                                            {
+                                              "type": "integer",
+                                              "minimum": 0,
+                                              "maximum": 20
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        },
+                                        "areaSqm": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "exclusiveMinimum": 0
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "minPrice",
+                                        "maxPrice",
+                                        "propertyType",
+                                        "zoneIds",
+                                        "bedrooms",
+                                        "bathrooms",
+                                        "parking",
+                                        "areaSqm"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    "discountAlpha": {
+                                      "type": "number",
+                                      "exclusiveMinimum": 0
+                                    },
+                                    "discountBeta": {
+                                      "type": "number",
+                                      "exclusiveMinimum": 0
+                                    },
+                                    "supportingEpisodes": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 9007199254740991
+                                    }
+                                  },
+                                  "required": [
+                                    "segmentId",
+                                    "share",
+                                    "urgency",
+                                    "requirement",
+                                    "discountAlpha",
+                                    "discountBeta",
+                                    "supportingEpisodes"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              }
+                            },
+                            "required": [
+                              "parameterSetRef",
+                              "provenance",
+                              "stratumId",
+                              "inheritedFromStratumId",
+                              "lambdaBase",
+                              "priceElasticity",
+                              "stalenessDecay",
+                              "stalenessFloor",
+                              "priceFactorMin",
+                              "priceFactorMax",
+                              "campaignMaxUplift",
+                              "campaignSaturation",
+                              "channelReach",
+                              "openListingReachPerAdvisor",
+                              "otherAdvisorCount",
+                              "priceCutSignalStrength",
+                              "priceCutSignalDecayDays",
+                              "visitIntercept",
+                              "visitEffortCoef",
+                              "visitCampaignCoef",
+                              "visitQualifiedCoef",
+                              "visitUrgencyCoef",
+                              "offerIntercept",
+                              "offerFitCoef",
+                              "offerQualifiedCoef",
+                              "offerUrgencyCoef",
+                              "offerPriceRatioCoef",
+                              "conversionFloor",
+                              "conversionCeiling",
+                              "prospectAbandonRate",
+                              "exclusiveEffortShare",
+                              "openEffortShare",
+                              "reserveDecayRate",
+                              "reserveFloorRatio",
+                              "counterofferPropensity",
+                              "fallthroughBase",
+                              "fallthroughPreapprovedReduction",
+                              "fallthroughDirect",
+                              "preapprovedDtiHeadroom",
+                              "directFinancingLtvBoost",
+                              "competitorAdjustIntercept",
+                              "competitorAdjustDaysCoef",
+                              "competitorAdjustPriceRatioCoef",
+                              "competitorCutMin",
+                              "competitorCutMax",
+                              "newInventoryRate",
+                              "competitorWithdrawalHazard",
+                              "marketDriftPerDay",
+                              "withdrawalHazardBase",
+                              "withdrawalHazardDaysCoef",
+                              "openListingWithdrawalMultiplier",
+                              "fitPriceScale",
+                              "fitDistanceScale",
+                              "fitAreaTolerance",
+                              "fitRoomTolerance",
+                              "segments"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "baselineRef": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          },
+                          "baseline": {
+                            "type": "object",
+                            "properties": {
+                              "variantId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "capture": {
+                                "type": "string",
+                                "enum": [
+                                  "si",
+                                  "no",
+                                  "condicionada"
+                                ]
+                              },
+                              "askingPrice": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "exclusivity": {
+                                "type": "string",
+                                "enum": [
+                                  "exclusiva",
+                                  "abierta",
+                                  "ninguna"
+                                ]
+                              },
+                              "campaignIntensity": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "channelMix": {
+                                "type": "object",
+                                "propertyNames": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 60
+                                },
+                                "additionalProperties": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                }
+                              },
+                              "offeredFinancing": {
+                                "type": "string",
+                                "enum": [
+                                  "ninguno",
+                                  "preaprobado",
+                                  "directo"
+                                ]
+                              },
+                              "listingTimingDays": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 365
+                              },
+                              "priceSchedule": {
+                                "maxItems": 24,
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "day": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 3650
+                                    },
+                                    "cutFraction": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 0.5
+                                    }
+                                  },
+                                  "required": [
+                                    "day",
+                                    "cutFraction"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "conditionMaxReservePrice": {
+                                "anyOf": [
+                                  {
+                                    "type": "number",
+                                    "exclusiveMinimum": 0
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": [
+                              "variantId",
+                              "capture",
+                              "askingPrice",
+                              "exclusivity",
+                              "campaignIntensity",
+                              "channelMix",
+                              "offeredFinancing",
+                              "listingTimingDays",
+                              "priceSchedule",
+                              "conditionMaxReservePrice"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "interventions": {
+                            "minItems": 1,
+                            "maxItems": 8,
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "variantId": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 120
+                                },
+                                "capture": {
+                                  "type": "string",
+                                  "enum": [
+                                    "si",
+                                    "no",
+                                    "condicionada"
+                                  ]
+                                },
+                                "askingPrice": {
+                                  "type": "number",
+                                  "exclusiveMinimum": 0
+                                },
+                                "exclusivity": {
+                                  "type": "string",
+                                  "enum": [
+                                    "exclusiva",
+                                    "abierta",
+                                    "ninguna"
+                                  ]
+                                },
+                                "campaignIntensity": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                },
+                                "channelMix": {
+                                  "type": "object",
+                                  "propertyNames": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 60
+                                  },
+                                  "additionalProperties": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  }
+                                },
+                                "offeredFinancing": {
+                                  "type": "string",
+                                  "enum": [
+                                    "ninguno",
+                                    "preaprobado",
+                                    "directo"
+                                  ]
+                                },
+                                "listingTimingDays": {
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "maximum": 365
+                                },
+                                "priceSchedule": {
+                                  "maxItems": 24,
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "day": {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 3650
+                                      },
+                                      "cutFraction": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 0.5
+                                      }
+                                    },
+                                    "required": [
+                                      "day",
+                                      "cutFraction"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "conditionMaxReservePrice": {
+                                  "anyOf": [
+                                    {
+                                      "type": "number",
+                                      "exclusiveMinimum": 0
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "variantId",
+                                "capture",
+                                "askingPrice",
+                                "exclusivity",
+                                "campaignIntensity",
+                                "channelMix",
+                                "offeredFinancing",
+                                "listingTimingDays",
+                                "priceSchedule",
+                                "conditionMaxReservePrice"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "affordabilityMode": {
+                            "type": "string",
+                            "const": "declared_prior"
+                          },
+                          "seed": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 4294967295
+                          },
+                          "replicates": {
+                            "type": "integer",
+                            "minimum": 2,
+                            "maximum": 10000
+                          },
+                          "syntheticFixture": {
+                            "type": "boolean"
+                          },
+                          "evaluation": {
+                            "type": "object",
+                            "properties": {
+                              "seeds": {
+                                "minItems": 2,
+                                "maxItems": 10,
+                                "type": "array",
+                                "items": {
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "maximum": 4294967295
+                                }
+                              },
+                              "costBudgetUnits": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "latencyBudgetUnits": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              }
+                            },
+                            "required": [
+                              "seeds",
+                              "costBudgetUnits",
+                              "latencyBudgetUnits"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "contractVersion",
+                          "inputRef",
+                          "sourceAsOf",
+                          "subjectRef",
+                          "context",
+                          "params",
+                          "baselineRef",
+                          "baseline",
+                          "interventions",
+                          "affordabilityMode",
+                          "seed",
+                          "replicates",
+                          "syntheticFixture",
+                          "evaluation"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "variantId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "bundle",
+                      "variantId"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "const": "s1_value"
+                      },
+                      "bundle": {
+                        "type": "object",
+                        "properties": {
+                          "contractVersion": {
+                            "type": "string",
+                            "const": "s1-execution.v1"
+                          },
+                          "inputRef": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          },
+                          "sourceAsOf": {
+                            "type": "string",
+                            "format": "date-time",
+                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                          },
+                          "subjectRef": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "id": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "id"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "context": {
+                            "type": "object",
+                            "properties": {
+                              "episodeId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "propertyId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "familyId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "property": {
+                                "type": "object",
+                                "properties": {
+                                  "price": {
+                                    "type": "number",
+                                    "exclusiveMinimum": 0
+                                  },
+                                  "propertyType": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 120
+                                  },
+                                  "zoneId": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 120
+                                  },
+                                  "distanceKm": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "bedrooms": {
+                                    "anyOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "bathrooms": {
+                                    "anyOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "parking": {
+                                    "anyOf": [
+                                      {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "areaSqm": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "exclusiveMinimum": 0
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "price",
+                                  "propertyType",
+                                  "zoneId",
+                                  "distanceKm",
+                                  "bedrooms",
+                                  "bathrooms",
+                                  "parking",
+                                  "areaSqm"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "referencePrice": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "owner": {
+                                "type": "object",
+                                "properties": {
+                                  "reservePrice": {
+                                    "type": "number",
+                                    "exclusiveMinimum": 0
+                                  },
+                                  "urgency": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "exclusivityWillingness": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  }
+                                },
+                                "required": [
+                                  "reservePrice",
+                                  "urgency",
+                                  "exclusivityWillingness"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "agreementDurationDays": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3650
+                              },
+                              "commissionRate": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "advisorCapacity": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "alternativeNetValue": {
+                                "type": "number"
+                              },
+                              "competitorInventory": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 9007199254740991
+                              },
+                              "marketScope": {
+                                "type": "string",
+                                "enum": [
+                                  "homepty_only",
+                                  "market_wide"
+                                ]
+                              },
+                              "horizonDays": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 365
+                              }
+                            },
+                            "required": [
+                              "episodeId",
+                              "propertyId",
+                              "familyId",
+                              "property",
+                              "referencePrice",
+                              "owner",
+                              "agreementDurationDays",
+                              "commissionRate",
+                              "advisorCapacity",
+                              "alternativeNetValue",
+                              "competitorInventory",
+                              "marketScope",
+                              "horizonDays"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "params": {
+                            "type": "object",
+                            "properties": {
+                              "parameterSetRef": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "provenance": {
+                                "type": "string",
+                                "enum": [
+                                  "declared_prior",
+                                  "calibrated",
+                                  "synthetic_ground_truth"
+                                ]
+                              },
+                              "stratumId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 160
+                              },
+                              "inheritedFromStratumId": {
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 160
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "lambdaBase": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "priceElasticity": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "stalenessDecay": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "stalenessFloor": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "priceFactorMin": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "priceFactorMax": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "campaignMaxUplift": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "campaignSaturation": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "channelReach": {
+                                "type": "object",
+                                "propertyNames": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 60
+                                },
+                                "additionalProperties": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                }
+                              },
+                              "openListingReachPerAdvisor": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "otherAdvisorCount": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 9007199254740991
+                              },
+                              "priceCutSignalStrength": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "priceCutSignalDecayDays": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "visitIntercept": {
+                                "type": "number"
+                              },
+                              "visitEffortCoef": {
+                                "type": "number"
+                              },
+                              "visitCampaignCoef": {
+                                "type": "number"
+                              },
+                              "visitQualifiedCoef": {
+                                "type": "number"
+                              },
+                              "visitUrgencyCoef": {
+                                "type": "number"
+                              },
+                              "offerIntercept": {
+                                "type": "number"
+                              },
+                              "offerFitCoef": {
+                                "type": "number"
+                              },
+                              "offerQualifiedCoef": {
+                                "type": "number"
+                              },
+                              "offerUrgencyCoef": {
+                                "type": "number"
+                              },
+                              "offerPriceRatioCoef": {
+                                "type": "number"
+                              },
+                              "conversionFloor": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "conversionCeiling": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "prospectAbandonRate": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "exclusiveEffortShare": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "openEffortShare": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "reserveDecayRate": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "reserveFloorRatio": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "counterofferPropensity": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fallthroughBase": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fallthroughPreapprovedReduction": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fallthroughDirect": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "preapprovedDtiHeadroom": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "directFinancingLtvBoost": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "competitorAdjustIntercept": {
+                                "type": "number"
+                              },
+                              "competitorAdjustDaysCoef": {
+                                "type": "number"
+                              },
+                              "competitorAdjustPriceRatioCoef": {
+                                "type": "number"
+                              },
+                              "competitorCutMin": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 0.5
+                              },
+                              "competitorCutMax": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 0.5
+                              },
+                              "newInventoryRate": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "competitorWithdrawalHazard": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "marketDriftPerDay": {
+                                "type": "number"
+                              },
+                              "withdrawalHazardBase": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "withdrawalHazardDaysCoef": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "openListingWithdrawalMultiplier": {
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "fitPriceScale": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "fitDistanceScale": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "fitAreaTolerance": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "fitRoomTolerance": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 5
+                              },
+                              "segments": {
+                                "minItems": 1,
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "segmentId": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "maxLength": 80
+                                    },
+                                    "share": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 1
+                                    },
+                                    "urgency": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 1
+                                    },
+                                    "requirement": {
+                                      "type": "object",
+                                      "properties": {
+                                        "minPrice": {
+                                          "type": "number",
+                                          "minimum": 0
+                                        },
+                                        "maxPrice": {
+                                          "type": "number",
+                                          "exclusiveMinimum": 0
+                                        },
+                                        "propertyType": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxLength": 60
+                                        },
+                                        "zoneIds": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "maxLength": 80
+                                          }
+                                        },
+                                        "bedrooms": {
+                                          "anyOf": [
+                                            {
+                                              "type": "integer",
+                                              "minimum": 0,
+                                              "maximum": 20
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        },
+                                        "bathrooms": {
+                                          "anyOf": [
+                                            {
+                                              "type": "integer",
+                                              "minimum": 0,
+                                              "maximum": 20
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        },
+                                        "parking": {
+                                          "anyOf": [
+                                            {
+                                              "type": "integer",
+                                              "minimum": 0,
+                                              "maximum": 20
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        },
+                                        "areaSqm": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "exclusiveMinimum": 0
+                                            },
+                                            {
+                                              "type": "null"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "minPrice",
+                                        "maxPrice",
+                                        "propertyType",
+                                        "zoneIds",
+                                        "bedrooms",
+                                        "bathrooms",
+                                        "parking",
+                                        "areaSqm"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    "discountAlpha": {
+                                      "type": "number",
+                                      "exclusiveMinimum": 0
+                                    },
+                                    "discountBeta": {
+                                      "type": "number",
+                                      "exclusiveMinimum": 0
+                                    },
+                                    "supportingEpisodes": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 9007199254740991
+                                    }
+                                  },
+                                  "required": [
+                                    "segmentId",
+                                    "share",
+                                    "urgency",
+                                    "requirement",
+                                    "discountAlpha",
+                                    "discountBeta",
+                                    "supportingEpisodes"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              }
+                            },
+                            "required": [
+                              "parameterSetRef",
+                              "provenance",
+                              "stratumId",
+                              "inheritedFromStratumId",
+                              "lambdaBase",
+                              "priceElasticity",
+                              "stalenessDecay",
+                              "stalenessFloor",
+                              "priceFactorMin",
+                              "priceFactorMax",
+                              "campaignMaxUplift",
+                              "campaignSaturation",
+                              "channelReach",
+                              "openListingReachPerAdvisor",
+                              "otherAdvisorCount",
+                              "priceCutSignalStrength",
+                              "priceCutSignalDecayDays",
+                              "visitIntercept",
+                              "visitEffortCoef",
+                              "visitCampaignCoef",
+                              "visitQualifiedCoef",
+                              "visitUrgencyCoef",
+                              "offerIntercept",
+                              "offerFitCoef",
+                              "offerQualifiedCoef",
+                              "offerUrgencyCoef",
+                              "offerPriceRatioCoef",
+                              "conversionFloor",
+                              "conversionCeiling",
+                              "prospectAbandonRate",
+                              "exclusiveEffortShare",
+                              "openEffortShare",
+                              "reserveDecayRate",
+                              "reserveFloorRatio",
+                              "counterofferPropensity",
+                              "fallthroughBase",
+                              "fallthroughPreapprovedReduction",
+                              "fallthroughDirect",
+                              "preapprovedDtiHeadroom",
+                              "directFinancingLtvBoost",
+                              "competitorAdjustIntercept",
+                              "competitorAdjustDaysCoef",
+                              "competitorAdjustPriceRatioCoef",
+                              "competitorCutMin",
+                              "competitorCutMax",
+                              "newInventoryRate",
+                              "competitorWithdrawalHazard",
+                              "marketDriftPerDay",
+                              "withdrawalHazardBase",
+                              "withdrawalHazardDaysCoef",
+                              "openListingWithdrawalMultiplier",
+                              "fitPriceScale",
+                              "fitDistanceScale",
+                              "fitAreaTolerance",
+                              "fitRoomTolerance",
+                              "segments"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "baselineRef": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          },
+                          "baseline": {
+                            "type": "object",
+                            "properties": {
+                              "variantId": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "capture": {
+                                "type": "string",
+                                "enum": [
+                                  "si",
+                                  "no",
+                                  "condicionada"
+                                ]
+                              },
+                              "askingPrice": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "exclusivity": {
+                                "type": "string",
+                                "enum": [
+                                  "exclusiva",
+                                  "abierta",
+                                  "ninguna"
+                                ]
+                              },
+                              "campaignIntensity": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "channelMix": {
+                                "type": "object",
+                                "propertyNames": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 60
+                                },
+                                "additionalProperties": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                }
+                              },
+                              "offeredFinancing": {
+                                "type": "string",
+                                "enum": [
+                                  "ninguno",
+                                  "preaprobado",
+                                  "directo"
+                                ]
+                              },
+                              "listingTimingDays": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 365
+                              },
+                              "priceSchedule": {
+                                "maxItems": 24,
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "day": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 3650
+                                    },
+                                    "cutFraction": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 0.5
+                                    }
+                                  },
+                                  "required": [
+                                    "day",
+                                    "cutFraction"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "conditionMaxReservePrice": {
+                                "anyOf": [
+                                  {
+                                    "type": "number",
+                                    "exclusiveMinimum": 0
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": [
+                              "variantId",
+                              "capture",
+                              "askingPrice",
+                              "exclusivity",
+                              "campaignIntensity",
+                              "channelMix",
+                              "offeredFinancing",
+                              "listingTimingDays",
+                              "priceSchedule",
+                              "conditionMaxReservePrice"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "interventions": {
+                            "minItems": 1,
+                            "maxItems": 8,
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "variantId": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 120
+                                },
+                                "capture": {
+                                  "type": "string",
+                                  "enum": [
+                                    "si",
+                                    "no",
+                                    "condicionada"
+                                  ]
+                                },
+                                "askingPrice": {
+                                  "type": "number",
+                                  "exclusiveMinimum": 0
+                                },
+                                "exclusivity": {
+                                  "type": "string",
+                                  "enum": [
+                                    "exclusiva",
+                                    "abierta",
+                                    "ninguna"
+                                  ]
+                                },
+                                "campaignIntensity": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                },
+                                "channelMix": {
+                                  "type": "object",
+                                  "propertyNames": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 60
+                                  },
+                                  "additionalProperties": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  }
+                                },
+                                "offeredFinancing": {
+                                  "type": "string",
+                                  "enum": [
+                                    "ninguno",
+                                    "preaprobado",
+                                    "directo"
+                                  ]
+                                },
+                                "listingTimingDays": {
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "maximum": 365
+                                },
+                                "priceSchedule": {
+                                  "maxItems": 24,
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "day": {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 3650
+                                      },
+                                      "cutFraction": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 0.5
+                                      }
+                                    },
+                                    "required": [
+                                      "day",
+                                      "cutFraction"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "conditionMaxReservePrice": {
+                                  "anyOf": [
+                                    {
+                                      "type": "number",
+                                      "exclusiveMinimum": 0
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "variantId",
+                                "capture",
+                                "askingPrice",
+                                "exclusivity",
+                                "campaignIntensity",
+                                "channelMix",
+                                "offeredFinancing",
+                                "listingTimingDays",
+                                "priceSchedule",
+                                "conditionMaxReservePrice"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "affordabilityMode": {
+                            "type": "string",
+                            "const": "declared_prior"
+                          },
+                          "seed": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 4294967295
+                          },
+                          "replicates": {
+                            "type": "integer",
+                            "minimum": 2,
+                            "maximum": 10000
+                          },
+                          "syntheticFixture": {
+                            "type": "boolean"
+                          },
+                          "evaluation": {
+                            "type": "object",
+                            "properties": {
+                              "seeds": {
+                                "minItems": 2,
+                                "maxItems": 10,
+                                "type": "array",
+                                "items": {
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "maximum": 4294967295
+                                }
+                              },
+                              "costBudgetUnits": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "latencyBudgetUnits": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              }
+                            },
+                            "required": [
+                              "seeds",
+                              "costBudgetUnits",
+                              "latencyBudgetUnits"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "contractVersion",
+                          "inputRef",
+                          "sourceAsOf",
+                          "subjectRef",
+                          "context",
+                          "params",
+                          "baselineRef",
+                          "baseline",
+                          "interventions",
+                          "affordabilityMode",
+                          "seed",
+                          "replicates",
+                          "syntheticFixture",
+                          "evaluation"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "bundle"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "const": "report"
+                      },
+                      "requestedOutputs": {
+                        "minItems": 1,
+                        "maxItems": 20,
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 120
+                        }
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "requestedOutputs"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "stepKey": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "worstCase": {
+                "type": "object",
+                "properties": {
+                  "tokens": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "costUsd": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "wallTimeMs": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "tokens",
+                  "costUsd",
+                  "wallTimeMs"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "stepId",
+              "stepType",
+              "dependsOn",
+              "consumes",
+              "produces",
+              "capabilityRef",
+              "stepKey",
+              "worstCase"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "topologicalOrder": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        },
+        "selectionTrace": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "capabilityRef": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "chosen": {
+                "type": "boolean"
+              },
+              "marginalScore": {
+                "type": "number"
+              },
+              "components": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "number"
+                }
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 240
+              }
+            },
+            "required": [
+              "capabilityRef",
+              "chosen",
+              "marginalScore",
+              "components",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "reservedBudget": {
+          "type": "object",
+          "properties": {
+            "maxTokens": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "maxCostUsd": {
+              "type": "number",
+              "minimum": 0
+            },
+            "maxWallTimeMs": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "maxConcurrency": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 64
+            }
+          },
+          "required": [
+            "maxTokens",
+            "maxCostUsd",
+            "maxWallTimeMs",
+            "maxConcurrency"
+          ],
+          "additionalProperties": false
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": [
+                  "UNAUTHORIZED_SUBJECT",
+                  "UNAUTHORIZED_TENANT",
+                  "CAPABILITY_BLOCKED",
+                  "CAPABILITY_NOT_REGISTERED",
+                  "EVIDENCE_INSUFFICIENT",
+                  "NO_GOVERNED_SNAPSHOT",
+                  "BUDGET_EXCEEDED",
+                  "PLAN_INVALID",
+                  "IDEMPOTENCY_CONFLICT",
+                  "RUNTIME_UNAVAILABLE",
+                  "CONTRACT_VERSION_UNSUPPORTED",
+                  "INVALID_STATE_TRANSITION",
+                  "EVENT_CORRUPTION"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "ref": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 240
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "code",
+              "message",
+              "ref"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "contractVersion",
+        "planVersion",
+        "policyVersion",
+        "steps",
+        "topologicalOrder",
+        "selectionTrace",
+        "reservedBudget",
+        "blockers"
+      ],
+      "additionalProperties": false
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "maxTokens": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "maxCostUsd": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "maxWallTimeMs": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "maxConcurrency": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 64
+        }
+      },
+      "required": [
+        "maxTokens",
+        "maxCostUsd",
+        "maxWallTimeMs",
+        "maxConcurrency"
+      ],
+      "additionalProperties": false
+    },
+    "nonce": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 120
+    },
+    "issuedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+    },
+    "payloadChecksum": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "contractVersion",
+    "runId",
+    "attempt",
+    "tenantScope",
+    "snapshot",
+    "plan",
+    "budget",
+    "nonce",
+    "issuedAt",
+    "expiresAt",
+    "payloadChecksum"
+  ],
+  "additionalProperties": false
+}

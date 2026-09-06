@@ -1,0 +1,1168 @@
+{
+  "contractVersion": 1,
+  "runId": "fixture_s1_run",
+  "attempt": 1,
+  "tenantScope": "subject:synthetic-actor",
+  "snapshot": {
+    "contractVersion": 1,
+    "snapshotId": "fixture_s1_snapshot",
+    "state": "complete",
+    "tenantScope": "subject:synthetic-actor",
+    "nodes": [
+      {
+        "nodeId": "property",
+        "entityRef": {
+          "type": "property",
+          "id": "fixture-property"
+        },
+        "label": "Synthetic property",
+        "population": "observed",
+        "sourceAsOf": "2026-09-04T12:00:00.000Z",
+        "relevance": 1,
+        "aliasCandidates": []
+      },
+      {
+        "nodeId": "zone",
+        "entityRef": {
+          "type": "zone",
+          "id": "fixture-zone"
+        },
+        "label": "Synthetic zone",
+        "population": "observed",
+        "sourceAsOf": "2026-09-04T12:00:00.000Z",
+        "relevance": 1,
+        "aliasCandidates": []
+      }
+    ],
+    "hyperedges": [
+      {
+        "edgeId": "fixture-location",
+        "relationType": "LOCATED_IN",
+        "roleBindings": [
+          {
+            "role": "subject",
+            "nodeId": "property"
+          },
+          {
+            "role": "zone",
+            "nodeId": "zone"
+          }
+        ],
+        "population": "observed",
+        "confidenceClass": "extracted",
+        "evidenceRefs": [
+          {
+            "evidenceId": "fixture-evidence",
+            "sourceFamily": "fixture",
+            "asOf": "2026-09-04T12:00:00.000Z"
+          }
+        ],
+        "validFrom": "2026-09-04T12:00:00.000Z",
+        "validTo": null
+      }
+    ],
+    "validAt": "2026-09-04T12:00:00.000Z",
+    "sourceAsOf": "2026-09-04T12:00:00.000Z",
+    "projectionPolicyVersion": "projection-policy@v1",
+    "budget": {
+      "maxNodes": 10,
+      "maxHyperedges": 10,
+      "maxHops": 3
+    },
+    "truncated": false,
+    "blockers": [],
+    "checksum": "b48e11950c451ed697a0db401e9803c171e1c729d13f1cec6f87ebc0ccd76b45"
+  },
+  "plan": {
+    "contractVersion": 1,
+    "planVersion": "scenario-plan@v2",
+    "policyVersion": "plan-policy@v1",
+    "steps": [
+      {
+        "stepId": "project_context",
+        "stepType": "project_context",
+        "dependsOn": [],
+        "consumes": [],
+        "produces": [
+          "context_snapshot"
+        ],
+        "capabilityRef": null,
+        "stepKey": "3cc66232e5f5128efa1616db7d10def250988574b7bbd509e5071d9d61d045c4",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 0
+        }
+      },
+      {
+        "stepId": "load_baseline",
+        "stepType": "load_deterministic_baseline",
+        "dependsOn": [
+          "project_context"
+        ],
+        "consumes": [
+          "context_snapshot"
+        ],
+        "produces": [
+          "deterministic_baseline"
+        ],
+        "capabilityRef": null,
+        "executionInputs": {
+          "kind": "s1_baseline",
+          "bundle": {
+            "contractVersion": "s1-execution.v1",
+            "inputRef": "synthetic-s1-input",
+            "sourceAsOf": "2026-09-04T12:00:00.000Z",
+            "subjectRef": {
+              "type": "property",
+              "id": "fixture-property"
+            },
+            "context": {
+              "episodeId": "fixture-episode",
+              "propertyId": "fixture-property",
+              "familyId": "fixture-family",
+              "property": {
+                "price": 2800000,
+                "propertyType": "casa",
+                "zoneId": "fixture-zone",
+                "distanceKm": null,
+                "bedrooms": 3,
+                "bathrooms": 2,
+                "parking": 2,
+                "areaSqm": 140
+              },
+              "referencePrice": 2800000,
+              "owner": {
+                "reservePrice": 2450000,
+                "urgency": 0.5,
+                "exclusivityWillingness": 0.8
+              },
+              "agreementDurationDays": 180,
+              "commissionRate": 0.05,
+              "advisorCapacity": 4,
+              "alternativeNetValue": 60000,
+              "competitorInventory": 12,
+              "marketScope": "homepty_only",
+              "horizonDays": 14
+            },
+            "params": {
+              "parameterSetRef": "pset_a96158ab35f004377d181fdd",
+              "provenance": "declared_prior",
+              "stratumId": "default",
+              "inheritedFromStratumId": null,
+              "lambdaBase": 0.2,
+              "priceElasticity": 3.5,
+              "stalenessDecay": 0.02,
+              "stalenessFloor": 0.35,
+              "priceFactorMin": 0.05,
+              "priceFactorMax": 4,
+              "campaignMaxUplift": 0.8,
+              "campaignSaturation": 2.5,
+              "channelReach": {
+                "portal": 0.6,
+                "red_asesores": 0.35,
+                "redes_sociales": 0.25
+              },
+              "openListingReachPerAdvisor": 0.25,
+              "otherAdvisorCount": 0,
+              "priceCutSignalStrength": 3,
+              "priceCutSignalDecayDays": 7,
+              "visitIntercept": -3.2,
+              "visitEffortCoef": 0.9,
+              "visitCampaignCoef": 0.6,
+              "visitQualifiedCoef": 1.1,
+              "visitUrgencyCoef": 0.5,
+              "offerIntercept": -6.5,
+              "offerFitCoef": 2.6,
+              "offerQualifiedCoef": 1.4,
+              "offerUrgencyCoef": 0.8,
+              "offerPriceRatioCoef": 4,
+              "conversionFloor": 0.001,
+              "conversionCeiling": 0.95,
+              "prospectAbandonRate": 0.25,
+              "exclusiveEffortShare": 0.35,
+              "openEffortShare": 0.15,
+              "reserveDecayRate": 0.004,
+              "reserveFloorRatio": 0.85,
+              "counterofferPropensity": 0.5,
+              "fallthroughBase": 0.12,
+              "fallthroughPreapprovedReduction": 0.6,
+              "fallthroughDirect": 0.2,
+              "preapprovedDtiHeadroom": 0.08,
+              "directFinancingLtvBoost": 0.15,
+              "competitorAdjustIntercept": -4,
+              "competitorAdjustDaysCoef": 0.02,
+              "competitorAdjustPriceRatioCoef": 2.5,
+              "competitorCutMin": 0.02,
+              "competitorCutMax": 0.08,
+              "newInventoryRate": 0.05,
+              "competitorWithdrawalHazard": 0.03,
+              "marketDriftPerDay": 0.0002,
+              "withdrawalHazardBase": 0.0015,
+              "withdrawalHazardDaysCoef": 0.012,
+              "openListingWithdrawalMultiplier": 1.6,
+              "fitPriceScale": 400000,
+              "fitDistanceScale": 4,
+              "fitAreaTolerance": 0.2,
+              "fitRoomTolerance": 1,
+              "segments": [
+                {
+                  "segmentId": "familia_media",
+                  "share": 0.55,
+                  "urgency": 0.45,
+                  "requirement": {
+                    "minPrice": 1800000,
+                    "maxPrice": 3600000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1"
+                    ],
+                    "bedrooms": 3,
+                    "bathrooms": 2,
+                    "parking": 2,
+                    "areaSqm": 140
+                  },
+                  "discountAlpha": 2.2,
+                  "discountBeta": 26,
+                  "supportingEpisodes": 0
+                },
+                {
+                  "segmentId": "inversionista",
+                  "share": 0.25,
+                  "urgency": 0.65,
+                  "requirement": {
+                    "minPrice": 1200000,
+                    "maxPrice": 3000000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1",
+                      "zona-2"
+                    ],
+                    "bedrooms": null,
+                    "bathrooms": null,
+                    "parking": null,
+                    "areaSqm": 110
+                  },
+                  "discountAlpha": 3.5,
+                  "discountBeta": 20,
+                  "supportingEpisodes": 0
+                },
+                {
+                  "segmentId": "primera_vivienda",
+                  "share": 0.2,
+                  "urgency": 0.35,
+                  "requirement": {
+                    "minPrice": 900000,
+                    "maxPrice": 2400000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1"
+                    ],
+                    "bedrooms": 2,
+                    "bathrooms": 1,
+                    "parking": 1,
+                    "areaSqm": 95
+                  },
+                  "discountAlpha": 1.8,
+                  "discountBeta": 30,
+                  "supportingEpisodes": 0
+                }
+              ]
+            },
+            "baselineRef": "fixture-fastpath",
+            "baseline": {
+              "variantId": "baseline",
+              "capture": "si",
+              "askingPrice": 2800000,
+              "exclusivity": "exclusiva",
+              "campaignIntensity": 0.4,
+              "channelMix": {
+                "portal": 1
+              },
+              "offeredFinancing": "ninguno",
+              "listingTimingDays": 0,
+              "priceSchedule": [],
+              "conditionMaxReservePrice": null
+            },
+            "interventions": [
+              {
+                "variantId": "price-cut",
+                "capture": "si",
+                "askingPrice": 2632000,
+                "exclusivity": "exclusiva",
+                "campaignIntensity": 0.4,
+                "channelMix": {
+                  "portal": 1
+                },
+                "offeredFinancing": "ninguno",
+                "listingTimingDays": 0,
+                "priceSchedule": [],
+                "conditionMaxReservePrice": null
+              },
+              {
+                "variantId": "no-capture",
+                "capture": "no",
+                "askingPrice": 2800000,
+                "exclusivity": "exclusiva",
+                "campaignIntensity": 0.4,
+                "channelMix": {
+                  "portal": 1
+                },
+                "offeredFinancing": "ninguno",
+                "listingTimingDays": 0,
+                "priceSchedule": [],
+                "conditionMaxReservePrice": null
+              }
+            ],
+            "affordabilityMode": "declared_prior",
+            "seed": 17,
+            "replicates": 8,
+            "syntheticFixture": true,
+            "evaluation": {
+              "seeds": [
+                17,
+                31
+              ],
+              "costBudgetUnits": 1000000,
+              "latencyBudgetUnits": 1000000
+            }
+          }
+        },
+        "stepKey": "e0ec5ac108150715d0a4b20ed8b3071118f0c62491221ad9115963f98fad0813",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 30000
+        }
+      },
+      {
+        "stepId": "simulate_no-capture",
+        "stepType": "simulate_variant",
+        "dependsOn": [
+          "project_context"
+        ],
+        "consumes": [
+          "context_snapshot"
+        ],
+        "produces": [
+          "s1_variant"
+        ],
+        "capabilityRef": null,
+        "executionInputs": {
+          "kind": "s1_variant",
+          "bundle": {
+            "contractVersion": "s1-execution.v1",
+            "inputRef": "synthetic-s1-input",
+            "sourceAsOf": "2026-09-04T12:00:00.000Z",
+            "subjectRef": {
+              "type": "property",
+              "id": "fixture-property"
+            },
+            "context": {
+              "episodeId": "fixture-episode",
+              "propertyId": "fixture-property",
+              "familyId": "fixture-family",
+              "property": {
+                "price": 2800000,
+                "propertyType": "casa",
+                "zoneId": "fixture-zone",
+                "distanceKm": null,
+                "bedrooms": 3,
+                "bathrooms": 2,
+                "parking": 2,
+                "areaSqm": 140
+              },
+              "referencePrice": 2800000,
+              "owner": {
+                "reservePrice": 2450000,
+                "urgency": 0.5,
+                "exclusivityWillingness": 0.8
+              },
+              "agreementDurationDays": 180,
+              "commissionRate": 0.05,
+              "advisorCapacity": 4,
+              "alternativeNetValue": 60000,
+              "competitorInventory": 12,
+              "marketScope": "homepty_only",
+              "horizonDays": 14
+            },
+            "params": {
+              "parameterSetRef": "pset_a96158ab35f004377d181fdd",
+              "provenance": "declared_prior",
+              "stratumId": "default",
+              "inheritedFromStratumId": null,
+              "lambdaBase": 0.2,
+              "priceElasticity": 3.5,
+              "stalenessDecay": 0.02,
+              "stalenessFloor": 0.35,
+              "priceFactorMin": 0.05,
+              "priceFactorMax": 4,
+              "campaignMaxUplift": 0.8,
+              "campaignSaturation": 2.5,
+              "channelReach": {
+                "portal": 0.6,
+                "red_asesores": 0.35,
+                "redes_sociales": 0.25
+              },
+              "openListingReachPerAdvisor": 0.25,
+              "otherAdvisorCount": 0,
+              "priceCutSignalStrength": 3,
+              "priceCutSignalDecayDays": 7,
+              "visitIntercept": -3.2,
+              "visitEffortCoef": 0.9,
+              "visitCampaignCoef": 0.6,
+              "visitQualifiedCoef": 1.1,
+              "visitUrgencyCoef": 0.5,
+              "offerIntercept": -6.5,
+              "offerFitCoef": 2.6,
+              "offerQualifiedCoef": 1.4,
+              "offerUrgencyCoef": 0.8,
+              "offerPriceRatioCoef": 4,
+              "conversionFloor": 0.001,
+              "conversionCeiling": 0.95,
+              "prospectAbandonRate": 0.25,
+              "exclusiveEffortShare": 0.35,
+              "openEffortShare": 0.15,
+              "reserveDecayRate": 0.004,
+              "reserveFloorRatio": 0.85,
+              "counterofferPropensity": 0.5,
+              "fallthroughBase": 0.12,
+              "fallthroughPreapprovedReduction": 0.6,
+              "fallthroughDirect": 0.2,
+              "preapprovedDtiHeadroom": 0.08,
+              "directFinancingLtvBoost": 0.15,
+              "competitorAdjustIntercept": -4,
+              "competitorAdjustDaysCoef": 0.02,
+              "competitorAdjustPriceRatioCoef": 2.5,
+              "competitorCutMin": 0.02,
+              "competitorCutMax": 0.08,
+              "newInventoryRate": 0.05,
+              "competitorWithdrawalHazard": 0.03,
+              "marketDriftPerDay": 0.0002,
+              "withdrawalHazardBase": 0.0015,
+              "withdrawalHazardDaysCoef": 0.012,
+              "openListingWithdrawalMultiplier": 1.6,
+              "fitPriceScale": 400000,
+              "fitDistanceScale": 4,
+              "fitAreaTolerance": 0.2,
+              "fitRoomTolerance": 1,
+              "segments": [
+                {
+                  "segmentId": "familia_media",
+                  "share": 0.55,
+                  "urgency": 0.45,
+                  "requirement": {
+                    "minPrice": 1800000,
+                    "maxPrice": 3600000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1"
+                    ],
+                    "bedrooms": 3,
+                    "bathrooms": 2,
+                    "parking": 2,
+                    "areaSqm": 140
+                  },
+                  "discountAlpha": 2.2,
+                  "discountBeta": 26,
+                  "supportingEpisodes": 0
+                },
+                {
+                  "segmentId": "inversionista",
+                  "share": 0.25,
+                  "urgency": 0.65,
+                  "requirement": {
+                    "minPrice": 1200000,
+                    "maxPrice": 3000000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1",
+                      "zona-2"
+                    ],
+                    "bedrooms": null,
+                    "bathrooms": null,
+                    "parking": null,
+                    "areaSqm": 110
+                  },
+                  "discountAlpha": 3.5,
+                  "discountBeta": 20,
+                  "supportingEpisodes": 0
+                },
+                {
+                  "segmentId": "primera_vivienda",
+                  "share": 0.2,
+                  "urgency": 0.35,
+                  "requirement": {
+                    "minPrice": 900000,
+                    "maxPrice": 2400000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1"
+                    ],
+                    "bedrooms": 2,
+                    "bathrooms": 1,
+                    "parking": 1,
+                    "areaSqm": 95
+                  },
+                  "discountAlpha": 1.8,
+                  "discountBeta": 30,
+                  "supportingEpisodes": 0
+                }
+              ]
+            },
+            "baselineRef": "fixture-fastpath",
+            "baseline": {
+              "variantId": "baseline",
+              "capture": "si",
+              "askingPrice": 2800000,
+              "exclusivity": "exclusiva",
+              "campaignIntensity": 0.4,
+              "channelMix": {
+                "portal": 1
+              },
+              "offeredFinancing": "ninguno",
+              "listingTimingDays": 0,
+              "priceSchedule": [],
+              "conditionMaxReservePrice": null
+            },
+            "interventions": [
+              {
+                "variantId": "price-cut",
+                "capture": "si",
+                "askingPrice": 2632000,
+                "exclusivity": "exclusiva",
+                "campaignIntensity": 0.4,
+                "channelMix": {
+                  "portal": 1
+                },
+                "offeredFinancing": "ninguno",
+                "listingTimingDays": 0,
+                "priceSchedule": [],
+                "conditionMaxReservePrice": null
+              },
+              {
+                "variantId": "no-capture",
+                "capture": "no",
+                "askingPrice": 2800000,
+                "exclusivity": "exclusiva",
+                "campaignIntensity": 0.4,
+                "channelMix": {
+                  "portal": 1
+                },
+                "offeredFinancing": "ninguno",
+                "listingTimingDays": 0,
+                "priceSchedule": [],
+                "conditionMaxReservePrice": null
+              }
+            ],
+            "affordabilityMode": "declared_prior",
+            "seed": 17,
+            "replicates": 8,
+            "syntheticFixture": true,
+            "evaluation": {
+              "seeds": [
+                17,
+                31
+              ],
+              "costBudgetUnits": 1000000,
+              "latencyBudgetUnits": 1000000
+            }
+          },
+          "variantId": "no-capture"
+        },
+        "stepKey": "a8b51659fbabbe123f27452bcab6862987cea27fdee3d5cdd46cde378d288606",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 30000
+        }
+      },
+      {
+        "stepId": "simulate_price-cut",
+        "stepType": "simulate_variant",
+        "dependsOn": [
+          "project_context"
+        ],
+        "consumes": [
+          "context_snapshot"
+        ],
+        "produces": [
+          "s1_variant"
+        ],
+        "capabilityRef": null,
+        "executionInputs": {
+          "kind": "s1_variant",
+          "bundle": {
+            "contractVersion": "s1-execution.v1",
+            "inputRef": "synthetic-s1-input",
+            "sourceAsOf": "2026-09-04T12:00:00.000Z",
+            "subjectRef": {
+              "type": "property",
+              "id": "fixture-property"
+            },
+            "context": {
+              "episodeId": "fixture-episode",
+              "propertyId": "fixture-property",
+              "familyId": "fixture-family",
+              "property": {
+                "price": 2800000,
+                "propertyType": "casa",
+                "zoneId": "fixture-zone",
+                "distanceKm": null,
+                "bedrooms": 3,
+                "bathrooms": 2,
+                "parking": 2,
+                "areaSqm": 140
+              },
+              "referencePrice": 2800000,
+              "owner": {
+                "reservePrice": 2450000,
+                "urgency": 0.5,
+                "exclusivityWillingness": 0.8
+              },
+              "agreementDurationDays": 180,
+              "commissionRate": 0.05,
+              "advisorCapacity": 4,
+              "alternativeNetValue": 60000,
+              "competitorInventory": 12,
+              "marketScope": "homepty_only",
+              "horizonDays": 14
+            },
+            "params": {
+              "parameterSetRef": "pset_a96158ab35f004377d181fdd",
+              "provenance": "declared_prior",
+              "stratumId": "default",
+              "inheritedFromStratumId": null,
+              "lambdaBase": 0.2,
+              "priceElasticity": 3.5,
+              "stalenessDecay": 0.02,
+              "stalenessFloor": 0.35,
+              "priceFactorMin": 0.05,
+              "priceFactorMax": 4,
+              "campaignMaxUplift": 0.8,
+              "campaignSaturation": 2.5,
+              "channelReach": {
+                "portal": 0.6,
+                "red_asesores": 0.35,
+                "redes_sociales": 0.25
+              },
+              "openListingReachPerAdvisor": 0.25,
+              "otherAdvisorCount": 0,
+              "priceCutSignalStrength": 3,
+              "priceCutSignalDecayDays": 7,
+              "visitIntercept": -3.2,
+              "visitEffortCoef": 0.9,
+              "visitCampaignCoef": 0.6,
+              "visitQualifiedCoef": 1.1,
+              "visitUrgencyCoef": 0.5,
+              "offerIntercept": -6.5,
+              "offerFitCoef": 2.6,
+              "offerQualifiedCoef": 1.4,
+              "offerUrgencyCoef": 0.8,
+              "offerPriceRatioCoef": 4,
+              "conversionFloor": 0.001,
+              "conversionCeiling": 0.95,
+              "prospectAbandonRate": 0.25,
+              "exclusiveEffortShare": 0.35,
+              "openEffortShare": 0.15,
+              "reserveDecayRate": 0.004,
+              "reserveFloorRatio": 0.85,
+              "counterofferPropensity": 0.5,
+              "fallthroughBase": 0.12,
+              "fallthroughPreapprovedReduction": 0.6,
+              "fallthroughDirect": 0.2,
+              "preapprovedDtiHeadroom": 0.08,
+              "directFinancingLtvBoost": 0.15,
+              "competitorAdjustIntercept": -4,
+              "competitorAdjustDaysCoef": 0.02,
+              "competitorAdjustPriceRatioCoef": 2.5,
+              "competitorCutMin": 0.02,
+              "competitorCutMax": 0.08,
+              "newInventoryRate": 0.05,
+              "competitorWithdrawalHazard": 0.03,
+              "marketDriftPerDay": 0.0002,
+              "withdrawalHazardBase": 0.0015,
+              "withdrawalHazardDaysCoef": 0.012,
+              "openListingWithdrawalMultiplier": 1.6,
+              "fitPriceScale": 400000,
+              "fitDistanceScale": 4,
+              "fitAreaTolerance": 0.2,
+              "fitRoomTolerance": 1,
+              "segments": [
+                {
+                  "segmentId": "familia_media",
+                  "share": 0.55,
+                  "urgency": 0.45,
+                  "requirement": {
+                    "minPrice": 1800000,
+                    "maxPrice": 3600000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1"
+                    ],
+                    "bedrooms": 3,
+                    "bathrooms": 2,
+                    "parking": 2,
+                    "areaSqm": 140
+                  },
+                  "discountAlpha": 2.2,
+                  "discountBeta": 26,
+                  "supportingEpisodes": 0
+                },
+                {
+                  "segmentId": "inversionista",
+                  "share": 0.25,
+                  "urgency": 0.65,
+                  "requirement": {
+                    "minPrice": 1200000,
+                    "maxPrice": 3000000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1",
+                      "zona-2"
+                    ],
+                    "bedrooms": null,
+                    "bathrooms": null,
+                    "parking": null,
+                    "areaSqm": 110
+                  },
+                  "discountAlpha": 3.5,
+                  "discountBeta": 20,
+                  "supportingEpisodes": 0
+                },
+                {
+                  "segmentId": "primera_vivienda",
+                  "share": 0.2,
+                  "urgency": 0.35,
+                  "requirement": {
+                    "minPrice": 900000,
+                    "maxPrice": 2400000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1"
+                    ],
+                    "bedrooms": 2,
+                    "bathrooms": 1,
+                    "parking": 1,
+                    "areaSqm": 95
+                  },
+                  "discountAlpha": 1.8,
+                  "discountBeta": 30,
+                  "supportingEpisodes": 0
+                }
+              ]
+            },
+            "baselineRef": "fixture-fastpath",
+            "baseline": {
+              "variantId": "baseline",
+              "capture": "si",
+              "askingPrice": 2800000,
+              "exclusivity": "exclusiva",
+              "campaignIntensity": 0.4,
+              "channelMix": {
+                "portal": 1
+              },
+              "offeredFinancing": "ninguno",
+              "listingTimingDays": 0,
+              "priceSchedule": [],
+              "conditionMaxReservePrice": null
+            },
+            "interventions": [
+              {
+                "variantId": "price-cut",
+                "capture": "si",
+                "askingPrice": 2632000,
+                "exclusivity": "exclusiva",
+                "campaignIntensity": 0.4,
+                "channelMix": {
+                  "portal": 1
+                },
+                "offeredFinancing": "ninguno",
+                "listingTimingDays": 0,
+                "priceSchedule": [],
+                "conditionMaxReservePrice": null
+              },
+              {
+                "variantId": "no-capture",
+                "capture": "no",
+                "askingPrice": 2800000,
+                "exclusivity": "exclusiva",
+                "campaignIntensity": 0.4,
+                "channelMix": {
+                  "portal": 1
+                },
+                "offeredFinancing": "ninguno",
+                "listingTimingDays": 0,
+                "priceSchedule": [],
+                "conditionMaxReservePrice": null
+              }
+            ],
+            "affordabilityMode": "declared_prior",
+            "seed": 17,
+            "replicates": 8,
+            "syntheticFixture": true,
+            "evaluation": {
+              "seeds": [
+                17,
+                31
+              ],
+              "costBudgetUnits": 1000000,
+              "latencyBudgetUnits": 1000000
+            }
+          },
+          "variantId": "price-cut"
+        },
+        "stepKey": "968da338a5de294947304462db38ad68a2a02436c8234fdb5b1c25977e0d6111",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 30000
+        }
+      },
+      {
+        "stepId": "merge_findings",
+        "stepType": "merge_findings",
+        "dependsOn": [
+          "load_baseline",
+          "simulate_no-capture",
+          "simulate_price-cut"
+        ],
+        "consumes": [
+          "deterministic_baseline",
+          "s1_variant",
+          "s1_variant"
+        ],
+        "produces": [
+          "contradiction_sets",
+          "merged_findings"
+        ],
+        "capabilityRef": null,
+        "stepKey": "d03bfb80f560aee3359f5d23f5262b66a842353ea25c45ba079b68b91bd096e7",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 30000
+        }
+      },
+      {
+        "stepId": "validate_run_graph",
+        "stepType": "validate_run_graph",
+        "dependsOn": [
+          "merge_findings"
+        ],
+        "consumes": [
+          "merged_findings"
+        ],
+        "produces": [
+          "run_graph"
+        ],
+        "capabilityRef": null,
+        "stepKey": "33e61d5c5f6b34ff725ef1cc6394915ccfab8764746f0fb38d54ce165b341700",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 30000
+        }
+      },
+      {
+        "stepId": "compile_report",
+        "stepType": "compile_report",
+        "dependsOn": [
+          "merge_findings",
+          "validate_run_graph"
+        ],
+        "consumes": [
+          "contradiction_sets",
+          "merged_findings",
+          "run_graph"
+        ],
+        "produces": [
+          "structured_report"
+        ],
+        "capabilityRef": null,
+        "executionInputs": {
+          "kind": "report",
+          "requestedOutputs": [
+            "s1_measures",
+            "s1_deltas"
+          ]
+        },
+        "stepKey": "dbd2e43c3f71af3f69674c69e6e60fdc53755130191ce8bb456bce451344b619",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 30000
+        }
+      },
+      {
+        "stepId": "evaluate_value",
+        "stepType": "evaluate_value",
+        "dependsOn": [
+          "compile_report"
+        ],
+        "consumes": [
+          "structured_report"
+        ],
+        "produces": [
+          "value_evaluation"
+        ],
+        "capabilityRef": null,
+        "executionInputs": {
+          "kind": "s1_value",
+          "bundle": {
+            "contractVersion": "s1-execution.v1",
+            "inputRef": "synthetic-s1-input",
+            "sourceAsOf": "2026-09-04T12:00:00.000Z",
+            "subjectRef": {
+              "type": "property",
+              "id": "fixture-property"
+            },
+            "context": {
+              "episodeId": "fixture-episode",
+              "propertyId": "fixture-property",
+              "familyId": "fixture-family",
+              "property": {
+                "price": 2800000,
+                "propertyType": "casa",
+                "zoneId": "fixture-zone",
+                "distanceKm": null,
+                "bedrooms": 3,
+                "bathrooms": 2,
+                "parking": 2,
+                "areaSqm": 140
+              },
+              "referencePrice": 2800000,
+              "owner": {
+                "reservePrice": 2450000,
+                "urgency": 0.5,
+                "exclusivityWillingness": 0.8
+              },
+              "agreementDurationDays": 180,
+              "commissionRate": 0.05,
+              "advisorCapacity": 4,
+              "alternativeNetValue": 60000,
+              "competitorInventory": 12,
+              "marketScope": "homepty_only",
+              "horizonDays": 14
+            },
+            "params": {
+              "parameterSetRef": "pset_a96158ab35f004377d181fdd",
+              "provenance": "declared_prior",
+              "stratumId": "default",
+              "inheritedFromStratumId": null,
+              "lambdaBase": 0.2,
+              "priceElasticity": 3.5,
+              "stalenessDecay": 0.02,
+              "stalenessFloor": 0.35,
+              "priceFactorMin": 0.05,
+              "priceFactorMax": 4,
+              "campaignMaxUplift": 0.8,
+              "campaignSaturation": 2.5,
+              "channelReach": {
+                "portal": 0.6,
+                "red_asesores": 0.35,
+                "redes_sociales": 0.25
+              },
+              "openListingReachPerAdvisor": 0.25,
+              "otherAdvisorCount": 0,
+              "priceCutSignalStrength": 3,
+              "priceCutSignalDecayDays": 7,
+              "visitIntercept": -3.2,
+              "visitEffortCoef": 0.9,
+              "visitCampaignCoef": 0.6,
+              "visitQualifiedCoef": 1.1,
+              "visitUrgencyCoef": 0.5,
+              "offerIntercept": -6.5,
+              "offerFitCoef": 2.6,
+              "offerQualifiedCoef": 1.4,
+              "offerUrgencyCoef": 0.8,
+              "offerPriceRatioCoef": 4,
+              "conversionFloor": 0.001,
+              "conversionCeiling": 0.95,
+              "prospectAbandonRate": 0.25,
+              "exclusiveEffortShare": 0.35,
+              "openEffortShare": 0.15,
+              "reserveDecayRate": 0.004,
+              "reserveFloorRatio": 0.85,
+              "counterofferPropensity": 0.5,
+              "fallthroughBase": 0.12,
+              "fallthroughPreapprovedReduction": 0.6,
+              "fallthroughDirect": 0.2,
+              "preapprovedDtiHeadroom": 0.08,
+              "directFinancingLtvBoost": 0.15,
+              "competitorAdjustIntercept": -4,
+              "competitorAdjustDaysCoef": 0.02,
+              "competitorAdjustPriceRatioCoef": 2.5,
+              "competitorCutMin": 0.02,
+              "competitorCutMax": 0.08,
+              "newInventoryRate": 0.05,
+              "competitorWithdrawalHazard": 0.03,
+              "marketDriftPerDay": 0.0002,
+              "withdrawalHazardBase": 0.0015,
+              "withdrawalHazardDaysCoef": 0.012,
+              "openListingWithdrawalMultiplier": 1.6,
+              "fitPriceScale": 400000,
+              "fitDistanceScale": 4,
+              "fitAreaTolerance": 0.2,
+              "fitRoomTolerance": 1,
+              "segments": [
+                {
+                  "segmentId": "familia_media",
+                  "share": 0.55,
+                  "urgency": 0.45,
+                  "requirement": {
+                    "minPrice": 1800000,
+                    "maxPrice": 3600000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1"
+                    ],
+                    "bedrooms": 3,
+                    "bathrooms": 2,
+                    "parking": 2,
+                    "areaSqm": 140
+                  },
+                  "discountAlpha": 2.2,
+                  "discountBeta": 26,
+                  "supportingEpisodes": 0
+                },
+                {
+                  "segmentId": "inversionista",
+                  "share": 0.25,
+                  "urgency": 0.65,
+                  "requirement": {
+                    "minPrice": 1200000,
+                    "maxPrice": 3000000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1",
+                      "zona-2"
+                    ],
+                    "bedrooms": null,
+                    "bathrooms": null,
+                    "parking": null,
+                    "areaSqm": 110
+                  },
+                  "discountAlpha": 3.5,
+                  "discountBeta": 20,
+                  "supportingEpisodes": 0
+                },
+                {
+                  "segmentId": "primera_vivienda",
+                  "share": 0.2,
+                  "urgency": 0.35,
+                  "requirement": {
+                    "minPrice": 900000,
+                    "maxPrice": 2400000,
+                    "propertyType": "casa",
+                    "zoneIds": [
+                      "zona-1"
+                    ],
+                    "bedrooms": 2,
+                    "bathrooms": 1,
+                    "parking": 1,
+                    "areaSqm": 95
+                  },
+                  "discountAlpha": 1.8,
+                  "discountBeta": 30,
+                  "supportingEpisodes": 0
+                }
+              ]
+            },
+            "baselineRef": "fixture-fastpath",
+            "baseline": {
+              "variantId": "baseline",
+              "capture": "si",
+              "askingPrice": 2800000,
+              "exclusivity": "exclusiva",
+              "campaignIntensity": 0.4,
+              "channelMix": {
+                "portal": 1
+              },
+              "offeredFinancing": "ninguno",
+              "listingTimingDays": 0,
+              "priceSchedule": [],
+              "conditionMaxReservePrice": null
+            },
+            "interventions": [
+              {
+                "variantId": "price-cut",
+                "capture": "si",
+                "askingPrice": 2632000,
+                "exclusivity": "exclusiva",
+                "campaignIntensity": 0.4,
+                "channelMix": {
+                  "portal": 1
+                },
+                "offeredFinancing": "ninguno",
+                "listingTimingDays": 0,
+                "priceSchedule": [],
+                "conditionMaxReservePrice": null
+              },
+              {
+                "variantId": "no-capture",
+                "capture": "no",
+                "askingPrice": 2800000,
+                "exclusivity": "exclusiva",
+                "campaignIntensity": 0.4,
+                "channelMix": {
+                  "portal": 1
+                },
+                "offeredFinancing": "ninguno",
+                "listingTimingDays": 0,
+                "priceSchedule": [],
+                "conditionMaxReservePrice": null
+              }
+            ],
+            "affordabilityMode": "declared_prior",
+            "seed": 17,
+            "replicates": 8,
+            "syntheticFixture": true,
+            "evaluation": {
+              "seeds": [
+                17,
+                31
+              ],
+              "costBudgetUnits": 1000000,
+              "latencyBudgetUnits": 1000000
+            }
+          }
+        },
+        "stepKey": "4cb70b55a117ce11fc0d4d4d10a873f68ba8f912ac980dea681c4b3acbb36713",
+        "worstCase": {
+          "tokens": 0,
+          "costUsd": 0,
+          "wallTimeMs": 120000
+        }
+      }
+    ],
+    "topologicalOrder": [
+      "project_context",
+      "load_baseline",
+      "simulate_no-capture",
+      "simulate_price-cut",
+      "merge_findings",
+      "validate_run_graph",
+      "compile_report",
+      "evaluate_value"
+    ],
+    "selectionTrace": [],
+    "reservedBudget": {
+      "maxTokens": 0,
+      "maxCostUsd": 0,
+      "maxWallTimeMs": 270000,
+      "maxConcurrency": 2
+    },
+    "blockers": []
+  },
+  "budget": {
+    "maxTokens": 10000,
+    "maxCostUsd": 5,
+    "maxWallTimeMs": 600000,
+    "maxConcurrency": 2
+  },
+  "nonce": "fixture_nonce_00000000",
+  "issuedAt": "2026-09-04T12:00:00.000Z",
+  "expiresAt": "2026-09-04T12:10:00.000Z",
+  "payloadChecksum": "8ff55fb20be637ea00829ea2066b7ed7b9590e0dbae76b17f43840d5d44f30a9"
+}

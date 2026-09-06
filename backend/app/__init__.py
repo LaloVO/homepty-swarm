@@ -10,14 +10,22 @@ import warnings
 warnings.filterwarnings("ignore", message=".*resource_tracker.*")
 
 from flask import Flask, request
-from flask_cors import CORS
+def create_app(config_class=None, **kwargs):
+    """Production is the default; legacy is explicitly local research only."""
+    if os.environ.get("SWARM_RESEARCH_ROUTES_ENABLED") == "true":
+        if os.environ.get("SWARM_ENV") != "local":
+            raise RuntimeError("RESEARCH_ROUTES_FORBIDDEN")
+        return _create_research_app(config_class)
+    from .api.runs_v1 import create_runtime_app
+    return create_runtime_app(**kwargs)
 
-from .config import Config
-from .utils.logger import setup_logger, get_logger
 
-
-def create_app(config_class=Config):
+def _create_research_app(config_class=None):
     """Flask application factory function"""
+    from flask_cors import CORS
+    from .config import Config
+    from .utils.logger import setup_logger, get_logger
+    config_class = config_class or Config
     app = Flask(__name__)
     app.config.from_object(config_class)
     
@@ -53,8 +61,6 @@ def create_app(config_class=Config):
     def log_request():
         logger = get_logger('homepty_swarm.request')
         logger.debug(f"Request: {request.method} {request.path}")
-        if request.content_type and 'json' in request.content_type:
-            logger.debug(f"Request body: {request.get_json(silent=True)}")
     
     @app.after_request
     def log_response(response):
@@ -63,7 +69,8 @@ def create_app(config_class=Config):
         return response
     
     # Register blueprints
-    from .api import graph_bp, simulation_bp, report_bp
+    from .api import graph_bp, simulation_bp, report_bp, register_research_routes
+    register_research_routes()
     app.register_blueprint(graph_bp, url_prefix='/api/graph')
     app.register_blueprint(simulation_bp, url_prefix='/api/simulation')
     app.register_blueprint(report_bp, url_prefix='/api/report')
@@ -77,4 +84,3 @@ def create_app(config_class=Config):
         logger.info("Homepty Swarm Backend started successfully")
     
     return app
-

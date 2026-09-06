@@ -1,0 +1,41 @@
+[
+  {
+    "body": {
+      "runId": "fixture_run_a",
+      "attempt": 1,
+      "fixtureOnly": true,
+      "context": {
+        "2": "two",
+        "10": "ten",
+        "😀": "astral",
+        "": "bmp",
+        "label": "Renta – México",
+        "values": [
+          0,
+          0,
+          1.25,
+          1e-7,
+          0.000001,
+          9007199254740991
+        ]
+      }
+    },
+    "checksum": "9b0aefc624caba98fe7d73b7c7877a899f17ca5196b8443fee282d6baed0cfb6"
+  },
+  {
+    "body": null,
+    "checksum": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "body": null,
+    "checksum": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  {
+    "body": {
+      "runId": "fixture_run_b",
+      "attempt": 2,
+      "reason": "fixture cancellation"
+    },
+    "checksum": "63810db90ba135981e2611bc768dc892435b09bd8f53f57572c71f99d499d310"
+  }
+]

@@ -24,6 +24,30 @@ Simple and universal swarm intelligence engine, predicting anything
 
 </div>
 
+## Homepty governed runtime status
+
+This repository remains public under AGPL-3.0. The legacy MiroFish-compatible UI and
+`/api/*` routes are research surfaces; they are not the Homepty production runtime.
+
+The governed integration is being built as two private Railway services (`swarm-api` and
+`swarm-worker`) behind the proprietary Brain's `SwarmRuntimePort`. Brain remains the only
+authority for tenant authorization, run state, replay, event cursors and Run Graph promotion.
+Swarm receives signed, scoped jobs and returns checksummed events/artifact manifests; it never
+receives user credentials or direct database access.
+
+Until the HPY-143 security, durability, license and real-data gates close:
+
+- use only non-sensitive fixtures;
+- do not deploy the mixed frontend/development `Dockerfile` as production;
+- do not include `backend/uploads/`, `graphify-out/`, reports, caches or local databases in
+  an image;
+- do not expose the Flask development server or legacy routes publicly.
+
+See [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md) for release obligations. Exact deployed
+source linkage is exposed by the private runtime's `/source` endpoint. The isolated
+dependency environment, verified transport and outstanding release gates are documented in
+[runtime/README.md](./runtime/README.md).
+
 ## ⚡ Overview
 
 **MiroFish** is a next-generation AI prediction engine powered by multi-agent technology. By extracting seed information from the real world (such as breaking news, policy drafts, or financial signals), it automatically constructs a high-fidelity parallel digital world. Within this space, thousands of intelligent agents with independent personalities, long-term memory, and behavioral logic freely interact and undergo social evolution. You can inject variables dynamically from a "God's-eye view" to precisely deduce future trajectories — **rehearse the future in a digital sandbox, and win decisions after countless simulations**.

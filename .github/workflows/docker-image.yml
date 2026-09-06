@@ -1,49 +1,146 @@
-name: Build and push Docker image
-
+name: Private runtime release
 on:
+  pull_request:
   push:
-    tags: ["*"]
+    branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
-  packages: write
-
+concurrency:
+  group: swarm-release-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
-  build-and-push:
+  supply-chain:
+    uses: ./.github/workflows/supply-chain.yml
+  runtime-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Log in to GHCR
-        uses: docker/login-action@v3
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78
+        with:
+          version: "0.11.13"
+          python-version: "3.12"
+      - run: pg_config --bindir >> "$GITHUB_PATH"
+      - name: Frozen compatibility and runtime tests (Brain cross-repo tests run in private Brain CI)
+        run: |
+          uv sync --project runtime --frozen
+          uv pip check --python runtime/.venv/bin/python
+          PYTHONPATH=backend runtime/.venv/bin/pytest backend/tests/runtime backend/tests/security -q
+          uv export --project runtime --frozen --no-dev --no-emit-project --format requirements-txt --output-file runtime/requirements.lock.txt
+          git diff --exit-code -- runtime/requirements.lock.txt
+  images:
+    needs: [runtime-tests, supply-chain]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78
+        with:
+          version: "0.11.13"
+          python-version: "3.12"
+      - name: Build both isolated candidates without publication and inspect every layer
+        run: |
+          set -euo pipefail
+          for role in api worker; do
+            docker build --file "Dockerfile.$role" --label "org.opencontainers.image.source=https://github.com/LaloVO/homepty-swarm" --label "org.opencontainers.image.revision=$GITHUB_SHA" --label 'org.opencontainers.image.licenses=AGPL-3.0-only' --tag "homepty-swarm-$role:$GITHUB_SHA" .
+            docker save "homepty-swarm-$role:$GITHUB_SHA" --output "$RUNNER_TEMP/$role.tar"
+            python3 runtime/ci/inspect_image.py "$RUNNER_TEMP/$role.tar"
+            docker run --rm --read-only --tmpfs /tmp --entrypoint python "homepty-swarm-$role:$GITHUB_SHA" -c 'import importlib.util; assert all(importlib.util.find_spec(n) is None for n in ("oasis", "camel", "torch", "transformers", "flask_cors", "pytest"))'
+          done
+      - name: Actual API and worker image tests with disposable PostgreSQL and S3
+        env:
+          SWARM_CI_API_IMAGE: homepty-swarm-api:${{ github.sha }}
+          SWARM_CI_WORKER_IMAGE: homepty-swarm-worker:${{ github.sha }}
+        run: |
+          export PATH="$(pg_config --bindir):$PATH"
+          uv sync --project runtime --frozen
+          PYTHONPATH=backend runtime/.venv/bin/pytest backend/tests/runtime/test_container_images.py -q
+      - name: API vulnerability and secret scan
+        uses: aquasecurity/trivy-action@d2a0b60797ff03db6132bd4e2b293f9b37081297
+        with:
+          input: ${{ runner.temp }}/api.tar
+          scanners: vuln,secret
+          severity: HIGH,CRITICAL
+          exit-code: "1"
+          format: json
+          output: api-scan.json
+          trivyignores: ""
+          scan-removed-packages: true
+      - name: Worker vulnerability and secret scan
+        uses: aquasecurity/trivy-action@d2a0b60797ff03db6132bd4e2b293f9b37081297
+        with:
+          input: ${{ runner.temp }}/worker.tar
+          scanners: vuln,secret
+          severity: HIGH,CRITICAL
+          exit-code: "1"
+          format: json
+          output: worker-scan.json
+          trivyignores: ""
+          scan-removed-packages: true
+      - name: API SBOM
+        uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610
+        with:
+          image: homepty-swarm-api:${{ github.sha }}
+          format: cyclonedx-json
+          output-file: api-sbom.cdx.json
+          artifact-name: api-sbom
+      - name: Worker SBOM
+        uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610
+        with:
+          image: homepty-swarm-worker:${{ github.sha }}
+          format: cyclonedx-json
+          output-file: worker-sbom.cdx.json
+          artifact-name: worker-sbom
+      - name: Preserve scan reports on failure too
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: image-security-reports
+          path: '*-scan.json'
+          if-no-files-found: warn
+      - name: Transfer only approved images to publisher
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: approved-images
+          path: |
+            ${{ runner.temp }}/api.tar
+            ${{ runner.temp }}/worker.tar
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+  publish:
+    needs: [supply-chain, runtime-tests, images]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: approved-images
+          path: images
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
+          username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract metadata
-        id: meta
-        uses: docker/metadata-action@v5
+      - name: Publish tested bytes without rebuilding and record registry digests
+        run: |
+          set -euo pipefail
+          mkdir release
+          for role in api worker; do
+            docker load --input "images/$role.tar"
+            image="ghcr.io/lalovo/homepty-swarm-$role:$GITHUB_SHA"
+            docker tag "homepty-swarm-$role:$GITHUB_SHA" "$image"
+            docker push "$image"
+            digest="$(docker inspect --format '{{index .RepoDigests 0}}' "$image")"
+            [[ "$digest" =~ ^ghcr.io/lalovo/homepty-swarm-(api|worker)@sha256:[a-f0-9]{64}$ ]]
+            jq -n --arg image "$digest" --arg source "$GITHUB_SHA" --arg run "$GITHUB_RUN_ID" '{image:$image,sourceCommit:$source,approvedRun:$run}' > "release/$role.json"
+            echo "$role: $digest" >> "$GITHUB_STEP_SUMMARY"
+          done
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          images: ghcr.io/${{ github.repository_owner }}/mirofish
-          tags: |
-            type=ref,event=tag
-            type=sha
-            type=raw,value=latest
-
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          name: approved-release-digests
+          path: release/*.json
+          if-no-files-found: error

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "contractVersion": {
+      "type": "string",
+      "const": "homepty-workload.v1"
+    },
+    "keyId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]{1,64}(?![\\s\\S])"
+    },
+    "algorithm": {
+      "type": "string",
+      "const": "HMAC-SHA256"
+    },
+    "issuedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z(?![\\s\\S])"
+    },
+    "expiresAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z(?![\\s\\S])"
+    },
+    "nonce": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{16,128}(?![\\s\\S])"
+    },
+    "bodySha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+    },
+    "signature": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+    },
+    "body": {
+      "$ref": "#/$defs/__schema0"
+    }
+  },
+  "required": [
+    "contractVersion",
+    "keyId",
+    "algorithm",
+    "issuedAt",
+    "expiresAt",
+    "nonce",
+    "bodySha256",
+    "signature",
+    "body"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "__schema0": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/__schema0"
+          }
+        },
+        {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/__schema0"
+          }
+        }
+      ]
+    }
+  },
+  "$id": "https://schemas.homepty.com/workload/homepty-workload.v1.schema.json"
+}

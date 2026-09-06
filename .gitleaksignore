@@ -1,0 +1,5 @@
+# Confirmed vendor JavaScript method descriptor, not a credential. HPY-143, 2026-09-04.
+# Identical rule/match reproduced against vis-network@9.1.2 standalone/umd from npm.
+# Upstream SHA256: 3729be2f3994c83229106c3d34fb8de807572cf6f282c23e2b34ecf4e84ce863
+# Scope is exactly this historical finding; no directory or rule allowlist.
+9657061b267638447e98e57bb01e0cf4ef899bbc:txt2graph/lib/vis-9.1.2/vis-network.min.js:generic-api-key:26

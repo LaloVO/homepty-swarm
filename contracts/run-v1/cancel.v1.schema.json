@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "runId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "attempt": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "acknowledged": {
+      "type": "boolean"
+    },
+    "terminalStatus": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "validating",
+            "blocked",
+            "queued",
+            "running",
+            "cancelling",
+            "succeeded",
+            "failed",
+            "cancelled",
+            "expired",
+            "cancelled_with_orphan_check_pending"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "runId",
+    "attempt",
+    "acknowledged",
+    "terminalStatus"
+  ],
+  "additionalProperties": false
+}

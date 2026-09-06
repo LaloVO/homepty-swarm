@@ -56,5 +56,14 @@ backend/logs/
 # Uploads
 backend/uploads/
 
+# Local knowledge-graph indexes can contain derived upload/project content.
+# They are development artifacts and must never become Corresponding Source or image input.
+graphify-out/
+*.sqlite
+*.sqlite3
+*.db
+.env.*
+!.env.example
+
 # Docker data
 data/
